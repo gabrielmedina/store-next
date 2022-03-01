@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { Header } from '../components'
+import { Footer, Header, ListingProducts } from '../components'
 
 const Home: NextPage = () => {
   return (
@@ -12,6 +12,10 @@ const Home: NextPage = () => {
       </Head>
 
       <Header />
+
+      <ListingProducts />
+
+      <Footer />
     </>
   )
 }

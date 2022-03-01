@@ -1,5 +1,4 @@
-import { Header } from './layout/header/header'
+export * from './layout/header/header'
+export * from './layout/footer/footer'
 
-export {
-  Header
-}
+export * from './listing/products/listing-products'
