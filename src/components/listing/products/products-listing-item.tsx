@@ -1,4 +1,4 @@
-export const ListingProductsItem: React.FC = () => {
+export const ProductsListingItem: React.FC = () => {
   return (
     <a href="#">
       <section>
