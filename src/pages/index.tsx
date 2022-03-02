@@ -7,7 +7,7 @@ import { AlgoliaService } from '@services'
 export async function getServerSideProps() {
   const algoliaService = new AlgoliaService('dev_store')
 
-  const response = await algoliaService.get()
+  const response = await algoliaService.get('')
 
   return {
     props: {

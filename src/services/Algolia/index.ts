@@ -13,13 +13,7 @@ export class AlgoliaService {
     this._index = this._client.initIndex(index)
   }
 
-  async get() {
-    const response = await this._index.search('')
-
-    return response
-  }
-
-  async getByTerm(term: string) {
+  async get(term: string) {
     const response = await this._index.search(term)
 
     return response
