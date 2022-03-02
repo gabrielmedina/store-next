@@ -2,13 +2,13 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@features*": [
+      "@features": [
         "./src/features"
       ],
-      "@components*": [
+      "@components": [
         "./src/components"
       ],
-      "@services*": [
+      "@services": [
         "./src/services"
       ],
     },
