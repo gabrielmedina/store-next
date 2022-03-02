@@ -1,6 +1,17 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "paths": {
+      "@features*": [
+        "./src/features"
+      ],
+      "@components*": [
+        "./src/components"
+      ],
+      "@services*": [
+        "./src/services"
+      ],
+    },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

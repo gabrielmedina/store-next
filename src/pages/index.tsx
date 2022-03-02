@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { Footer, Header, ProductsListing } from '../components'
-
-import { AlgoliaService } from 'src/services'
+import { Footer, Header } from '@components'
+import { Search } from '@features'
+import { AlgoliaService } from '@services'
 
 export async function getServerSideProps() {
   const algoliaService = new AlgoliaService('dev_store')
@@ -31,7 +31,7 @@ const Home: NextPage<THomeProps> = ({ ...props }) => {
 
       <Header />
 
-      <ProductsListing products={props.products} />
+      <Search products={props.products} />
 
       <Footer />
     </>
