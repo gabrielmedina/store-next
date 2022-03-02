@@ -2,7 +2,7 @@ import { SearchItem } from './SearchItem'
 import { TProduct } from './types'
 
 type TSearchProps = {
-  products: []
+  products: Array<TProduct>
 }
 
 export const Search: React.FC<TSearchProps> = ({ ...props }) => {
@@ -10,7 +10,7 @@ export const Search: React.FC<TSearchProps> = ({ ...props }) => {
 
   return (
     <ol>
-      {products.map((product: TProduct) => (
+      {products.map((product) => (
         <li key={product.id}>
           <SearchItem product={product} />
         </li>
