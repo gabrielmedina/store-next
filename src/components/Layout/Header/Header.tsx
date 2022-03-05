@@ -1,11 +1,11 @@
-import { SearchForm } from '@features'
+import { ProductSearchForm } from '@features'
 
 export const Header: React.FC = () => {
   return (
     <header>
       <h1>Store</h1>
 
-      <SearchForm />
+      <ProductSearchForm />
 
       <button>Cart</button>
     </header>
