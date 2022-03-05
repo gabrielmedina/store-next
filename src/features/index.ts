@@ -1,2 +1,2 @@
-export * from './Search/Search'
-export * from './Search/SearchForm'
+export * from './Product/Search/ProductSearchList'
+export * from './Product/Search/ProductSearchForm'

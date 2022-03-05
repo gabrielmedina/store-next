@@ -1,11 +1,13 @@
 import Image from 'next/image'
-import { TProduct } from './types'
+import { TProduct } from '../types'
 
-type TSearchItem = {
+type TProductSearchItemProps = {
   product: TProduct
 }
 
-export const SearchItem: React.FC<TSearchItem> = ({ ...props }) => {
+export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
+  ...props
+}) => {
   const { product } = props
 
   return (

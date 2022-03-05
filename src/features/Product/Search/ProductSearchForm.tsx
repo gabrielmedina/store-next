@@ -1,11 +1,11 @@
 import { useForm } from 'react-hook-form'
 
-type FormData = {
+type TProductSearchFormData = {
   search: string
 }
 
-export const SearchForm: React.FC = () => {
-  const { register, handleSubmit } = useForm<FormData>()
+export const ProductSearchForm: React.FC = () => {
+  const { register, handleSubmit } = useForm<TProductSearchFormData>()
 
   const onSubmit = handleSubmit((data) => console.log(data))
 
