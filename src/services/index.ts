@@ -1,1 +1,1 @@
-export * from './Algolia'
+export * from './Algolia/AlgoliaService'
