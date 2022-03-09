@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { Footer, Header } from '@components'
+import { LayoutDefault } from '@components'
 import { ProductSearchList } from '@features'
 import { AlgoliaService } from '@services'
 
@@ -31,11 +31,9 @@ const Home: NextPage<TPageHomeProps> = ({ ...props }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
-
-      <ProductSearchList products={products} />
-
-      <Footer />
+      <LayoutDefault>
+        <ProductSearchList products={products} />
+      </LayoutDefault>
     </>
   )
 }
