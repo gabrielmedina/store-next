@@ -1,9 +1,11 @@
 import { ProductSearchForm } from '@features'
 
+import styles from './Header.module.scss'
+
 export const Header: React.FC = () => {
   return (
-    <header>
-      <h1>Store</h1>
+    <header className={styles.container}>
+      <h1 className={styles.title}>Store</h1>
 
       <ProductSearchForm />
 
