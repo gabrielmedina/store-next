@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app'
 
-import '../styles/globals.css'
+import '../styles/globals.scss'
 import '../styles/variables.css'
 
 function StoreApp({ Component, pageProps }: AppProps) {
