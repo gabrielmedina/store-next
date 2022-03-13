@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { TProduct } from '../types'
+import { TProduct } from '../../types'
 
 type TProductSearchItemProps = {
   product: TProduct

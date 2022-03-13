@@ -1,5 +1,5 @@
-import { ProductSearchItem } from './ProductSearchItem'
-import { TProduct } from '../types'
+import { ProductSearchItem } from '../Item/ProductSearchItem'
+import { TProduct } from '../../types'
 
 type TProductSearchListProps = {
   products: Array<TProduct>

@@ -6,7 +6,7 @@ export const LayoutDefault: React.FC = ({ ...props }) => {
   const { children } = props
 
   return (
-    <div className={style.container}>
+    <div className={style.default}>
       <Header />
 
       {children}

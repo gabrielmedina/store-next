@@ -2,7 +2,7 @@ html,
 body {
   padding: $unit-0000;
   margin: 0;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 a {
@@ -12,4 +12,9 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+input,
+button {
+  font-family: 'Roboto', sans-serif;
 }

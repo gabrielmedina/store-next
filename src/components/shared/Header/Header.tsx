@@ -1,15 +1,26 @@
+import Link from 'next/link'
 import { ProductSearchForm } from '@features'
-
+import { Logo, Button, IconCart } from '@components'
 import styles from './Header.module.scss'
 
 export const Header: React.FC = () => {
   return (
-    <header className={styles.container}>
-      <h1 className={styles.title}>Store</h1>
+    <header className={styles.header}>
+      <h1 className={styles.logo}>
+        <Link href="/">
+          <a>
+            <Logo />
+          </a>
+        </Link>
+      </h1>
 
-      <ProductSearchForm />
+      <ProductSearchForm className={styles.search} />
 
-      <button>Cart</button>
+      <div className={styles.nav}>
+        <Button onClick={() => alert('cart')}>
+          <IconCart />
+        </Button>
+      </div>
     </header>
   )
 }
