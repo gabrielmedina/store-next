@@ -1,0 +1,19 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: $unit-0400;
+  margin: 0;
+  padding: $unit-0400 0;
+  list-style: none;
+
+  @media screen and (min-width: $breakpoint-md) {
+    display: grid;
+    gap: $unit-1400;
+    padding: $unit-1400 0;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (min-width: $breakpoint-lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
