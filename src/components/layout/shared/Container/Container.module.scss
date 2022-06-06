@@ -1,0 +1,13 @@
+.container {
+  box-sizing: border-box;
+  max-width: 1264px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $unit-0400;
+  padding-right: $unit-0400;
+
+  @media screen and (min-width: $breakpoint-lg) {
+    padding-left: unset;
+    padding-right: unset;
+  }
+}
