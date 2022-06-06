@@ -1,32 +1,21 @@
 import Image from 'next/image'
-import { TProduct } from '../../types'
+import { Card } from 'src/components/shared/Card/Card'
+import { TProduct } from 'src/features/Product/types'
 
 type TProductSearchItemProps = {
   product: TProduct
 }
 
 export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
-  ...props
+  product,
 }) => {
-  const { product } = props
-
   return (
     <a href="#">
-      <section>
-        <header>
-          <h2>{product.title}</h2>
-          <p>{product.price}</p>
-        </header>
-
-        <figure>
-          <Image
-            src={product.image.src}
-            alt={product.image.alt}
-            width={500}
-            height={500}
-          />
-        </figure>
-      </section>
+      <Card
+        title={product.title}
+        description={product.price.toString()}
+        image={product.image}
+      />
     </a>
   )
 }

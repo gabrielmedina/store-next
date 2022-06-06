@@ -1,0 +1,22 @@
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  order: -1;
+}
+
+.title {
+  font-size: 1rem;
+}
+
+.descrption {
+  font-size: 0.9rem;
+}
+
+.figure {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
