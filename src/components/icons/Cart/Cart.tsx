@@ -1,7 +1,7 @@
 import React from 'react'
 import { TIcon } from '../types'
 
-export const IconCart: React.FC<TIcon & React.HTMLAttributes<any>> = ({
+export const IconCart: React.FC<TIcon & React.HTMLAttributes<HTMLElement>> = ({
   color = '#303030',
   width = 24,
   height = 24,
