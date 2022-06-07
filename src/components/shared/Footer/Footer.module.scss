@@ -1,4 +1,17 @@
 .footer {
-  padding: $unit-0600;
-  background: var(--color-gray-050);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $unit-0400;
+  padding: $unit-1200 $unit-0600;
+  background: var(--color-white);
+}
+
+.logo {
+  margin: 0;
+}
+
+.copyright {
+  font-size: 0.875rem;
+  color: var(--color-gray-300);
 }
