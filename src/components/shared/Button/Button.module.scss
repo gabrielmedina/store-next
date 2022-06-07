@@ -7,9 +7,25 @@
   padding: 0;
   border: 0;
   border-radius: 48px;
-  background: none;
+  cursor: pointer;
 
   svg {
     display: block;
+  }
+
+  &.primary {
+    background: var(--color-primary);
+
+    svg {
+      stroke: var(--color-white);
+    }
+  }
+
+  &.secondary {
+    background: var(--color-white);
+
+    svg {
+      stroke: var(--color-primary);
+    }
   }
 }

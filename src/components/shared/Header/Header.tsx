@@ -17,7 +17,7 @@ export const Header: React.FC = () => {
       <ProductSearchForm className={styles.search} />
 
       <div className={styles.nav}>
-        <Button onClick={() => alert('cart')}>
+        <Button variant="secondary" onClick={() => alert('cart')}>
           <IconCart />
         </Button>
       </div>
