@@ -2,18 +2,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  padding: 0;
+  height: $unit-1200;
+  padding: 0 $unit-0600;
   border: 0;
-  border-radius: 48px;
+  border-radius: $unit-0100;
+  font-size: 1rem;
   cursor: pointer;
 
   svg {
     display: block;
+    margin-left: -$unit-0300;
+    margin-right: -$unit-0300;
   }
 
   &.primary {
+    color: var(--color-white);
     background: var(--color-primary);
 
     svg {
@@ -22,10 +25,19 @@
   }
 
   &.secondary {
+    color: var(--color-primary);
     background: var(--color-white);
 
     svg {
       stroke: var(--color-primary);
     }
+  }
+
+  &.rounded {
+    border-radius: $unit-1200;
+  }
+
+  &.fullWidth {
+    width: 100%;
   }
 }
