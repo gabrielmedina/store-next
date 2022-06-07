@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { ProductSearchForm } from '@features'
-import { Logo, Button, IconCart } from '@components'
+import { ProductSearchForm } from 'src/features'
+import { Logo, Button, IconCart } from 'src/components'
 import styles from './Header.module.scss'
 
 export const Header: React.FC = () => {

@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { LayoutDefault } from '@components'
-import { ProductSearchList } from '@features'
-import { AlgoliaService } from '@services'
+import { LayoutDefault } from 'src/components'
+import { ProductSearchList } from 'src/features'
+import { AlgoliaService } from 'src/services'
 
 export async function getServerSideProps() {
   const algoliaService = new AlgoliaService('dev_store')
