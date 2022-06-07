@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { LayoutDefault } from 'src/components'
-import { ProductSearchList } from 'src/features'
+import { ProductCart, ProductSearchList } from 'src/features'
 import { AlgoliaService } from 'src/services'
 
 export async function getServerSideProps() {
@@ -34,6 +34,8 @@ const Home: NextPage<TPageHomeProps> = ({ ...props }) => {
       <LayoutDefault>
         <ProductSearchList products={products} />
       </LayoutDefault>
+
+      <ProductCart products={products} />
     </>
   )
 }
