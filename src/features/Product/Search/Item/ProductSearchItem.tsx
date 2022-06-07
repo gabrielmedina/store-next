@@ -1,5 +1,6 @@
 import { Button, Card, IconCart } from 'src/components'
 import { TProduct } from 'src/features'
+import { formatyMoney } from 'src/lib/FormatMoney'
 
 type TProductSearchItemProps = {
   product: TProduct
@@ -12,7 +13,7 @@ export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
     <a href="#">
       <Card
         title={product.title}
-        description={product.price.toString()}
+        description={formatyMoney(product.price)}
         image={product.image}
         cta={
           <Button onClick={() => alert('add to cart')}>
