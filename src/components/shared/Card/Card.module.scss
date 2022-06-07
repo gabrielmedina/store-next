@@ -6,6 +6,7 @@
 }
 
 .header {
+  position: relative;
   order: 1;
   display: flex;
   flex-direction: column;
@@ -22,6 +23,14 @@
 .descrption {
   margin: 0;
   font-size: 1.125rem;
+}
+
+.cta {
+  position: absolute;
+  top: 0;
+  right: $unit-0600;
+  transform: translateY(-50%);
+  z-index: 100;
 }
 
 .figure {

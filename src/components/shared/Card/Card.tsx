@@ -1,9 +1,11 @@
 import Image from 'next/image'
+import { ReactChild } from 'react'
 import styles from './Card.module.scss'
 
 type TCardProps = {
   title: string
   description?: string
+  cta?: ReactChild
   image?: {
     src: string
     alt: string
@@ -14,14 +16,14 @@ export const Card: React.FC<TCardProps> = ({
   title,
   description,
   image,
-  children,
+  cta,
 }) => {
   return (
     <section className={styles.section}>
       <header className={styles.header}>
         <h2 className={styles.title}>{title}</h2>
-        <p className={styles.descrption}>{description}</p>
-        {children}
+        {description && <p className={styles.descrption}>{description}</p>}
+        {cta && <div className={styles.cta}>{cta}</div>}
       </header>
 
       {image && (
