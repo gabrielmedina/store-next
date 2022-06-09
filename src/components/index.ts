@@ -6,6 +6,7 @@ export * from './shared/Footer/Footer'
 export * from './shared/Logo/Logo'
 export * from './shared/Button/Button'
 export * from './shared/Card/Card'
+export * from './shared/Dialog/Dialog'
 
 export * from './icons/Cart/Cart'
 
