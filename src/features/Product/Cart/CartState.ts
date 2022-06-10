@@ -9,7 +9,7 @@ export const StateCartItems = atom({
 })
 
 export const StateCartOpen = atom({
-  key: 'stateCardDialog',
+  key: 'stateCardOpen',
   default: false
 })
 
