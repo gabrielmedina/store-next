@@ -1,24 +1,14 @@
-import { Button, Dialog } from 'src/components'
-import { TProduct } from 'src/features/Product/types'
-import { ProductCartList } from './List/ProductCartList'
+import { useRecoilState, useRecoilValue } from 'recoil'
+import { ProductCartList, StateCartOpen, StateCartItems } from 'src/features'
+import { Dialog } from 'src/components'
 
-type TProductCartProps = {
-  products?: Array<TProduct>
-}
+export const ProductCart: React.FC = () => {
+  const cartItems = useRecoilValue(StateCartItems)
+  const [cartOpen, setCartOpen] = useRecoilState(StateCartOpen)
 
-export const ProductCart: React.FC<TProductCartProps> = ({ products }) => {
   return (
-    <Dialog
-      isOpen={true}
-      title="My cart"
-      subtitle="With 4 products"
-      footer={
-        <Button variant="primary" fullWidth>
-          Go to checkout
-        </Button>
-      }
-    >
-      {products && <ProductCartList products={products} />}
+    <Dialog open={cartOpen} title="My cart" onClose={() => setCartOpen(false)}>
+      {<ProductCartList products={cartItems} />}
     </Dialog>
   )
 }

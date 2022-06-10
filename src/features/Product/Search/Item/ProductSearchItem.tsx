@@ -1,5 +1,6 @@
+import { useRecoilState, useSetRecoilState } from 'recoil'
+import { TProduct, StateCartItems, StateCartOpen } from 'src/features'
 import { Button, Card, IconCart } from 'src/components'
-import { TProduct } from 'src/features'
 import { formatyMoney } from 'src/lib/FormatMoney'
 
 type TProductSearchItemProps = {
@@ -9,6 +10,14 @@ type TProductSearchItemProps = {
 export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
   product,
 }) => {
+  const [cartItems, setCartItems] = useRecoilState(StateCartItems)
+  const setCartOpen = useSetRecoilState(StateCartOpen)
+
+  const addProductToCart = () => {
+    setCartItems([...cartItems, product])
+    setCartOpen(true)
+  }
+
   return (
     <a href="#">
       <Card
@@ -16,7 +25,7 @@ export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
         description={formatyMoney(product.price)}
         image={product.image}
         cta={
-          <Button rounded onClick={() => alert('add to cart')}>
+          <Button rounded onClick={() => addProductToCart()}>
             <IconCart />
           </Button>
         }

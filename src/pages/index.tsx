@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { LayoutDefault } from 'src/components'
 import { ProductCart, ProductSearchList } from 'src/features'
+import { LayoutDefault } from 'src/components'
 import { AlgoliaService } from 'src/services'
 
 export async function getServerSideProps() {
@@ -20,9 +20,7 @@ type TPageHomeProps = {
   products: []
 }
 
-const Home: NextPage<TPageHomeProps> = ({ ...props }) => {
-  const { products } = props
-
+const Home: NextPage<TPageHomeProps> = ({ products }) => {
   return (
     <>
       <Head>
@@ -35,7 +33,7 @@ const Home: NextPage<TPageHomeProps> = ({ ...props }) => {
         <ProductSearchList products={products} />
       </LayoutDefault>
 
-      <ProductCart products={products} />
+      <ProductCart />
     </>
   )
 }

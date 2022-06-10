@@ -1,9 +1,12 @@
 import Link from 'next/link'
-import { ProductSearchForm } from 'src/features'
+import { useSetRecoilState } from 'recoil'
+import { StateCartOpen, ProductSearchForm } from 'src/features'
 import { Logo, Button, IconCart } from 'src/components'
 import styles from './Header.module.scss'
 
 export const Header: React.FC = () => {
+  const setCartOpen = useSetRecoilState(StateCartOpen)
+
   return (
     <header className={styles.header}>
       <h1 className={styles.logo}>
@@ -17,7 +20,7 @@ export const Header: React.FC = () => {
       <ProductSearchForm className={styles.search} />
 
       <div className={styles.nav}>
-        <Button variant="secondary" rounded onClick={() => alert('cart')}>
+        <Button variant="secondary" rounded onClick={() => setCartOpen(true)}>
           <IconCart />
         </Button>
       </div>
