@@ -3,24 +3,26 @@ import classNames from 'classnames'
 import styles from './Dialog.module.scss'
 
 type TDialogProps = {
+  open: boolean
   title: string
   subtitle?: string
   footer?: ReactChild
-  isOpen: boolean
+  onClose: () => void
 }
 
 export const Dialog: React.FC<TDialogProps> = ({
+  open,
   title,
   subtitle,
   footer,
-  isOpen,
+  onClose,
   children,
 }) => {
   return (
-    <div
+    <section
       role="dialog"
       className={classNames(styles.dialog, {
-        [styles.isOpen]: isOpen,
+        [styles.open]: open,
       })}
     >
       <div className={styles.backdrop}>
@@ -28,6 +30,7 @@ export const Dialog: React.FC<TDialogProps> = ({
           <header className={styles.header}>
             <h2 className={styles.title}>{title}</h2>
             {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
+            <button onClick={() => onClose()}>Fechar</button>
           </header>
 
           <div className={styles.content}>{children}</div>
@@ -35,6 +38,6 @@ export const Dialog: React.FC<TDialogProps> = ({
           {footer && <footer className={styles.footer}>{footer}</footer>}
         </div>
       </div>
-    </div>
+    </section>
   )
 }
