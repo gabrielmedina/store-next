@@ -10,13 +10,25 @@ type TButtonProps = {
 
 export const Button: React.FC<
   TButtonProps & React.ButtonHTMLAttributes<HTMLElement>
-> = ({ variant = 'primary', rounded, fullWidth, onClick, children }) => {
+> = ({
+  variant = 'primary',
+  rounded,
+  fullWidth,
+  onClick,
+  children,
+  className,
+}) => {
   return (
     <button
-      className={classNames(styles.button, styles[variant], {
-        [styles.rounded]: rounded,
-        [styles.fullWidth]: fullWidth,
-      })}
+      className={classNames(
+        styles.button,
+        styles[variant],
+        {
+          [styles.rounded]: rounded,
+          [styles.fullWidth]: fullWidth,
+        },
+        className
+      )}
       onClick={onClick}
     >
       {children}
