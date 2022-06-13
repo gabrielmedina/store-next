@@ -30,7 +30,6 @@
 }
 
 .container {
-  position: relative;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -46,12 +45,19 @@
   }
 }
 
+.buttonClose {
+  position: absolute;
+  top: $unit-0600;
+  right: $unit-0600;
+}
+
 .header {
   display: flex;
   flex-direction: column;
   gap: $unit-0100;
   padding: $unit-1000 $unit-1000 0;
 }
+
 
 .title {
   margin: 0;
