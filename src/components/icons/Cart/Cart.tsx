@@ -4,6 +4,7 @@ import { TIcon } from '../types'
 export const IconCart: React.FC<TIcon & React.HTMLAttributes<HTMLElement>> = ({
   width = 24,
   height = 24,
+  color,
 }) => {
   return (
     <svg
@@ -18,6 +19,7 @@ export const IconCart: React.FC<TIcon & React.HTMLAttributes<HTMLElement>> = ({
         cy="416"
         r="16"
         fill="none"
+        stroke={color}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="32"
@@ -27,12 +29,14 @@ export const IconCart: React.FC<TIcon & React.HTMLAttributes<HTMLElement>> = ({
         cy="416"
         r="16"
         fill="none"
+        stroke={color}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="32"
       />
       <path
         fill="none"
+        stroke={color}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="32"
@@ -41,6 +45,7 @@ export const IconCart: React.FC<TIcon & React.HTMLAttributes<HTMLElement>> = ({
       <path
         d="M160 288h249.44a8 8 0 007.85-6.43l28.8-144a8 8 0 00-7.85-9.57H128"
         fill="none"
+        stroke={color}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="32"
