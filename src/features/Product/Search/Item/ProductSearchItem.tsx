@@ -25,7 +25,13 @@ export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
         description={formatyMoney(product.price)}
         image={product.image}
         cta={
-          <Button rounded onClick={() => addProductToCart()}>
+          <Button
+            rounded
+            onClick={(event) => {
+              event.preventDefault()
+              addProductToCart()
+            }}
+          >
             <IconCart />
           </Button>
         }
