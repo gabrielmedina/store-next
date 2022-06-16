@@ -10,6 +10,7 @@ export const ProductCart: React.FC = () => {
     <Dialog
       open={cartOpen}
       title="My cart"
+      subtitle="With 3 products"
       onClose={() => setCartOpen(false)}
       footer={
         <Button fullWidth onClick={() => alert('Go to checkout')}>

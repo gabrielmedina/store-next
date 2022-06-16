@@ -1,4 +1,44 @@
+.container {
+  display: flex;
+  align-items: flex-start;
+  gap: $unit-0400;
+}
+
+.figure {
+  width: 104px;
+  flex-shrink: 0;
+  margin: 0;
+  border-radius: $unit-0100;
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: $unit-0200;
+  width: 100%;
+}
+
 .title {
   margin: 0;
+  font-size: 1.125rem;
+}
+
+.price {
+  margin: 0;
+  color: var(--color-gray-700);
   font-size: 1rem;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: $unit-0400;
+}
+
+.count {
+  display: block;
+  min-width: 24px;
+  text-align: center;
+  cursor: default;
 }
