@@ -8,6 +8,8 @@ export * from './shared/Button/Button'
 export * from './shared/Card/Card'
 export * from './shared/Dialog/Dialog'
 
+export * from './icons/Add/Add'
 export * from './icons/Cart/Cart'
 export * from './icons/Close/Close'
+export * from './icons/Remove/Remove'
 
