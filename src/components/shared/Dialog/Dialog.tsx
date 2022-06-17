@@ -7,7 +7,7 @@ type TDialogProps = {
   open: boolean
   title: string
   subtitle?: string
-  footer?: ReactChild
+  footer?: ReactChild | boolean
   onClose: () => void
 }
 
