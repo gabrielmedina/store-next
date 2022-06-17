@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { ProductCartList, TProductCartListProps } from './ProductCartList'
-import products from 'test/_stubs/product.json'
+import ProductsStub from 'test/_stubs/ProductsStub.json'
 
 const makeSut = (props?: TProductCartListProps) => {
   return render(<ProductCartList {...props} />)
@@ -8,6 +8,7 @@ const makeSut = (props?: TProductCartListProps) => {
 
 describe('ProductCartList', () => {
   it('should render correctly', () => {
+    const products = ProductsStub
     makeSut({ products })
 
     expect(screen.queryByRole('list')).toBeInTheDocument()

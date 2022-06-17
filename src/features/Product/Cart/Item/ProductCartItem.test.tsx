@@ -1,7 +1,7 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { ProductCartItem, TProductCartItemProps } from './ProductCartItem'
 import { formatyMoney } from 'src/lib'
-import products from 'test/_stubs/product.json'
+import ProductsStub from 'test/_stubs/ProductsStub.json'
 
 const makeSut = (props?: TProductCartItemProps) => {
   const { container } = render(<ProductCartItem {...props} />)
@@ -13,7 +13,7 @@ const makeSut = (props?: TProductCartItemProps) => {
 
 describe('ProductCartItem', () => {
   it('should render correctly', () => {
-    const product = products[0]
+    const product = ProductsStub[0]
     const { container } = makeSut({ product })
 
     expect(container).toBeDefined()
@@ -30,7 +30,7 @@ describe('ProductCartItem', () => {
   })
 
   it('should increase count when add button has clicked', async () => {
-    const product = products[0]
+    const product = ProductsStub[0]
     makeSut({ product })
 
     const count = screen.getByTestId('count')
@@ -41,7 +41,7 @@ describe('ProductCartItem', () => {
   })
 
   it('should decrease count when remove button has clicked', async () => {
-    const product = products[0]
+    const product = ProductsStub[0]
     makeSut({ product })
 
     const count = screen.getByTestId('count')
@@ -56,7 +56,7 @@ describe('ProductCartItem', () => {
   })
 
   it('should not decrease count when value is 1', async () => {
-    const product = products[0]
+    const product = ProductsStub[0]
     makeSut({ product })
 
     const count = screen.getByTestId('count')
