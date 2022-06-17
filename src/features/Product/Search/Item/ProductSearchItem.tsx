@@ -3,7 +3,7 @@ import { TProduct, StateCartItems, StateCartOpen } from 'src/features'
 import { Button, Card, IconCart } from 'src/components'
 import { formatyMoney } from 'src/lib/FormatMoney'
 
-type TProductSearchItemProps = {
+export type TProductSearchItemProps = {
   product: TProduct
 }
 
