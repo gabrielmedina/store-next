@@ -26,10 +26,25 @@ describe('ProductCartItem', () => {
     const product = products[0]
     makeSut({ product })
 
+    const count = screen.getByTestId('count')
+
     fireEvent.click(screen.getByTitle('Add'))
+    await waitFor(() => count)
+    expect(count.textContent).toEqual('2')
+  })
 
-    await waitFor(() => screen.getByTestId('count'))
+  it('should decrease count when remove button has clicked', async () => {
+    const product = products[0]
+    makeSut({ product })
 
-    expect(screen.getByTestId('count').textContent).toEqual('2')
+    const count = screen.getByTestId('count')
+
+    fireEvent.click(screen.getByTitle('Add'))
+    await waitFor(() => count)
+    expect(count.textContent).toEqual('2')
+
+    fireEvent.click(screen.getByTitle('Remove'))
+    await waitFor(() => count)
+    expect(count.textContent).toEqual('1')
   })
 })
