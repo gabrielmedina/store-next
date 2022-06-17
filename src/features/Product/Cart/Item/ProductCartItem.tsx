@@ -19,7 +19,7 @@ export const ProductCartItem: React.FC<TProductCartItemProps> = ({
   }
 
   const decrease = () => {
-    setCount(count - 1)
+    if (count !== 1) setCount(count - 1)
   }
 
   return product ? (
