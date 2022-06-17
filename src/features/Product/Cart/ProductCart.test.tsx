@@ -1,17 +1,12 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { ProductCart } from './ProductCart'
 import { StateCartItems, StateCartOpen } from './CartState'
-import { RecoilMock } from 'test/_mocks/RecoilMock'
+import { RecoilMock, TRecoilMockProps } from 'test/_mocks/RecoilMock'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
 
 const onRecoilChange = jest.fn()
 
-type TProps = {
-  node: any
-  values?: any
-}
-
-const makeSut = ({ node, values }: TProps) => {
+const makeSut = ({ node, values }: TRecoilMockProps) => {
   return render(
     <RecoilMock node={node} values={values} onChange={onRecoilChange}>
       <ProductCart />

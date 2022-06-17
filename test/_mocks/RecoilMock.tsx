@@ -1,13 +1,13 @@
 import { FC, useEffect } from 'react'
 import { RecoilRoot, RecoilState, useRecoilState } from 'recoil'
 
-type TProps = {
+export type TRecoilMockProps = {
   node: RecoilState<any>
-  onChange: (value: any) => void
+  onChange?: (value: any) => void
   values?: any
 }
 
-const Mock: FC<TProps> = ({ node, onChange, values, children }) => {
+const Mock: FC<TRecoilMockProps> = ({ node, onChange, values, children }) => {
   const [value, setValue] = useRecoilState(node)
 
   useEffect(() => {
@@ -15,12 +15,12 @@ const Mock: FC<TProps> = ({ node, onChange, values, children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  useEffect(() => onChange(value), [onChange, value])
+  useEffect(() => onChange && onChange(value), [onChange, value])
 
   return <>{children}</>
 }
 
-export const RecoilMock: FC<TProps> = ({
+export const RecoilMock: FC<TRecoilMockProps> = ({
   node,
   onChange,
   values,
