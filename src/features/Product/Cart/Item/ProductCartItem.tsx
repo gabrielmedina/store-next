@@ -18,6 +18,10 @@ export const ProductCartItem: React.FC<TProductCartItemProps> = ({
     setCount(count + 1)
   }
 
+  const decrease = () => {
+    setCount(count - 1)
+  }
+
   return product ? (
     <section className={styles.container}>
       <figure className={styles.figure}>
@@ -36,7 +40,12 @@ export const ProductCartItem: React.FC<TProductCartItemProps> = ({
         <p className={styles.price}>{formatyMoney(product.price)}</p>
 
         <div className={styles.actions}>
-          <Button variant="secondary" rounded className={styles.buttonClose}>
+          <Button
+            variant="secondary"
+            rounded
+            className={styles.buttonClose}
+            onClick={decrease}
+          >
             <IconRemove />
           </Button>
           <span data-testid="count" className={styles.count}>
