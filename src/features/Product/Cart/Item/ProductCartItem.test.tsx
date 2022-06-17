@@ -22,7 +22,7 @@ describe('ProductCartItem', () => {
     expect(screen.getByTestId('count').textContent).toEqual('1')
   })
 
-  it('should increase count when add button is clicked', async () => {
+  it('should increase count when add button has clicked', async () => {
     const product = products[0]
     makeSut({ product })
 
