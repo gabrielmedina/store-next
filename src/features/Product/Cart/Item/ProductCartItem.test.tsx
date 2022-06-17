@@ -4,11 +4,7 @@ import { formatyMoney } from 'src/lib'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
 
 const makeSut = (props?: TProductCartItemProps) => {
-  const { container } = render(<ProductCartItem {...props} />)
-
-  return {
-    container,
-  }
+  return render(<ProductCartItem {...props} />)
 }
 
 describe('ProductCartItem', () => {
