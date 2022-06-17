@@ -23,7 +23,7 @@ export const ProductCartItem: React.FC<TProductCartItemProps> = ({
   }
 
   return product ? (
-    <section className={styles.container}>
+    <section data-testid="item" className={styles.container}>
       <figure className={styles.figure}>
         {product.image && (
           <Image

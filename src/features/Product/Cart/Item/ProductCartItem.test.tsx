@@ -17,9 +17,16 @@ describe('ProductCartItem', () => {
     const { container } = makeSut({ product })
 
     expect(container).toBeDefined()
+    expect(screen.getByTestId('item')).toBeInTheDocument()
     expect(screen.getByText(product.title)).toBeInTheDocument()
     expect(screen.getByText(formatyMoney(product.price))).toBeInTheDocument()
     expect(screen.getByTestId('count').textContent).toEqual('1')
+  })
+
+  it('should no render when product is not provided', () => {
+    makeSut()
+
+    expect(screen.queryByTestId('item')).toBeFalsy()
   })
 
   it('should increase count when add button has clicked', async () => {
