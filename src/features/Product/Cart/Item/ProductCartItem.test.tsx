@@ -47,4 +47,15 @@ describe('ProductCartItem', () => {
     await waitFor(() => count)
     expect(count.textContent).toEqual('1')
   })
+
+  it('should not decrease count when value is 1', async () => {
+    const product = products[0]
+    makeSut({ product })
+
+    const count = screen.getByTestId('count')
+
+    fireEvent.click(screen.getByTitle('Remove'))
+    await waitFor(() => count)
+    expect(count.textContent).toEqual('1')
+  })
 })
