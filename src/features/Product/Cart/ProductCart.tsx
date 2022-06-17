@@ -6,17 +6,19 @@ export const ProductCart: React.FC = () => {
   const cartItems = useRecoilValue(StateCartItems)
   const [cartOpen, setCartOpen] = useRecoilState(StateCartOpen)
 
+  const subtitle = () => {
+    if (cartItems.length === 0) return 'Your cart is empty'
+    if (cartItems.length === 1) return 'With 1 product'
+    return `With ${cartItems.length} products`
+  }
+
   return (
     <Dialog
       open={cartOpen}
       title="My cart"
-      subtitle="With 3 products"
+      subtitle={subtitle()}
       onClose={() => setCartOpen(false)}
-      footer={
-        <Button fullWidth onClick={() => alert('Go to checkout')}>
-          Go to checkout
-        </Button>
-      }
+      footer={cartItems.length > 0 && <Button fullWidth>Go to checkout</Button>}
     >
       {<ProductCartList products={cartItems} />}
     </Dialog>
