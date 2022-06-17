@@ -14,6 +14,7 @@ export const IconAdd: React.FC<TIcon & React.HTMLAttributes<HTMLElement>> = ({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
+      <title>Add</title>
       <path
         d="M400 256H112M256 112V400V112Z"
         stroke={color}
