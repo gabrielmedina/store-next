@@ -11,13 +11,12 @@ const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
   moduleDirectories: ['node_modules', __dirname],
-  collectCoverageFrom: [
-    'src/**/*.{ts,tsx}',
-    'index.ts', // Ignoring component index since it is used only for importing
-  ],
   transform: {
     '^.+\\.tsx?$': ['@swc/jest'],
   },
+  collectCoverageFrom: [
+    'src/**/*.{ts,tsx}',
+  ],
   coverageThreshold: {
     global: {
       branches: 80,
@@ -29,7 +28,9 @@ const customJestConfig = {
   coveragePathIgnorePatterns: [
     'src/pages/_app.tsx',
     'src/pages/_error.tsx',
-    'src/pages/_document.tsx'
+    'src/pages/_document.tsx',
+    'src/components/icons/*',
+    'index.ts'
   ],
   moduleNameMapper: {
     '\\.(scss|css)$': 'identity-obj-proxy',
