@@ -6,24 +6,31 @@ const searchMethodMock = jest.fn().mockImplementation(() => {
   })
 })
 
+const indexMock = jest.fn(() => ({
+  search: searchMethodMock,
+}))
+
 jest.mock('algoliasearch', () => {
   return jest.fn().mockImplementation(() => {
     return {
-      initIndex: jest.fn(() => ({
-        search: searchMethodMock,
-      }))
+      initIndex: indexMock
     }
   })
 })
 
-const algoliaService = new AlgoliaService('index_test')
+describe('AlgoliaService', () => {
+  const algoliaService = new AlgoliaService('index_test')
 
-describe('Services > AlgoliaService', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
 
-  it('should call search method when get is called', async () => {
+  it('should set algoliasearch _index correctly', () => {
+    expect(indexMock).toBeCalled()
+    expect(indexMock).toBeCalledWith('index_test')
+  })
+
+  it('should call algoliasearch search method when get is called', async () => {
     await algoliaService.get('term')
 
     expect(searchMethodMock).toBeCalled()
