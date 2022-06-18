@@ -3,7 +3,7 @@ import { ProductSearchItem } from '../Item/ProductSearchItem'
 import { TProduct } from 'src/features/Product/types'
 import styles from './ProductSearchList.module.scss'
 
-type TProductSearchListProps = {
+export type TProductSearchListProps = {
   products: Array<TProduct>
 }
 
