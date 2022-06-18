@@ -14,7 +14,12 @@ export const ProductSearchForm: React.FC<React.HTMLAttributes<any>> = ({
   const onSubmit = handleSubmit((data) => console.log(data))
 
   return (
-    <form className={styles.form} onSubmit={onSubmit} {...props}>
+    <form
+      name="product-search-form"
+      className={styles.form}
+      onSubmit={onSubmit}
+      {...props}
+    >
       <label className={styles.label} htmlFor="search">
         Search
       </label>
