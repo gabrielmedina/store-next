@@ -1,7 +1,7 @@
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { TProduct, StateCartItems, StateCartOpen } from 'src/features'
 import { Button, Card, IconCart } from 'src/components'
-import { formatyMoney } from 'src/lib/FormatMoney'
+import { formatyMoney } from 'src/lib'
 
 export type TProductSearchItemProps = {
   product: TProduct
