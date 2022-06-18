@@ -19,11 +19,11 @@ export const Header: React.FC = () => {
 
       <ProductSearchForm className={styles.search} />
 
-      <div className={styles.nav}>
+      <nav className={styles.nav}>
         <Button variant="secondary" rounded onClick={() => setCartOpen(true)}>
           <IconCart />
         </Button>
-      </div>
+      </nav>
     </header>
   )
 }
