@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import styles from './Dialog.module.scss'
 import { Button, IconClose } from 'src/components'
 
-type TDialogProps = {
+export type TDialogProps = {
   open: boolean
   title: string
   subtitle?: string
