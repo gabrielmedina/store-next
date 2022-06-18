@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { ReactChild } from 'react'
 import styles from './Card.module.scss'
 
-type TCardProps = {
+export type TCardProps = {
   title: string
   description?: string
   cta?: ReactChild
