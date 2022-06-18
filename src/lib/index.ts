@@ -1,1 +1,1 @@
-export * from './FormatMoney'
+export * from './Formats/FormatMoney'
