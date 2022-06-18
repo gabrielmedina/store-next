@@ -1,15 +1,15 @@
-import React from 'react'
+import { ButtonHTMLAttributes } from 'react'
 import classNames from 'classnames'
 import styles from './Button.module.scss'
 
-type TButtonProps = {
+export type TButtonProps = {
   variant?: 'primary' | 'secondary'
   rounded?: boolean
   fullWidth?: boolean
 }
 
 export const Button: React.FC<
-  TButtonProps & React.ButtonHTMLAttributes<HTMLElement>
+  TButtonProps & ButtonHTMLAttributes<HTMLButtonElement>
 > = ({
   variant = 'primary',
   rounded,
