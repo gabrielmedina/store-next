@@ -8,7 +8,7 @@ export const Header: React.FC = () => {
   const setCartOpen = useSetRecoilState(StateCartOpen)
 
   return (
-    <header className={styles.header}>
+    <header data-testid="header" className={styles.header}>
       <h1 className={styles.logo}>
         <Link href="/">
           <a>
