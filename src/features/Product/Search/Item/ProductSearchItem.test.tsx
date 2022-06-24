@@ -3,7 +3,7 @@ import { ProductSearchItem, TProductSearchItemProps } from './ProductSearchItem'
 import { StateCartItems } from 'src/features/Product/Cart/CartState'
 import { RecoilMock } from 'test/_mocks/RecoilMock'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
-import { formatyMoney } from 'src/lib'
+import { formatyMoney } from 'src/utils'
 
 const onRecoilChange = jest.fn()
 
@@ -24,10 +24,9 @@ describe('ProductSearchItem', () => {
     const product = ProductsStub[0]
     makeSut({ product })
 
-    expect(screen.getByText(product.title)).toBeInTheDocument()
+    expect(screen.getByText(product.name)).toBeInTheDocument()
     expect(screen.getByText(formatyMoney(product.price))).toBeInTheDocument()
     expect(screen.getByRole('img')).toHaveAttribute('src')
-    expect(screen.getByAltText(product.image.alt)).toBeInTheDocument()
   })
 
   it('should add product to cart when button has clicked', async () => {

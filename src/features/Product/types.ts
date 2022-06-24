@@ -1,12 +1,17 @@
 export type TProduct = {
   id: string
   slug: string
-  title: string
+  name: string
   summary: string
   description: string
   price: number
-  image: {
-    src: string
-    alt: string
-  }
+  cover: TProductImage
+  images?: Array<TProductImage>
+}
+
+export type TProductImage = {
+  url: string
+  id?: string
+  width?: number
+  height?: number
 }

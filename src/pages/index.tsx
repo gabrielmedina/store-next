@@ -2,25 +2,50 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ProductCart, ProductSearchList } from 'src/features'
 import { LayoutDefault } from 'src/components'
-import { AlgoliaService } from 'src/services'
+import { getApolloClient } from 'src/lib'
+import { gql } from '@apollo/client'
+
+const GET_PRODUCTS = gql`
+  query GetProduts {
+    products {
+      id
+      name
+      description
+      price
+      cover {
+        id
+        url
+        height
+        width
+      }
+    }
+  }
+`
 
 export async function getServerSideProps() {
-  const algoliaService = new AlgoliaService('dev_store')
+  const apolloClient = getApolloClient()
 
-  const response = await algoliaService.get('')
+  const {
+    loading,
+    data: { products },
+  } = await apolloClient.query({
+    query: GET_PRODUCTS,
+  })
 
   return {
     props: {
-      products: response.hits || [],
+      loading,
+      products: products,
     },
   }
 }
 
 type TPageHomeProps = {
+  loading?: boolean
   products: []
 }
 
-const Home: NextPage<TPageHomeProps> = ({ products }) => {
+const Home: NextPage<TPageHomeProps> = ({ loading, products }) => {
   return (
     <>
       <Head>
@@ -30,7 +55,7 @@ const Home: NextPage<TPageHomeProps> = ({ products }) => {
       </Head>
 
       <LayoutDefault>
-        <ProductSearchList products={products} />
+        {!loading && <ProductSearchList products={products} />}
       </LayoutDefault>
 
       <ProductCart />

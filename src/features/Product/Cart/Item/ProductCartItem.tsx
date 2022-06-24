@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { Button, IconAdd, IconRemove } from 'src/components'
 import { TProduct } from 'src/features'
-import { formatyMoney } from 'src/lib'
+import { formatyMoney } from 'src/utils'
 import styles from './ProductCartItem.module.scss'
 
 export type TProductCartItemProps = {
@@ -25,18 +25,18 @@ export const ProductCartItem: React.FC<TProductCartItemProps> = ({
   return product ? (
     <section data-testid="item" className={styles.container}>
       <figure className={styles.figure}>
-        {product.image && (
+        {product.cover && (
           <Image
             layout="responsive"
-            src={product.image.src}
-            alt={product.image.alt}
-            width={500}
-            height={500}
+            src={product.cover.url}
+            alt={product.name}
+            width={product.cover.width}
+            height={product.cover.height}
           />
         )}
       </figure>
       <div className={styles.content}>
-        <h2 className={styles.title}>{product.title}</h2>
+        <h2 className={styles.title}>{product.name}</h2>
         <p className={styles.price}>{formatyMoney(product.price)}</p>
 
         <div className={styles.actions}>

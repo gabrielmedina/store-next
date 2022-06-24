@@ -9,6 +9,8 @@ export type TCardProps = {
   image?: {
     src: string
     alt: string
+    height?: number
+    width?: number
   }
 }
 
@@ -32,8 +34,8 @@ export const Card: React.FC<TCardProps> = ({
             layout="responsive"
             src={image.src}
             alt={image.alt}
-            width={500}
-            height={500}
+            width={image.width}
+            height={image.height}
           />
         </figure>
       )}

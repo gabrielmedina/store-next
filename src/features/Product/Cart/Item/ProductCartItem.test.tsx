@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { ProductCartItem, TProductCartItemProps } from './ProductCartItem'
-import { formatyMoney } from 'src/lib'
+import { formatyMoney } from 'src/utils'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
 
 const makeSut = (props?: TProductCartItemProps) => {
@@ -14,7 +14,7 @@ describe('ProductCartItem', () => {
 
     expect(container).toBeDefined()
     expect(screen.getByTestId('item')).toBeInTheDocument()
-    expect(screen.getByText(product.title)).toBeInTheDocument()
+    expect(screen.getByText(product.name)).toBeInTheDocument()
     expect(screen.getByText(formatyMoney(product.price))).toBeInTheDocument()
     expect(screen.getByTestId('count').textContent).toEqual('1')
   })
