@@ -1,1 +1,1 @@
-export * from './Formats/FormatMoney'
+export * from './Algolia/Algolia'

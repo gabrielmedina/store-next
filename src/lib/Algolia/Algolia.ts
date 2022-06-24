@@ -1,6 +1,6 @@
 import algoliasearch, { SearchClient, SearchIndex } from 'algoliasearch'
 
-export class AlgoliaService {
+export class Algolia {
   _client: SearchClient;
   _index: SearchIndex;
 

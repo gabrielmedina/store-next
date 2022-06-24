@@ -1,4 +1,4 @@
-import { AlgoliaService } from 'src/services'
+import { Algolia } from 'src/lib'
 
 const searchMethodMock = jest.fn().mockImplementation(() => {
   return Promise.resolve({
@@ -18,8 +18,8 @@ jest.mock('algoliasearch', () => {
   })
 })
 
-describe('AlgoliaService', () => {
-  const algoliaService = new AlgoliaService('index_test')
+describe('Algolia', () => {
+  const Algolia = new Algolia('index_test')
 
   afterEach(() => {
     jest.clearAllMocks()
@@ -31,7 +31,7 @@ describe('AlgoliaService', () => {
   })
 
   it('should call algoliasearch search method when get is called', async () => {
-    await algoliaService.get('term')
+    await Algolia.get('term')
 
     expect(searchMethodMock).toBeCalled()
     expect(searchMethodMock).toBeCalledTimes(1)
