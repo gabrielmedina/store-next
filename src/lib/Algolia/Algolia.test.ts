@@ -19,7 +19,7 @@ jest.mock('algoliasearch', () => {
 })
 
 describe('Algolia', () => {
-  const Algolia = new Algolia('index_test')
+  const algolia = new Algolia('index_test')
 
   afterEach(() => {
     jest.clearAllMocks()
@@ -31,7 +31,7 @@ describe('Algolia', () => {
   })
 
   it('should call algoliasearch search method when get is called', async () => {
-    await Algolia.get('term')
+    await algolia.get('term')
 
     expect(searchMethodMock).toBeCalled()
     expect(searchMethodMock).toBeCalledTimes(1)
