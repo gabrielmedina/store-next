@@ -39,6 +39,8 @@ describe('Card', () => {
       image: {
         src: '/image.jpg',
         alt: 'Image',
+        width: 300,
+        height: 300,
       },
     })
 

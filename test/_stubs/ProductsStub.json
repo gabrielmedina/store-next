@@ -7,7 +7,9 @@
     "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     "price": 245.0,
     "cover": {
-      "url": "/brigitte-tohm.jpg"
+      "url": "/brigitte-tohm.jpg",
+      "width": 300,
+      "height": 300
     }
   },
   {
@@ -18,7 +20,9 @@
     "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     "price": 118.0,
     "cover": {
-      "url": "/jaelynn-castillo.jpg"
+      "url": "/jaelynn-castillo.jpg",
+      "width": 300,
+      "height": 300
     }
   },
   {
@@ -29,7 +33,9 @@
     "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     "price": 1230.0,
     "cover": {
-      "url": "/andrea-natali.jpg"
+      "url": "/andrea-natali.jpg",
+      "width": 300,
+      "height": 300
     }
   },
   {
@@ -40,7 +46,9 @@
     "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     "price": 873.0,
     "cover": {
-      "url": "/mitchell-hollander.jpg"
+      "url": "/mitchell-hollander.jpg",
+      "width": 300,
+      "height": 300
     }
   }
 ]
