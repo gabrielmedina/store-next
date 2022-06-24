@@ -7,6 +7,9 @@ const nextConfig = {
     includePaths: [path.join(__dirname, 'src/styles')],
     prependData: `@import "variables.scss";`,
   },
+  images: {
+    domains: ['media.graphassets.com'],
+  },
 }
 
 module.exports = nextConfig
