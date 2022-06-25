@@ -1,0 +1,15 @@
+overwrite: true
+schema: https://api-sa-east-1.graphcms.com/v2/cl4om40760ht201z48efecgdi/master
+documents:
+  - './src/graphql/queries/*.ts'
+  - './src/graphql/mutations/*.ts'
+generates:
+  ./src/graphql/types/index.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      reactApolloVersion: 3
+      withHooks: true
+      withComponent: false
