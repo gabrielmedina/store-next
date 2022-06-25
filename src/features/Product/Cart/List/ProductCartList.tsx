@@ -1,9 +1,9 @@
-import { TProduct } from 'src/features/Product/types'
 import { ProductCartItem } from '../Item/ProductCartItem'
 import styles from './ProductCartList.module.scss'
+import { Product } from 'src/graphql/types'
 
 export type TProductCartListProps = {
-  products?: Array<TProduct>
+  products?: Array<Product>
 }
 
 export const ProductCartList: React.FC<TProductCartListProps> = ({

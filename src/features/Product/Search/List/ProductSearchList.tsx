@@ -1,10 +1,10 @@
 import { Container } from 'src/components/layout/shared/Container/Container'
 import { ProductSearchItem } from '../Item/ProductSearchItem'
-import { TProduct } from 'src/features/Product/types'
 import styles from './ProductSearchList.module.scss'
+import { Product } from 'src/graphql/types'
 
 export type TProductSearchListProps = {
-  products: Array<TProduct>
+  products: Array<Product>
 }
 
 export const ProductSearchList: React.FC<TProductSearchListProps> = ({

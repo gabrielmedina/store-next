@@ -2,47 +2,28 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ProductCart, ProductSearchList } from 'src/features'
 import { LayoutDefault } from 'src/components'
-import { getApolloClient } from 'src/lib'
-import { gql } from '@apollo/client'
-
-const GET_PRODUCTS = gql`
-  query GetProduts {
-    products {
-      id
-      name
-      description
-      price
-      cover {
-        id
-        url
-        height
-        width
-      }
-    }
-  }
-`
+import { getApolloClient } from 'src/graphql'
+import { GET_PRODUCTS_QUERY } from 'src/graphql'
+import { GetProdutsQuery, Product } from 'src/graphql/types'
 
 export async function getServerSideProps() {
   const apolloClient = getApolloClient()
 
-  const {
-    loading,
-    data: { products },
-  } = await apolloClient.query({
-    query: GET_PRODUCTS,
+  const { loading, data } = await apolloClient.query<GetProdutsQuery>({
+    query: GET_PRODUCTS_QUERY,
   })
 
   return {
     props: {
       loading,
-      products: products,
+      products: data?.products,
     },
   }
 }
 
 type TPageHomeProps = {
   loading?: boolean
-  products: []
+  products: Product[]
 }
 
 const Home: NextPage<TPageHomeProps> = ({ loading, products }) => {

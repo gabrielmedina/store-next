@@ -1,12 +1,12 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import { Button, IconAdd, IconRemove } from 'src/components'
-import { TProduct } from 'src/features'
 import { formatyMoney } from 'src/utils'
 import styles from './ProductCartItem.module.scss'
+import { Product } from 'src/graphql/types'
 
 export type TProductCartItemProps = {
-  product?: TProduct
+  product?: Product
 }
 
 export const ProductCartItem: React.FC<TProductCartItemProps> = ({
@@ -30,8 +30,8 @@ export const ProductCartItem: React.FC<TProductCartItemProps> = ({
             layout="responsive"
             src={product.cover.url}
             alt={product.name}
-            width={product.cover.width}
-            height={product.cover.height}
+            width={product.cover.width || undefined}
+            height={product.cover.height || undefined}
           />
         )}
       </figure>

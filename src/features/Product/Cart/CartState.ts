@@ -1,7 +1,7 @@
 import { atom } from 'recoil'
-import { TProduct } from '../types'
+import { Product } from 'src/graphql/types'
 
-const STATE_CART_ITEMS_INIT: Array<TProduct> = []
+const STATE_CART_ITEMS_INIT: Array<Product> = []
 
 export const StateCartItems = atom({
   key: 'stateCartItems',
