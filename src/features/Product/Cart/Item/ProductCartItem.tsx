@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Button, IconAdd, IconRemove } from 'src/components'
 import { formatyMoney } from 'src/utils'
 import styles from './ProductCartItem.module.scss'
-import { Product } from 'src/graphql/types'
+import { Product } from 'src/graphql'
 
 export type TProductCartItemProps = {
   product?: Product

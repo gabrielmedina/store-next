@@ -2,7 +2,7 @@ import { useRecoilState, useSetRecoilState } from 'recoil'
 import { StateCartItems, StateCartOpen } from 'src/features'
 import { Button, Card, IconCart } from 'src/components'
 import { formatyMoney } from 'src/utils'
-import { Product } from 'src/graphql/types'
+import { Product } from 'src/graphql'
 
 export type TProductSearchItemProps = {
   product: Product

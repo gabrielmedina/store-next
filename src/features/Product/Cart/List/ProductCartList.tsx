@@ -1,6 +1,6 @@
 import { ProductCartItem } from '../Item/ProductCartItem'
 import styles from './ProductCartList.module.scss'
-import { Product } from 'src/graphql/types'
+import { Product } from 'src/graphql'
 
 export type TProductCartListProps = {
   products?: Array<Product>

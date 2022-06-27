@@ -1,5 +1,5 @@
 import { atom } from 'recoil'
-import { Product } from 'src/graphql/types'
+import { Product } from 'src/graphql'
 
 const STATE_CART_ITEMS_INIT: Array<Product> = []
 

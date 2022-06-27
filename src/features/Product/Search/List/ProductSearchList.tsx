@@ -1,7 +1,7 @@
 import { Container } from 'src/components/layout/shared/Container/Container'
 import { ProductSearchItem } from '../Item/ProductSearchItem'
 import styles from './ProductSearchList.module.scss'
-import { Product } from 'src/graphql/types'
+import { Product } from 'src/graphql'
 
 export type TProductSearchListProps = {
   products: Array<Product>
