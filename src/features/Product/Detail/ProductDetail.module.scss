@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: $unit-0600;
+  padding-top: $unit-0800;
+  padding-bottom: $unit-0800;
+
+  @media screen and (min-width: $breakpoint-md) {
+    flex-direction: row;
+    gap: $unit-1400;
+    padding-top: $unit-1400;
+    padding-bottom: $unit-1400;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: $unit-0600;
+
+  @media screen and (min-width: $breakpoint-md) {
+    width: 50%;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: $unit-0400;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.5rem;
+
+  @media screen and (min-width: $breakpoint-md) {
+    font-size: 2rem;
+  }
+}
+
+.description {
+  margin: 0;
+  color: var(--color-gray-600);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.price {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.slider {
+  @media screen and (min-width: $breakpoint-md) {
+    width: 50%;
+    order: -1;
+  }
+}
+
+.figure {
+  margin: 0;
+  overflow: hidden;
+  border-radius: $unit-0200;
+}

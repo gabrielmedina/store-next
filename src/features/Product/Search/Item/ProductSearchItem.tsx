@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { StateCartItems, StateCartOpen } from 'src/features'
 import { Button, Card, IconCart } from 'src/components'
@@ -20,28 +21,30 @@ export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
   }
 
   return (
-    <a href="#">
-      <Card
-        title={product.name}
-        description={formatyMoney(product.price)}
-        image={{
-          alt: product.name,
-          src: product.cover.url,
-          width: product.cover.width || undefined,
-          height: product.cover.height || undefined,
-        }}
-        cta={
-          <Button
-            rounded
-            onClick={(event) => {
-              event.preventDefault()
-              addProductToCart()
-            }}
-          >
-            <IconCart />
-          </Button>
-        }
-      />
-    </a>
+    <Link href={`/product/${product.slug}`}>
+      <a>
+        <Card
+          title={product.name}
+          description={formatyMoney(product.price)}
+          image={{
+            alt: product.name,
+            src: product.cover.url,
+            width: product.cover.width || undefined,
+            height: product.cover.height || undefined,
+          }}
+          cta={
+            <Button
+              rounded
+              onClick={(event) => {
+                event.preventDefault()
+                addProductToCart()
+              }}
+            >
+              <IconCart />
+            </Button>
+          }
+        />
+      </a>
+    </Link>
   )
 }
