@@ -5,6 +5,7 @@ class StoreDocument extends Document {
     return (
       <Html lang="en-US">
         <Head>
+          <link rel="icon" href="/favicon.ico" />
           <link
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=optional"
             rel="stylesheet"
