@@ -10,4 +10,8 @@
     padding-left: unset;
     padding-right: unset;
   }
+
+  &.small {
+    max-width: 1200px;
+  }
 }
