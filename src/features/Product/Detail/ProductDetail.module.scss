@@ -2,14 +2,12 @@
   display: flex;
   flex-direction: column;
   gap: $unit-0600;
-  padding-top: $unit-0800;
-  padding-bottom: $unit-0800;
+  padding: $unit-0600 0;
 
   @media screen and (min-width: $breakpoint-md) {
     flex-direction: row;
     gap: $unit-1400;
-    padding-top: $unit-1400;
-    padding-bottom: $unit-1400;
+    padding: $unit-1400 0;
   }
 }
 
