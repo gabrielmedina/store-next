@@ -10,7 +10,15 @@
       "url": "/brigitte-tohm.jpg",
       "width": 300,
       "height": 300
-    }
+    },
+    "images": [
+      {
+        "id": "29898895-744d-4bca-ae76-77437bd5014d",
+        "url": "/brigitte-tohm.jpg",
+        "width": 300,
+        "height": 300
+      }
+    ]
   },
   {
     "id": "e4d01d05-df6c-4c07-9cd2-50856e0c07ed",
@@ -23,7 +31,15 @@
       "url": "/jaelynn-castillo.jpg",
       "width": 300,
       "height": 300
-    }
+    },
+    "images": [
+      {
+        "id": "29898895-744d-4bca-ae76-ads313dwd1d12",
+        "url": "/jaelynn-castillo.jpg",
+        "width": 300,
+        "height": 300
+      }
+    ]
   },
   {
     "id": "3ba14dc2-77c3-4906-b944-35ae0c33bceb",
@@ -36,7 +52,15 @@
       "url": "/andrea-natali.jpg",
       "width": 300,
       "height": 300
-    }
+    },
+    "images": [
+      {
+        "id": "29898895-744d-4bca-ae76-123dsad12dsadsa",
+        "url": "/andrea-natali.jpg",
+        "width": 300,
+        "height": 300
+      }
+    ]
   },
   {
     "id": "2ed436b6-4821-434e-bcce-d476b2495f91",
@@ -49,6 +73,14 @@
       "url": "/mitchell-hollander.jpg",
       "width": 300,
       "height": 300
-    }
+    },
+    "images": [
+      {
+        "id": "29898895-744d-4bca-ae76-v4324sdadsa2",
+        "url": "/mitchell-hollander.jpg",
+        "width": 300,
+        "height": 300
+      }
+    ]
   }
 ]
