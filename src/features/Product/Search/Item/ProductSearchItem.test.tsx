@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { ProductSearchItem, TProductSearchItemProps } from './ProductSearchItem'
 import { StateCartItems } from 'src/features/Product/Cart/CartState'
@@ -23,6 +22,7 @@ describe('ProductSearchItem', () => {
 
   it('should render correctly', () => {
     const product = ProductsStub[0]
+    // @ts-ignore
     makeSut({ product })
 
     expect(screen.getByText(product.name)).toBeInTheDocument()
@@ -32,6 +32,7 @@ describe('ProductSearchItem', () => {
 
   it('should add product to cart when button has clicked', async () => {
     const product = ProductsStub[0]
+    // @ts-ignore
     makeSut({ product })
 
     fireEvent.click(screen.getByTitle('Cart'))

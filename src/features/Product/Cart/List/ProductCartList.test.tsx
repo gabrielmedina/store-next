@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '@testing-library/react'
 import { ProductCartList, TProductCartListProps } from './ProductCartList'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
@@ -10,6 +9,7 @@ const makeSut = (props?: TProductCartListProps) => {
 describe('ProductCartList', () => {
   it('should render correctly', () => {
     const products = ProductsStub
+    // @ts-ignore
     makeSut({ products })
 
     expect(screen.queryByRole('list')).toBeInTheDocument()

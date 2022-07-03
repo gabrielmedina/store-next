@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '@testing-library/react'
 import { ProductSearchList, TProductSearchListProps } from './ProductSearchList'
 import { StateCartItems } from 'src/features/Product/Cart/CartState'
@@ -18,6 +17,7 @@ const makeSut = ({ products }: TProductSearchListProps) => {
 describe('ProductSearchList', () => {
   it('should render correctly', () => {
     const products = ProductsStub
+    // @ts-ignore
     makeSut({ products })
 
     expect(screen.getByRole('list')).toBeInTheDocument()

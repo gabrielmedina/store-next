@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { ProductCart } from './ProductCart'
 import { StateCartItems, StateCartOpen } from './CartState'

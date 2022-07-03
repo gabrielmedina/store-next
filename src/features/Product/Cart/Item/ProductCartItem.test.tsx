@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { ProductCartItem, TProductCartItemProps } from './ProductCartItem'
 import { formatyMoney } from 'src/utils'
@@ -11,6 +10,7 @@ const makeSut = (props?: TProductCartItemProps) => {
 describe('ProductCartItem', () => {
   it('should render correctly', () => {
     const product = ProductsStub[0]
+    // @ts-ignore
     const { container } = makeSut({ product })
 
     expect(container).toBeDefined()
@@ -28,6 +28,7 @@ describe('ProductCartItem', () => {
 
   it('should increase count when add button has clicked', async () => {
     const product = ProductsStub[0]
+    // @ts-ignore
     makeSut({ product })
 
     const count = screen.getByTestId('count')
@@ -39,6 +40,7 @@ describe('ProductCartItem', () => {
 
   it('should decrease count when remove button has clicked', async () => {
     const product = ProductsStub[0]
+    // @ts-ignore
     makeSut({ product })
 
     const count = screen.getByTestId('count')
@@ -54,6 +56,7 @@ describe('ProductCartItem', () => {
 
   it('should not decrease count when value is 1', async () => {
     const product = ProductsStub[0]
+    // @ts-ignore
     makeSut({ product })
 
     const count = screen.getByTestId('count')
