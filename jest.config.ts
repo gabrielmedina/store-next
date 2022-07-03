@@ -30,7 +30,14 @@ const customJestConfig = {
     'src/pages/_error.tsx',
     'src/pages/_document.tsx',
     'src/components/icons/*',
-    'index.ts'
+    'src/lib/*/index.ts',
+    'src/utils/*/index.ts',
+    'src/features/*/index.ts',
+    'src/components/*/index.ts',
+    'src/graphql/*/index.ts',
+    'src/graphql/queries/*',
+    'src/graphql/mutations/*',
+    'src/graphql/types/*',
   ],
   moduleNameMapper: {
     '\\.(scss|css)$': 'identity-obj-proxy',
