@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen } from '@testing-library/react'
 import { ProductSearchList, TProductSearchListProps } from './ProductSearchList'
 import { StateCartItems } from 'src/features/Product/Cart/CartState'

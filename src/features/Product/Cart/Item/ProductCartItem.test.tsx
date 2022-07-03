@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { ProductCartItem, TProductCartItemProps } from './ProductCartItem'
 import { formatyMoney } from 'src/utils'

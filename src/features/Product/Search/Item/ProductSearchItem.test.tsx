@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { ProductSearchItem, TProductSearchItemProps } from './ProductSearchItem'
 import { StateCartItems } from 'src/features/Product/Cart/CartState'

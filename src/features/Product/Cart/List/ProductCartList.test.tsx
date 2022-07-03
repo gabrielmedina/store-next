@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen } from '@testing-library/react'
 import { ProductCartList, TProductCartListProps } from './ProductCartList'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
