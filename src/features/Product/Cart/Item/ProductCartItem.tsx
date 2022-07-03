@@ -25,15 +25,18 @@ export const ProductCartItem: React.FC<TProductCartItemProps> = ({
   return product ? (
     <section data-testid="item" className={styles.container}>
       <figure className={styles.figure}>
-        {product.cover && (
-          <Image
-            layout="responsive"
-            src={product.cover.url}
-            alt={product.name}
-            width={product.cover.width || undefined}
-            height={product.cover.height || undefined}
-          />
-        )}
+        {
+          /* istanbul ignore next */
+          product.cover && (
+            <Image
+              layout="responsive"
+              src={product.cover.url}
+              alt={product.name}
+              width={product.cover.width || undefined}
+              height={product.cover.height || undefined}
+            />
+          )
+        }
       </figure>
       <div className={styles.content}>
         <h2 className={styles.title}>{product.name}</h2>

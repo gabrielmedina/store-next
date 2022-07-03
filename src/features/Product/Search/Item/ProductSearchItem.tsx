@@ -20,6 +20,7 @@ export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
     setCartOpen(true)
   }
 
+  /* istanbul ignore next */
   return (
     <Link href={`/product/${product.slug}`}>
       <a>
