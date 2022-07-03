@@ -6,7 +6,7 @@ import {
   getApolloClient,
   GET_PRODUCTS_QUERY,
   Product,
-  GetProdutsQuery,
+  GetProductsQuery,
 } from 'src/graphql'
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -15,7 +15,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const {
     loading,
     data: { products },
-  } = await apolloClient.query<GetProdutsQuery>({
+  } = await apolloClient.query<GetProductsQuery>({
     query: GET_PRODUCTS_QUERY,
   })
 
