@@ -7,7 +7,7 @@ import { formatyMoney } from 'src/utils'
 import { Product } from 'src/graphql'
 import styles from './ProductDetail.module.scss'
 
-type TProductDetailProps = {
+export type TProductDetailProps = {
   product: Product
 }
 
@@ -24,7 +24,7 @@ export const ProductDetail: FC<TProductDetailProps> = ({ product }) => {
 
   return (
     <Container size="small">
-      <article className={styles.container}>
+      <article data-testid="product-detail" className={styles.container}>
         <div className={styles.content}>
           <header className={styles.header}>
             <h1 className={styles.title}>{product.name}</h1>
@@ -44,17 +44,20 @@ export const ProductDetail: FC<TProductDetailProps> = ({ product }) => {
         </div>
 
         <div className={styles.slider}>
-          {product.images?.map((image) => (
-            <figure className={styles.figure} key={image.id}>
-              <Image
-                layout="responsive"
-                src={image.url}
-                alt={product.name}
-                width={image.width || undefined}
-                height={image.height || undefined}
-              />
-            </figure>
-          ))}
+          {product.images?.map((image) => {
+            /* istanbul ignore next */
+            return (
+              <figure className={styles.figure} key={image.id}>
+                <Image
+                  layout="responsive"
+                  src={image.url}
+                  alt={product.name}
+                  width={image.width || undefined}
+                  height={image.height || undefined}
+                />
+              </figure>
+            )
+          })}
         </div>
       </article>
     </Container>
