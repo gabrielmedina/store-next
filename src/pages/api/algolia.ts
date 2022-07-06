@@ -21,6 +21,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     res.send(200)
   } catch (error) {
-    res.send(400)
+    res.send(400, {
+      error
+    })
   }
 }
