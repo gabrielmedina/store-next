@@ -1,0 +1,30 @@
+.list {
+  display: flex;
+  gap: $unit-0300;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.item {
+  &:after {
+    content: '/';
+    display: inline-block;
+    color: var(--color-gray-300);
+    margin-left: $unit-0300;
+  }
+
+  &:last-of-type {
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.link {
+  color: var(--color-gray-800);
+
+  &.current {
+    color: var(--color-gray-300);
+  }
+}
