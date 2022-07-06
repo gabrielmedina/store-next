@@ -3,13 +3,12 @@
   flex-direction: column;
   gap: $unit-0600;
   margin: 0;
-  padding: $unit-0600 0;
+  padding: 0;
   list-style: none;
 
   @media screen and (min-width: $breakpoint-md) {
     display: grid;
     gap: $unit-1400;
-    padding: $unit-1400 0;
     grid-template-columns: repeat(3, 1fr);
   }
 

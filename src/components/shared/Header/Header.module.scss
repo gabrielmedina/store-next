@@ -7,6 +7,7 @@
   gap: $unit-0400;
   padding: $unit-0400 $unit-0600;
   background: var(--color-white);
+  margin-bottom: $unit-0600;
 
   @media screen and (min-width: $breakpoint-sm) {
     padding: $unit-0600;
@@ -17,6 +18,7 @@
     grid-template-areas: 'logo search nav';
     gap: $unit-0800;
     padding: $unit-1200 $unit-1600;
+    margin-bottom: $unit-1400;
   }
 
   @media screen and (min-width: $breakpoint-lg) {

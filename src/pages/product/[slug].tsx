@@ -1,9 +1,10 @@
 import { FC } from 'react'
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
-import { LayoutDefault } from 'src/components'
+import { Breadcrumb, Container, LayoutDefault } from 'src/components'
 import { ProductCart, ProductDetail } from 'src/features'
 import { getApolloClient, GET_PRODUCT_QUERY, Product } from 'src/graphql'
+import { useRouter } from 'next/router'
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const apolloClient = getApolloClient()
@@ -32,6 +33,20 @@ type TProductPageProps = {
 }
 
 const ProductPage: FC<TProductPageProps> = ({ loading, product }) => {
+  const router = useRouter()
+
+  const breadcrumb = [
+    {
+      title: 'Home',
+      path: '/',
+    },
+    {
+      title: product.name,
+      path: router.asPath,
+      isCurrent: true,
+    },
+  ]
+
   return (
     <>
       <Head>
@@ -40,9 +55,15 @@ const ProductPage: FC<TProductPageProps> = ({ loading, product }) => {
       </Head>
 
       <LayoutDefault>
+        <Container size="small">
+          <Breadcrumb items={breadcrumb} />
+        </Container>
+
         {!loading && (
           <main>
-            <ProductDetail product={product} />
+            <Container size="small">
+              <ProductDetail product={product} />
+            </Container>
           </main>
         )}
       </LayoutDefault>

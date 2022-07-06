@@ -1,7 +1,7 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import { ProductCart, ProductSearchList } from 'src/features'
-import { LayoutDefault } from 'src/components'
+import { Container, LayoutDefault } from 'src/components'
 import {
   getApolloClient,
   GET_PRODUCTS_QUERY,
@@ -29,7 +29,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 type TPageHomeProps = {
   loading?: boolean
-  products: Product[]
+  products: Array<Product>
 }
 
 const Home: NextPage<TPageHomeProps> = ({ loading, products }) => {
@@ -41,7 +41,11 @@ const Home: NextPage<TPageHomeProps> = ({ loading, products }) => {
       </Head>
 
       <LayoutDefault>
-        {!loading && <ProductSearchList products={products} />}
+        {!loading && (
+          <Container>
+            <ProductSearchList products={products} />
+          </Container>
+        )}
       </LayoutDefault>
 
       <ProductCart />
