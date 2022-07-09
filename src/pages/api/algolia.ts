@@ -11,12 +11,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const algoliaClient = Algolia.initIndex('dev_store')
 
   try {
-    const product = await getProductFromGraphCMS(req.body.data.id)
-    const oldProduct = await algoliaClient.search(req.body.data.id)
+    const responseGraphCMS = await getProductFromGraphCMS(req.body.data.id)
+    const responseAlgolia = await algoliaClient.search(req.body.data.id)
 
     await algoliaClient.partialUpdateObjects({
-      ...product,
-      objectID: oldProduct.hits[0].objectID
+      ...responseGraphCMS.data.product,
+      objectID: responseAlgolia.hits[0].objectID
     })
 
     res.send(200)
