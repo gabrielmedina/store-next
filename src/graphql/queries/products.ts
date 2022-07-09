@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 export const GET_PRODUCT_BY_SLUG_QUERY = gql`
-  query GetProduct($slug: String) {
+  query GetProductBySlug($slug: String) {
     product(where: {slug: $slug}) {
       id
       name
@@ -25,8 +25,8 @@ export const GET_PRODUCT_BY_SLUG_QUERY = gql`
 `
 
 export const GET_PRODUCT_BY_ID = gql`
-  query GetProduct($id: String) {
-    product(where: {id: $slug}) {
+  query GetProductById($id: ID) {
+    product(where: {id: $id}) {
       id
       name
       description
