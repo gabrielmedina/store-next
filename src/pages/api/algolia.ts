@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const responseAlgolia = await algoliaClient.search(req.body.data.id)
 
     await algoliaClient.partialUpdateObject({
-      ...responseGraphCMS.data.product,
+      ...responseGraphCMS.product,
       objectID: responseAlgolia.hits[0].objectID
     })
 
@@ -26,7 +26,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 }
 
 async function getProductFromGraphCMS(productId: string) {
-  return await request(process.env.GRAPHCMS_CONTENT_API!, GET_PRODUCT_BY_ID, {
+  return await request({
+    url: process.env.GRAPHCMS_CONTENT_API!,
+    document: GET_PRODUCT_BY_ID,
     variables: {
       id: productId
     }
