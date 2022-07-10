@@ -9,7 +9,18 @@ export const Container: React.FC<TContainerProps> = ({
   children,
   size = 'medium',
 }) => {
+  const sizeMap = {
+    small: {
+      className: styles.containerSizeSmall,
+    },
+    medium: {
+      className: styles.containerSizeMedium,
+    },
+  }
+
   return (
-    <div className={classNames(styles.container, styles[size])}>{children}</div>
+    <div className={classNames(styles.container, sizeMap[size].className)}>
+      {children}
+    </div>
   )
 }

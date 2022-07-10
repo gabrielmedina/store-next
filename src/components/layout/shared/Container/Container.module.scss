@@ -1,6 +1,5 @@
 .container {
   box-sizing: border-box;
-  max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
   padding: 0 $unit-0600 $unit-0600;
@@ -10,8 +9,14 @@
     padding-left: unset;
     padding-right: unset;
   }
+}
 
-  &.small {
-    max-width: 1200px;
-  }
+// Sizes
+
+.containerSizeMedium {
+  max-width: 1400px;
+}
+
+.containerSizeSmall {
+  max-width: 1200px;
 }
