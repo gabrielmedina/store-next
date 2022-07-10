@@ -19,11 +19,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     })
 
     const responseAlgolia = await algoliaClient.search(req.body.data.id)
+    const productAlgolia = responseAlgolia.hits[0]
 
-    await algoliaClient.partialUpdateObject({
-      ...responseGraphQL.product,
-      objectID: responseAlgolia.hits[0].objectID
-    })
+    if (productAlgolia) {
+      await algoliaClient.partialUpdateObject({
+        ...responseGraphQL.product,
+        objectID: responseAlgolia.hits[0].objectID
+      })
+    } else {
+      await algoliaClient.saveObject(responseGraphQL.product, {
+        autoGenerateObjectIDIfNotExist: true
+      })
+    }
 
     res.send(200)
   } catch (error) {
