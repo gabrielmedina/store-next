@@ -2,12 +2,8 @@ import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import { ProductCart, ProductSearchList } from 'src/features'
 import { Container, LayoutDefault } from 'src/components'
-import {
-  getApolloClient,
-  GET_PRODUCTS_QUERY,
-  Product,
-  GetProductsQuery,
-} from 'src/graphql'
+import { getApolloClient } from 'src/lib'
+import { GET_PRODUCTS_QUERY, Product, GetProductsQuery } from 'src/graphql'
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const apolloClient = getApolloClient()

@@ -3,7 +3,8 @@ import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 import { Breadcrumb, Container, LayoutDefault } from 'src/components'
 import { ProductCart, ProductDetail } from 'src/features'
-import { getApolloClient, GET_PRODUCT_BY_SLUG_QUERY, Product } from 'src/graphql'
+import { getApolloClient } from 'src/lib'
+import { GET_PRODUCT_BY_SLUG_QUERY, Product } from 'src/graphql'
 import { useRouter } from 'next/router'
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {

@@ -1,7 +1,7 @@
 import App, { AppContext, AppProps } from 'next/app'
 import { RecoilRoot } from 'recoil'
 import { ApolloProvider } from '@apollo/client'
-import { getApolloClient } from 'src/graphql'
+import { getApolloClient } from 'src/lib'
 
 import '../styles/globals.scss'
 import '../styles/variables.css'

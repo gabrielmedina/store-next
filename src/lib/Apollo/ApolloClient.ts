@@ -16,7 +16,7 @@ const isServer = typeof window === 'undefined'
 let apolloClient: ApolloClient<NormalizedCacheObject>
 
 const httpLink = createHttpLink({
-  uri: process.env.GRAPHCMS_CONTENT_API,
+  uri: process.env.HYGRAPH_CONTENT_API,
   credentials: 'same-origin',
   fetch,
 })
