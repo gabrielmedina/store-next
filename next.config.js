@@ -10,6 +10,10 @@ const nextConfig = {
   images: {
     domains: ['media.graphassets.com'],
   },
+  env: {
+    ALGOLIA_APPLICATION_ID: process.env.ALGOLIA_APPLICATION_ID,
+    ALGOLIA_API_KEY: process.env.ALGOLIA_API_KEY
+  }
 }
 
 module.exports = nextConfig
