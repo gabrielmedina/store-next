@@ -2,23 +2,20 @@ import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import { ProductCart, ProductSearchList } from 'src/features'
 import { Container, LayoutDefault } from 'src/components'
-import { getApolloClient } from 'src/lib'
-import { GET_PRODUCTS_QUERY, Product, GetProductsQuery } from 'src/graphql'
+import { getAlgoliaClient } from 'src/lib'
+import { Product } from 'src/graphql'
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const apolloClient = getApolloClient()
-
-  const {
-    loading,
-    data: { products },
-  } = await apolloClient.query<GetProductsQuery>({
-    query: GET_PRODUCTS_QUERY,
+  const algoliaClient = getAlgoliaClient({
+    index: 'dev_store',
   })
+
+  const { hits } = await algoliaClient.search('')
 
   return {
     props: {
-      loading,
-      products: products,
+      loading: false,
+      products: hits,
     },
   }
 }
