@@ -1,11 +1,10 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
+import { useRecoilValue } from 'recoil'
 import { ProductCart, ProductSearchList, StateSearchItems } from 'src/features'
 import { Container, LayoutDefault } from 'src/components'
 import { getAlgoliaClient } from 'src/lib'
 import { Product } from 'src/graphql'
-import { useEffect } from 'react'
-import { useRecoilState } from 'recoil'
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const algoliaClient = getAlgoliaClient({
@@ -28,12 +27,8 @@ type TPageHomeProps = {
 }
 
 const Home: NextPage<TPageHomeProps> = ({ loading, products }) => {
-  const [searchItems, setSearchItems] = useRecoilState(StateSearchItems)
-
-  useEffect(() => {
-    setSearchItems(products)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const searchItems = useRecoilValue(StateSearchItems)
+  const hydratedProducts = searchItems ? searchItems : products
 
   return (
     <>
@@ -45,7 +40,7 @@ const Home: NextPage<TPageHomeProps> = ({ loading, products }) => {
       <LayoutDefault>
         {!loading && (
           <Container>
-            <ProductSearchList products={searchItems} />
+            <ProductSearchList products={hydratedProducts} />
           </Container>
         )}
       </LayoutDefault>
