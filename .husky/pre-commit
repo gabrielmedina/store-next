@@ -1,32 +1,32 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo 'Time to keep all things in order before committing'
+echo '👨‍💻 Time to keep all things in order before committing'
 
 npm run check-format ||
 (
-  echo 'Styling fail! Plis, npm run format';
+  echo '😬 Styling fail! npm run format';
   false;
 )
 
 npm run check-lint ||
 (
-  echo 'ESLint fail!'
+  echo '😬 ESLint fail!'
   false;
 )
 
 npm run check-types ||
 (
-  echo 'TS fail!'
+  echo '😬 TS fail!'
   false;
 )
 
 echo 'Building'
 
-npm run build ||
-(
-  echo 'Next build failed!'
-  false;
-)
+#npm run build ||
+#(
+#  echo 'Next build failed!'
+#  false;
+#)
 
 echo '✅ Keep goind!'
