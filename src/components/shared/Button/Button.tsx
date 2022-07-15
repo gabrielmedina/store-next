@@ -18,11 +18,20 @@ export const Button: React.FC<
   children,
   className,
 }) => {
+  const variantMap = {
+    primary: {
+      className: styles.variantPrimary,
+    },
+    secondary: {
+      className: styles.variantSecondary,
+    },
+  }
+
   return (
     <button
       className={classNames(
         styles.button,
-        styles[variant],
+        variantMap[variant].className,
         {
           [styles.rounded]: rounded,
           [styles.fullWidth]: fullWidth,

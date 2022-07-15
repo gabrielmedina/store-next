@@ -14,30 +14,30 @@
     margin-left: -$unit-0300;
     margin-right: -$unit-0300;
   }
+}
 
-  &.primary {
-    color: var(--color-white);
-    background: var(--color-primary);
+.variantPrimary {
+  color: var(--color-white);
+  background: var(--color-primary);
 
-    svg {
-      stroke: var(--color-white);
-    }
-  }
-
-  &.secondary {
-    color: var(--color-primary);
-    background: var(--color-white);
-
-    svg {
-      stroke: var(--color-primary);
-    }
-  }
-
-  &.rounded {
-    border-radius: $unit-1200;
-  }
-
-  &.fullWidth {
-    width: 100%;
+  svg {
+    stroke: var(--color-white);
   }
 }
+
+.variantSecondary {
+  color: var(--color-primary);
+  background: var(--color-white);
+
+  svg {
+    stroke: var(--color-primary);
+  }
+}
+
+ .rounded {
+   border-radius: $unit-1200;
+ }
+
+ .fullWidth {
+   width: 100%;
+ }
