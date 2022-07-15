@@ -14,6 +14,7 @@ const nextConfig = {
     ALGOLIA_APPLICATION_ID: process.env.ALGOLIA_APPLICATION_ID,
     ALGOLIA_API_KEY: process.env.ALGOLIA_API_KEY,
   },
+  pageExtensions: ['page.tsx', 'page.ts'],
 }
 
 module.exports = nextConfig
