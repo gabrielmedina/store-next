@@ -15,6 +15,7 @@ describe('Button', () => {
     makeSut()
 
     expect(screen.getByRole('button')).toBeInTheDocument()
+    expect(screen.getByRole('button')).toHaveClass('variantPrimary')
   })
 
   it('should accept children', () => {
@@ -32,20 +33,20 @@ describe('Button', () => {
   })
 
   it('should accept variants props', () => {
-    const { container } = makeSut({ variant: 'secondary' })
+    makeSut({ variant: 'secondary' })
 
-    expect(container.firstChild).toHaveClass('secondary')
+    expect(screen.getByRole('button')).toHaveClass('variantSecondary')
   })
 
   it('should accept rounded props', () => {
-    const { container } = makeSut({ rounded: true })
+    makeSut({ rounded: true })
 
-    expect(container.firstChild).toHaveClass('rounded')
+    expect(screen.getByRole('button')).toHaveClass('rounded')
   })
 
   it('should accept fullWidth props', () => {
-    const { container } = makeSut({ fullWidth: true })
+    makeSut({ fullWidth: true })
 
-    expect(container.firstChild).toHaveClass('fullWidth')
+    expect(screen.getByRole('button')).toHaveClass('fullWidth')
   })
 })
