@@ -21,7 +21,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
 }
 
-type TPageHomeProps = {
+export type TPageHomeProps = {
   loading?: boolean
   products: Array<Product>
 }
@@ -29,6 +29,12 @@ type TPageHomeProps = {
 const Home: NextPage<TPageHomeProps> = ({ loading, products }) => {
   const searchItems = useRecoilValue(StateSearchItems)
   const hydratedProducts = searchItems ? searchItems : products
+
+  const renderProductList = () => {
+    if (hydratedProducts.length === 0) return <p>Ops! Product list is empty.</p>
+
+    return <ProductSearchList products={hydratedProducts} />
+  }
 
   return (
     <>
@@ -38,11 +44,7 @@ const Home: NextPage<TPageHomeProps> = ({ loading, products }) => {
       </Head>
 
       <LayoutDefault>
-        {!loading && (
-          <Container>
-            <ProductSearchList products={hydratedProducts} />
-          </Container>
-        )}
+        {!loading && <Container>{renderProductList()}</Container>}
       </LayoutDefault>
 
       <ProductCart />
