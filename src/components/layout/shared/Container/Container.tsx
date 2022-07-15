@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import styles from './Container.module.scss'
 
-type TContainerProps = {
+export type TContainerProps = {
   size?: 'small' | 'medium'
 }
 
@@ -11,15 +11,18 @@ export const Container: React.FC<TContainerProps> = ({
 }) => {
   const sizeMap = {
     small: {
-      className: styles.containerSizeSmall,
+      className: styles.sizeSmall,
     },
     medium: {
-      className: styles.containerSizeMedium,
+      className: styles.sizeMedium,
     },
   }
 
   return (
-    <div className={classNames(styles.container, sizeMap[size].className)}>
+    <div
+      data-testid="container"
+      className={classNames(styles.container, sizeMap[size].className)}
+    >
       {children}
     </div>
   )
