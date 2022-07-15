@@ -5,5 +5,5 @@ const STATE_SEARCH_ITEMS_INIT: Array<Product & any> | null = null
 
 export const StateSearchItems = atom({
   key: 'stateSearchItems',
-  default: STATE_SEARCH_ITEMS_INIT
+  default: STATE_SEARCH_ITEMS_INIT,
 })

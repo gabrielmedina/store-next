@@ -2,7 +2,7 @@ import { getAlgoliaClient } from 'src/lib'
 
 const searchMethodMock = jest.fn().mockImplementation(() => {
   return Promise.resolve({
-    hits: []
+    hits: [],
   })
 })
 
@@ -13,7 +13,7 @@ const indexMock = jest.fn(() => ({
 jest.mock('algoliasearch', () => {
   return jest.fn().mockImplementation(() => {
     return {
-      initIndex: indexMock
+      initIndex: indexMock,
     }
   })
 })

@@ -14,9 +14,7 @@ const customJestConfig = {
   transform: {
     '^.+\\.tsx?$': ['@swc/jest'],
   },
-  collectCoverageFrom: [
-    'src/**/*.{ts,tsx}',
-  ],
+  collectCoverageFrom: ['src/**/*.{ts,tsx}'],
   coverageThreshold: {
     global: {
       branches: 80,

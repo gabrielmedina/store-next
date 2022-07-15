@@ -3,10 +3,13 @@ import { getAlgoliaClient } from 'src/lib'
 import { request } from 'graphql-request'
 import { GET_PRODUCT_BY_ID } from 'src/graphql'
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const algoliaClient = getAlgoliaClient({
     index: 'dev_store',
-    apiKey: process.env.ALGOLIA_API_ADMIN_KEY!
+    apiKey: process.env.ALGOLIA_API_ADMIN_KEY!,
   })
 
   try {
@@ -14,8 +17,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       url: process.env.GRAPHCMS_CONTENT_API!,
       document: GET_PRODUCT_BY_ID,
       variables: {
-        id: req.body.data.id
-      }
+        id: req.body.data.id,
+      },
     })
 
     const responseAlgolia = await algoliaClient.search(req.body.data.id)
@@ -24,11 +27,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (productAlgolia) {
       await algoliaClient.partialUpdateObject({
         ...responseGraphQL.product,
-        objectID: responseAlgolia.hits[0].objectID
+        objectID: responseAlgolia.hits[0].objectID,
       })
     } else {
       await algoliaClient.saveObject(responseGraphQL.product, {
-        autoGenerateObjectIDIfNotExist: true
+        autoGenerateObjectIDIfNotExist: true,
       })
     }
 

@@ -7,12 +7,9 @@ type TAlgoliaClientProps = {
 
 export const getAlgoliaClient = ({
   index,
-  apiKey = process.env.ALGOLIA_API_KEY!
+  apiKey = process.env.ALGOLIA_API_KEY!,
 }: TAlgoliaClientProps) => {
-  const client = algoliasearch(
-    process.env.ALGOLIA_APPLICATION_ID!,
-    apiKey
-  )
+  const client = algoliasearch(process.env.ALGOLIA_APPLICATION_ID!, apiKey)
 
   return client.initIndex(index)
 }
