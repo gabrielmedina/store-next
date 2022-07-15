@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react'
+import { useEffect } from 'react'
 import { RecoilRoot, RecoilState, useRecoilState } from 'recoil'
 
 export type TRecoilMockProps = {
@@ -7,7 +7,12 @@ export type TRecoilMockProps = {
   values?: any
 }
 
-const Mock: FC<TRecoilMockProps> = ({ node, onChange, values, children }) => {
+const Mock: React.FC<TRecoilMockProps> = ({
+  node,
+  onChange,
+  values,
+  children,
+}) => {
   const [value, setValue] = useRecoilState(node)
 
   useEffect(() => {
@@ -20,7 +25,7 @@ const Mock: FC<TRecoilMockProps> = ({ node, onChange, values, children }) => {
   return <>{children}</>
 }
 
-export const RecoilMock: FC<TRecoilMockProps> = ({
+export const RecoilMock: React.FC<TRecoilMockProps> = ({
   node,
   onChange,
   values,

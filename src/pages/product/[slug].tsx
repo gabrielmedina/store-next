@@ -1,4 +1,3 @@
-import { FC } from 'react'
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 import { Breadcrumb, Container, LayoutDefault } from 'src/components'
@@ -33,7 +32,7 @@ type TProductPageProps = {
   product: Product
 }
 
-const ProductPage: FC<TProductPageProps> = ({ loading, product }) => {
+const ProductPage: React.FC<TProductPageProps> = ({ loading, product }) => {
   const router = useRouter()
 
   const breadcrumb = [

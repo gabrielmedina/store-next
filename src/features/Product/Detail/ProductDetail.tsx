@@ -1,4 +1,3 @@
-import { FC } from 'react'
 import Image from 'next/image'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { StateCartItems, StateCartOpen } from 'src/features'
@@ -11,7 +10,7 @@ export type TProductDetailProps = {
   product: Product
 }
 
-export const ProductDetail: FC<TProductDetailProps> = ({ product }) => {
+export const ProductDetail: React.FC<TProductDetailProps> = ({ product }) => {
   const [cartItems, setCartItems] = useRecoilState(StateCartItems)
   const setCartOpen = useSetRecoilState(StateCartOpen)
 
