@@ -1,7 +1,7 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo '👨‍💻 Time to keep all things in order before committing'
+echo '👀 Time to keep all things in order before committing'
 
 npm run check-format ||
 (
@@ -29,4 +29,4 @@ echo 'Building'
 #  false;
 #)
 
-echo '✅ Keep goind!'
+echo '✅ Keep going!'
