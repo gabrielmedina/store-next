@@ -27,4 +27,10 @@ describe('Breadcrumb', () => {
     expect(screen.getByText('Product')).toBeInTheDocument()
     expect(screen.getByText('Product')).toHaveClass('current')
   })
+
+  it('should no render when items is empty', () => {
+    makeSut({ items: [] })
+
+    expect(screen.queryByRole('list')).not.toBeInTheDocument()
+  })
 })
