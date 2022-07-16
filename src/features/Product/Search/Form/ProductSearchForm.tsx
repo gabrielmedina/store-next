@@ -1,4 +1,5 @@
 import React from 'react'
+import { debounce } from 'lodash'
 import { useForm } from 'react-hook-form'
 import { useSetRecoilState } from 'recoil'
 import { getAlgoliaClient } from 'src/lib'
@@ -16,17 +17,19 @@ export const ProductSearchForm: React.FC<React.HTMLAttributes<any>> = ({
   const setStateSearchItems = useSetRecoilState(StateSearchItems)
   const algoliaClient = getAlgoliaClient({ index: 'dev_store' })
 
-  const onSubmit = handleSubmit(async ({ search }) => {
+  const onSubmit = async ({ search }: TProductSearchFormData) => {
     const { hits } = await algoliaClient.search(search)
     // @ts-ignore: Unreachable code error
     setStateSearchItems(hits)
-  })
+  }
+
+  const onChange = debounce(onSubmit, 300)
 
   return (
     <form
       name="product-search-form"
       className={styles.form}
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit(onSubmit)}
       {...props}
     >
       <label className={styles.label} htmlFor="search">
@@ -38,6 +41,7 @@ export const ProductSearchForm: React.FC<React.HTMLAttributes<any>> = ({
         id="search"
         placeholder="What are you searching for?"
         {...register('search')}
+        onChange={(e) => onChange({ search: e.target.value })}
       />
     </form>
   )
