@@ -10,9 +10,9 @@ type TProductSearchFormData = {
   search: string
 }
 
-export const ProductSearchForm: React.FC<React.HTMLAttributes<any>> = ({
-  ...props
-}) => {
+export const ProductSearchForm: React.FC<
+  React.HTMLAttributes<HTMLFormElement>
+> = ({ ...props }) => {
   const { register, handleSubmit } = useForm<TProductSearchFormData>()
   const setStateSearchItems = useSetRecoilState(StateSearchItems)
   const algoliaClient = getAlgoliaClient({ index: 'dev_store' })
@@ -29,8 +29,8 @@ export const ProductSearchForm: React.FC<React.HTMLAttributes<any>> = ({
     <form
       name="product-search-form"
       className={styles.form}
-      onSubmit={handleSubmit(onSubmit)}
       {...props}
+      onSubmit={handleSubmit(onSubmit)}
     >
       <label className={styles.label} htmlFor="search">
         Search
