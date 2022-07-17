@@ -16,7 +16,7 @@ export const Breadcrumb: React.FC<TBreadcrumbProps> = ({ items }) => {
   if (items?.length === 0) return null
 
   return (
-    <ol className={styles.list}>
+    <ol data-testid="breadcrumb" className={styles.list}>
       {items.map((item, index) => (
         <li key={index} className={styles.item}>
           <Link href={item.path}>

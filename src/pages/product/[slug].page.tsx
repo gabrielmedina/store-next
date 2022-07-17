@@ -27,7 +27,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   }
 }
 
-type TProductPageProps = {
+export type TProductPageProps = {
   loading: boolean
   product: Product
 }
