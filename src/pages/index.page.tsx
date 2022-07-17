@@ -1,17 +1,17 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
-import { useRecoilValue } from 'recoil'
-import { ProductCart, ProductSearchList, StateSearchItems } from 'src/features'
+import { ProductCart, ProductSearchList } from 'src/features'
 import { Container, LayoutDefault } from 'src/components'
 import { getAlgoliaClient } from 'src/lib'
 import { Product } from 'src/graphql'
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const algoliaClient = getAlgoliaClient({
     index: 'dev_store',
   })
 
-  const { hits } = await algoliaClient.search('')
+  const term = (query?.search as string) || ''
+  const { hits } = await algoliaClient.search(term)
 
   return {
     props: {
@@ -27,13 +27,10 @@ export type TPageHomeProps = {
 }
 
 const HomePage: NextPage<TPageHomeProps> = ({ loading, products }) => {
-  const searchItems = useRecoilValue(StateSearchItems)
-  const hydratedProducts = searchItems ? searchItems : products
-
   const renderProductList = () => {
-    if (hydratedProducts.length === 0) return <p>Ops! Product list is empty.</p>
+    if (products.length === 0) return <p>Ops! Product list is empty.</p>
 
-    return <ProductSearchList products={hydratedProducts} />
+    return <ProductSearchList products={products} />
   }
 
   return (
