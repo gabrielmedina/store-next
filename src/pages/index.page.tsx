@@ -26,7 +26,7 @@ export type TPageHomeProps = {
   products: Array<Product>
 }
 
-const Home: NextPage<TPageHomeProps> = ({ loading, products }) => {
+const HomePage: NextPage<TPageHomeProps> = ({ loading, products }) => {
   const searchItems = useRecoilValue(StateSearchItems)
   const hydratedProducts = searchItems ? searchItems : products
 
@@ -52,4 +52,4 @@ const Home: NextPage<TPageHomeProps> = ({ loading, products }) => {
   )
 }
 
-export default Home
+export default HomePage

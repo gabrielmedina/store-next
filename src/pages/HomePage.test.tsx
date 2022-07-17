@@ -3,7 +3,7 @@ import { GetServerSidePropsContext } from 'next'
 import { StateSearchItems } from 'src/features'
 import { RecoilMock, TRecoilMockProps } from 'test/_mocks/RecoilMock'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
-import Home, { getServerSideProps, TPageHomeProps } from './index.page'
+import HomePage, { getServerSideProps, TPageHomeProps } from './index.page'
 
 const searchMethodMock = jest.fn().mockImplementation(() => {
   return Promise.resolve({
@@ -33,12 +33,12 @@ const makeSut = ({
 }: TRecoilMockProps & TPageHomeProps) => {
   return render(
     <RecoilMock node={node} values={values} onChange={onRecoilChange}>
-      <Home products={products} loading={loading} />
+      <HomePage products={products} loading={loading} />
     </RecoilMock>
   )
 }
 
-describe('Page Home', () => {
+describe('HomePage', () => {
   it('should render correctly', () => {
     makeSut({
       node: StateSearchItems,
