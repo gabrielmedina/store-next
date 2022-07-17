@@ -1,9 +1,18 @@
 import { render, screen } from '@testing-library/react'
 import { GetServerSidePropsContext } from 'next'
-import { StateSearchItems } from 'src/features'
+import { ParsedUrlQuery } from 'querystring'
+import { StateCartItems } from 'src/features'
 import { RecoilMock, TRecoilMockProps } from 'test/_mocks/RecoilMock'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
 import HomePage, { getServerSideProps, TPageHomeProps } from './index.page'
+
+jest.mock('next/router', () => ({
+  useRouter() {
+    return {
+      asPath: `/`,
+    }
+  },
+}))
 
 const searchMethodMock = jest.fn().mockImplementation(() => {
   return Promise.resolve({
@@ -26,13 +35,11 @@ jest.mock('algoliasearch', () => {
 const onRecoilChange = jest.fn()
 
 const makeSut = ({
-  node,
-  values = null,
   products,
   loading = false,
 }: TRecoilMockProps & TPageHomeProps) => {
   return render(
-    <RecoilMock node={node} values={values} onChange={onRecoilChange}>
+    <RecoilMock node={StateCartItems} onChange={onRecoilChange}>
       <HomePage products={products} loading={loading} />
     </RecoilMock>
   )
@@ -41,7 +48,6 @@ const makeSut = ({
 describe('HomePage', () => {
   it('should render correctly', () => {
     makeSut({
-      node: StateSearchItems,
       // @ts-ignore
       products: ProductsStub,
     })
@@ -51,32 +57,26 @@ describe('HomePage', () => {
   })
 
   it('should display empty message when product list is empty', () => {
-    makeSut({
-      node: StateSearchItems,
-      products: [],
-    })
+    // @ts-ignore
+    makeSut({ products: [] })
 
     expect(screen.getByText('Ops! Product list is empty.'))
   })
 
-  it('should display product by recoil', () => {
-    makeSut({
-      node: StateSearchItems,
-      values: ProductsStub,
-      products: [],
-    })
-
-    expect(screen.getAllByRole('listitem')).toHaveLength(ProductsStub.length)
-  })
-
   it('should call algoliasearch search with ""', () => {
-    makeSut({
-      node: StateSearchItems,
-      products: [],
-    })
-
     getServerSideProps({} as GetServerSidePropsContext)
 
     expect(searchMethodMock).toBeCalledWith('')
+  })
+
+  it('should call algoliasearch search with term when has search query', () => {
+    const term = 'rolex'
+    const context = {
+      query: { search: term } as ParsedUrlQuery,
+    }
+
+    getServerSideProps(context as GetServerSidePropsContext)
+
+    expect(searchMethodMock).toBeCalledWith(term)
   })
 })

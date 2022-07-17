@@ -1,37 +1,18 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { ProductSearchForm, StateSearchItems } from 'src/features'
-import { RecoilMock } from 'test/_mocks/RecoilMock'
-import ProductsStub from 'test/_stubs/ProductsStub.json'
+import { ProductSearchForm } from 'src/features'
 
-const product = ProductsStub[0]
+const pushMock = jest.fn()
 
-const searchMethodMock = jest.fn().mockImplementation(() => {
-  return Promise.resolve({
-    hits: [product],
-  })
-})
-
-const indexMock = jest.fn(() => ({
-  search: searchMethodMock,
+jest.mock('next/router', () => ({
+  __esModule: true,
+  useRouter: jest.fn().mockImplementation(() => ({
+    push: pushMock,
+  })),
 }))
 
-jest.mock('algoliasearch', () => {
-  return jest.fn().mockImplementation(() => {
-    return {
-      initIndex: indexMock,
-    }
-  })
-})
-
-const onRecoilChange = jest.fn()
-
 const makeSut = () => {
-  return render(
-    <RecoilMock node={StateSearchItems} onChange={onRecoilChange}>
-      <ProductSearchForm />
-    </RecoilMock>
-  )
+  return render(<ProductSearchForm />)
 }
 
 describe('ProductSearchForm', () => {
@@ -55,12 +36,18 @@ describe('ProductSearchForm', () => {
   it('should submit form when user type on input', async () => {
     makeSut()
 
+    const term = 'rolex'
     const input = screen.getByRole('searchbox')
     const user = userEvent.setup()
-    await user.type(input, 'rolex')
+    await user.type(input, term)
 
     await waitFor(() => {
-      expect(onRecoilChange).toHaveBeenLastCalledWith([product])
+      expect(pushMock).toBeCalledWith({
+        pathname: '/',
+        query: {
+          search: term,
+        },
+      })
     })
   })
 })
