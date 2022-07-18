@@ -1,0 +1,29 @@
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $unit-0200;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: $unit-0800;
+  padding: 0 $unit-0300;
+  border: 0;
+  border-radius: $unit-0800;
+  font-size: 1rem;
+  color: var(--color-white);
+  background: var(--color-primary);
+  cursor: pointer;
+}
+
+.current {
+  cursor: default;
+  color: var(--color-gray-500);
+  background: var(--color-gray-050);
+}

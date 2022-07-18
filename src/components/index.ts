@@ -8,6 +8,7 @@ export * from './shared/Button/Button'
 export * from './shared/Card/Card'
 export * from './shared/Dialog/Dialog'
 export * from './shared/Breadcrumb/Breadcrumb'
+export * from './shared/Pagination/Pagination'
 
 export * from './icons/Add/Add'
 export * from './icons/Cart/Cart'
