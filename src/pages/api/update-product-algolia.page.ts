@@ -14,12 +14,14 @@ export default async function handler(
 
   try {
     const responseGraphQL = await request({
-      url: process.env.GRAPHCMS_CONTENT_API!,
+      url: process.env.HYGRAPH_CONTENT_API!,
       document: GET_PRODUCT_BY_ID,
       variables: {
         id: req.body.data.id,
       },
     })
+
+    console.log('graphQL')
 
     const responseAlgolia = await algoliaClient.search(req.body.data.id)
     const productAlgolia = responseAlgolia.hits[0]
