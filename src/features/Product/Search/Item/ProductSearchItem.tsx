@@ -29,9 +29,9 @@ export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
           description={formatyMoney(product.price)}
           image={{
             alt: product.name,
-            src: product.cover.url,
-            width: product.cover.width || undefined,
-            height: product.cover.height || undefined,
+            src: product.cover?.url,
+            width: product.cover?.width || undefined,
+            height: product.cover?.height || undefined,
           }}
           cta={
             <Button
