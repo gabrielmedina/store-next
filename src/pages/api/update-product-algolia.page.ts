@@ -21,8 +21,6 @@ export default async function handler(
       },
     })
 
-    console.log('graphQL')
-
     const responseAlgolia = await algoliaClient.search(req.body.data.id)
     const productAlgolia = responseAlgolia.hits[0]
 
