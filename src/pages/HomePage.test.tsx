@@ -37,36 +37,54 @@ const onRecoilChange = jest.fn()
 const makeSut = ({
   products,
   loading = false,
+  pages = {
+    total: 1,
+    current: 0,
+  },
 }: TRecoilMockProps & TPageHomeProps) => {
   return render(
     <RecoilMock node={StateCartItems} onChange={onRecoilChange}>
-      <HomePage products={products} loading={loading} />
+      <HomePage products={products} pages={pages} loading={loading} />
     </RecoilMock>
   )
 }
 
 describe('HomePage', () => {
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('should render correctly', () => {
     makeSut({
-      // @ts-ignore
-      products: ProductsStub,
+      products: {
+        total: ProductsStub.length,
+        // @ts-ignore
+        data: ProductsStub,
+      },
     })
 
     expect(screen.getByTestId('product-search-list')).toBeInTheDocument()
-    expect(screen.getAllByRole('listitem')).toHaveLength(ProductsStub.length)
+    expect(screen.getAllByTestId('product-search-list-item')).toHaveLength(
+      ProductsStub.length
+    )
   })
 
   it('should display empty message when product list is empty', () => {
     // @ts-ignore
-    makeSut({ products: [] })
+    makeSut({
+      products: {
+        total: 0,
+        data: [],
+      },
+    })
 
-    expect(screen.getByText('Ops! Product list is empty.'))
+    expect(screen.getByText('Ops! No results found.'))
   })
 
   it('should call algoliasearch search with ""', () => {
     getServerSideProps({} as GetServerSidePropsContext)
 
-    expect(searchMethodMock).toBeCalledWith('')
+    expect(searchMethodMock).toBeCalledWith('', { page: 0 })
   })
 
   it('should call algoliasearch search with term when has search query', () => {
@@ -77,6 +95,6 @@ describe('HomePage', () => {
 
     getServerSideProps(context as GetServerSidePropsContext)
 
-    expect(searchMethodMock).toBeCalledWith(term)
+    expect(searchMethodMock).toBeCalledWith(term, { page: 0 })
   })
 })
