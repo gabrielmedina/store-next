@@ -48,16 +48,7 @@ export const Button: React.FC<TButtonProps> = ({
 
   return (
     <button
-      className={classNames(
-        styles.button,
-        sizeMap[size].className,
-        variantMap[variant].className,
-        {
-          [styles.rounded]: rounded,
-          [styles.fullWidth]: fullWidth,
-        },
-        className
-      )}
+      className={buttonClasses}
       {...(rest as TButtonHTMLButtonAttributes)}
     >
       {children}
