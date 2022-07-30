@@ -1,5 +1,5 @@
-import classNames from 'classnames'
 import { useRouter } from 'next/router'
+import { Button } from '../Button/Button'
 import styles from './Pagination.module.scss'
 
 type TPaginationProps = {
@@ -24,21 +24,25 @@ export const Pagination: React.FC<TPaginationProps> = ({ total, current }) => {
     <ol className={styles.list}>
       {items.map((_, index) => {
         const page = index + 1
+        const isCurrent = index === current
 
         return (
           <li key={index} className={styles.item}>
-            <a
+            <Button
+              rounded
+              element="a"
+              size="tiny"
+              disabled={isCurrent}
+              variant={isCurrent ? 'secondary' : 'primary'}
+              aria-current={isCurrent ? 'page' : false}
               href={`?page=${page}`}
-              onClick={(e) => {
-                e.preventDefault()
+              onClick={(event) => {
+                event.preventDefault()
                 onPagination(page)
               }}
-              className={classNames(styles.link, {
-                [styles.current]: index === current,
-              })}
             >
               {page}
-            </a>
+            </Button>
           </li>
         )
       })}
