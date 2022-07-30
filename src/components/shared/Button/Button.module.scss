@@ -2,15 +2,51 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: $unit-1200;
-  padding: 0 $unit-0600;
   border: 0;
   border-radius: $unit-0100;
-  font-size: 1rem;
   cursor: pointer;
 
   svg {
     display: block;
+  }
+
+  &.disabled,
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.sizeTiny {
+  font-size: 0.9rem;
+  padding: 0 $unit-0300;
+  height: $unit-0800;
+
+  svg {
+    width: 1rem;
+    margin-left: -$unit-0100;
+    margin-right: -$unit-0100;
+  }
+}
+
+.sizeSmall {
+  font-size: 1rem;
+  padding: 0 $unit-0400;
+  height: $unit-1000;
+
+  svg {
+    width: 1.25rem;
+    margin-left: -$unit-0150;
+    margin-right: -$unit-0150;
+  }
+}
+
+.sizeMedium {
+  font-size: 1rem;
+  padding: 0 $unit-0600;
+  height: $unit-1200;
+
+  svg {
     margin-left: -$unit-0300;
     margin-right: -$unit-0300;
   }

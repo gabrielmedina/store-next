@@ -1,36 +1,56 @@
-import { ButtonHTMLAttributes } from 'react'
+import Link from 'next/link'
 import classNames from 'classnames'
+import {
+  TButtonProps,
+  TButtonHTMLAnchorAttributes,
+  TButtonHTMLButtonAttributes,
+} from './Button.types'
+import { sizeMapper, variantMapper } from './Button.mappers'
 import styles from './Button.module.scss'
 
-export type TButtonProps = {
-  variant?: 'primary' | 'secondary'
-  rounded?: boolean
-  fullWidth?: boolean
-}
-
-export const Button: React.FC<
-  TButtonProps & ButtonHTMLAttributes<HTMLButtonElement>
-> = ({
+export const Button: React.FC<TButtonProps> = ({
+  element = 'button',
   variant = 'primary',
+  size = 'medium',
   rounded,
   fullWidth,
-  onClick,
   children,
+  disabled,
   className,
+  ...rest
 }) => {
-  const variantMap = {
-    primary: {
-      className: styles.variantPrimary,
+  const sizeMap = sizeMapper({ styles })
+  const variantMap = variantMapper({ styles })
+
+  const buttonClasses = classNames(
+    styles.button,
+    sizeMap[size].className,
+    variantMap[variant].className,
+    {
+      [styles.rounded]: rounded,
+      [styles.fullWidth]: fullWidth,
+      [styles.disabled]: disabled,
     },
-    secondary: {
-      className: styles.variantSecondary,
-    },
+    className
+  )
+
+  if (element === 'a') {
+    const { href, ...restAnchorAttrs } = rest as TButtonHTMLAnchorAttributes
+
+    return (
+      <Link href={href!}>
+        <a className={buttonClasses} {...restAnchorAttrs}>
+          {children}
+        </a>
+      </Link>
+    )
   }
 
   return (
     <button
       className={classNames(
         styles.button,
+        sizeMap[size].className,
         variantMap[variant].className,
         {
           [styles.rounded]: rounded,
@@ -38,7 +58,7 @@ export const Button: React.FC<
         },
         className
       )}
-      onClick={onClick}
+      {...(rest as TButtonHTMLButtonAttributes)}
     >
       {children}
     </button>

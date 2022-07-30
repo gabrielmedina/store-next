@@ -1,12 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import { ButtonHTMLAttributes } from 'react'
-import { Button, TButtonProps } from './Button'
+import { Button } from './Button'
+import { TButtonProps } from './Button.types'
 
 const onClick = jest.fn()
 
-const makeSut = (
-  props?: TButtonProps & ButtonHTMLAttributes<HTMLButtonElement>
-) => {
+const makeSut = (props?: TButtonProps) => {
   return render(<Button {...props}>{props?.children || 'Button'}</Button>)
 }
 
@@ -14,8 +12,11 @@ describe('Button', () => {
   it('should render correctly', () => {
     makeSut()
 
-    expect(screen.getByRole('button')).toBeInTheDocument()
-    expect(screen.getByRole('button')).toHaveClass('variantPrimary')
+    const button = screen.getByRole('button')
+
+    expect(button).toBeInTheDocument()
+    expect(button).toHaveClass('sizeMedium')
+    expect(button).toHaveClass('variantPrimary')
   })
 
   it('should accept children', () => {
@@ -24,29 +25,53 @@ describe('Button', () => {
     expect(screen.getByText('Children')).toBeInTheDocument()
   })
 
-  it('should call onClick fn when clicked', () => {
-    makeSut({ onClick })
+  it('should accept element "a"', () => {
+    makeSut({ element: 'a', href: '/' })
 
-    fireEvent.click(screen.getByRole('button'))
-
-    expect(onClick).toBeCalled()
+    expect(screen.getByRole('link')).toBeInTheDocument()
   })
 
-  it('should accept variants props', () => {
+  it('should accept variant "secondary"', () => {
     makeSut({ variant: 'secondary' })
 
     expect(screen.getByRole('button')).toHaveClass('variantSecondary')
   })
 
-  it('should accept rounded props', () => {
+  it('should accept size "small"', () => {
+    makeSut({ size: 'small' })
+
+    expect(screen.getByRole('button')).toHaveClass('sizeSmall')
+  })
+
+  it('should accept size "tiny"', () => {
+    makeSut({ size: 'tiny' })
+
+    expect(screen.getByRole('button')).toHaveClass('sizeTiny')
+  })
+
+  it('should accept rounded prop', () => {
     makeSut({ rounded: true })
 
     expect(screen.getByRole('button')).toHaveClass('rounded')
   })
 
-  it('should accept fullWidth props', () => {
+  it('should accept fullWidth prop', () => {
     makeSut({ fullWidth: true })
 
     expect(screen.getByRole('button')).toHaveClass('fullWidth')
+  })
+
+  it('should accept className prop', () => {
+    makeSut({ className: 'class' })
+
+    expect(screen.getByRole('button')).toHaveClass('class')
+  })
+
+  it('should accept onClick prop', () => {
+    makeSut({ onClick })
+
+    fireEvent.click(screen.getByRole('button'))
+
+    expect(onClick).toBeCalled()
   })
 })
