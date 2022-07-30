@@ -40,7 +40,7 @@ export const Dialog: React.FC<TDialogProps> = ({
             variant="secondary"
             rounded
             className={styles.buttonClose}
-            onClick={() => onClose()}
+            onClick={onClose}
           >
             <IconClose />
           </Button>

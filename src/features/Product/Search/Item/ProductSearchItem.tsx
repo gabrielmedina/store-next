@@ -35,6 +35,7 @@ export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
           }}
           cta={
             <Button
+              element="button"
               rounded
               onClick={(event) => {
                 event.preventDefault()

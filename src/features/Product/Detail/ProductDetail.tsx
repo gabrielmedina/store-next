@@ -31,12 +31,7 @@ export const ProductDetail: React.FC<TProductDetailProps> = ({ product }) => {
 
         <p className={styles.price}>{formatyMoney(product.price)}</p>
 
-        <Button
-          fullWidth
-          onClick={() => {
-            addProductToCart()
-          }}
-        >
+        <Button fullWidth onClick={addProductToCart}>
           Add to cart
         </Button>
       </div>
