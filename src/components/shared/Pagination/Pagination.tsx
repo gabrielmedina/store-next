@@ -2,14 +2,13 @@ import { useRouter } from 'next/router'
 import { Button } from '../Button/Button'
 import styles from './Pagination.module.scss'
 
-type TPaginationProps = {
+export type TPaginationProps = {
   total: number
   current: number
 }
 
 export const Pagination: React.FC<TPaginationProps> = ({ total, current }) => {
   const router = useRouter()
-  const items = new Array(total).fill(0)
 
   const onPagination = (page: number) => {
     router.push({
@@ -22,7 +21,7 @@ export const Pagination: React.FC<TPaginationProps> = ({ total, current }) => {
 
   return (
     <ol className={styles.list}>
-      {items.map((_, index) => {
+      {Array.from(Array(total)).map((_, index) => {
         const page = index + 1
         const isCurrent = index === current
 
