@@ -35,11 +35,16 @@ export const Button: React.FC<TButtonProps> = ({
   )
 
   if (element === 'a') {
-    const { href, ...restAnchorAttrs } = rest as TButtonHTMLAnchorAttributes
+    const { href, onClick, ...restAnchorAttrs } =
+      rest as TButtonHTMLAnchorAttributes
 
     return (
       <Link href={href!}>
-        <a className={buttonClasses} {...restAnchorAttrs}>
+        <a
+          className={buttonClasses}
+          {...restAnchorAttrs}
+          onClick={!disabled ? onClick : undefined}
+        >
           {children}
         </a>
       </Link>
@@ -49,6 +54,7 @@ export const Button: React.FC<TButtonProps> = ({
   return (
     <button
       className={buttonClasses}
+      disabled={disabled}
       {...(rest as TButtonHTMLButtonAttributes)}
     >
       {children}
