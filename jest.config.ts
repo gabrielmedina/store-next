@@ -24,9 +24,9 @@ const customJestConfig = {
     },
   },
   coveragePathIgnorePatterns: [
-    'src/pages/_app.tsx',
-    'src/pages/_error.tsx',
-    'src/pages/_document.tsx',
+    'src/pages/_app.page.tsx',
+    'src/pages/_error.page.tsx',
+    'src/pages/_document.page.tsx',
     'src/components/icons/*',
     'src/lib/*/index.ts',
     'src/utils/*/index.ts',
