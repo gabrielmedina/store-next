@@ -51,7 +51,7 @@ const ProductPage: React.FC<TProductPageProps> = ({ loading, product }) => {
     <>
       <Head>
         <title>{product.name} | Store</title>
-        <meta name="description" content={product.description || undefined} />
+        <meta name="description" content={product.description!} />
       </Head>
 
       <LayoutDefault>
