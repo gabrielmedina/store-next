@@ -1,5 +1,7 @@
 # Store Next
 
+<img src="https://github.com/gabrielmedina/store-next/actions/workflows/main.yml/badge.svg" />
+
 ## Setup
 
 To run this project you'll need:
