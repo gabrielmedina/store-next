@@ -98,3 +98,14 @@ describe('HomePage', () => {
     expect(searchMethodMock).toBeCalledWith(term, { page: 0 })
   })
 })
+
+it('should call algoliasearch search with page when has page query', () => {
+  const page = '2'
+  const context = {
+    query: { page } as ParsedUrlQuery,
+  }
+
+  getServerSideProps(context as GetServerSidePropsContext)
+
+  expect(searchMethodMock).toBeCalledWith('', { page: 1 })
+})
