@@ -47,6 +47,8 @@ const ProductPage: React.FC<TProductPageProps> = ({ loading, product }) => {
     },
   ]
 
+  if (loading) return null
+
   return (
     <>
       <Head>
@@ -59,13 +61,11 @@ const ProductPage: React.FC<TProductPageProps> = ({ loading, product }) => {
           <Breadcrumb items={breadcrumb} />
         </Container>
 
-        {!loading && (
-          <main>
-            <Container size="small">
-              <ProductDetail product={product} />
-            </Container>
-          </main>
-        )}
+        <main>
+          <Container size="small">
+            <ProductDetail product={product} />
+          </Container>
+        </main>
       </LayoutDefault>
 
       <ProductCart />
