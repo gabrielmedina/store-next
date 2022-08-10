@@ -2,6 +2,7 @@ import React from 'react'
 import { TIcon } from '../types'
 
 export const IconClose: React.FC<TIcon & React.HTMLAttributes<HTMLElement>> = ({
+  title,
   width = 24,
   height = 24,
   color,
@@ -14,7 +15,7 @@ export const IconClose: React.FC<TIcon & React.HTMLAttributes<HTMLElement>> = ({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <title>Close</title>
+      <title>{title}</title>
       <path
         d="M367.281 143.719L143.719 367.281M367.281 367.281L143.719 143.719L367.281 367.281Z"
         stroke={color}

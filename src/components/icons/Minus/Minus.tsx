@@ -1,7 +1,8 @@
 import React from 'react'
 import { TIcon } from '../types'
 
-export const IconAdd: React.FC<TIcon & React.HTMLAttributes<HTMLElement>> = ({
+export const IconMinus: React.FC<TIcon & React.HTMLAttributes<HTMLElement>> = ({
+  title,
   width = 24,
   height = 24,
   color,
@@ -14,9 +15,9 @@ export const IconAdd: React.FC<TIcon & React.HTMLAttributes<HTMLElement>> = ({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <title>Add</title>
+      <title>{title}</title>
       <path
-        d="M400 256H112M256 112V400V112Z"
+        d="M400 256H112"
         stroke={color}
         strokeWidth="32"
         strokeLinecap="round"

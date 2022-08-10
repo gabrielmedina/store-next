@@ -2,6 +2,7 @@ import React from 'react'
 import { TIcon } from '../types'
 
 export const IconCart: React.FC<TIcon & React.HTMLAttributes<HTMLElement>> = ({
+  title,
   width = 24,
   height = 24,
   color,
@@ -13,7 +14,7 @@ export const IconCart: React.FC<TIcon & React.HTMLAttributes<HTMLElement>> = ({
       height={height}
       viewBox="0 0 512 512"
     >
-      <title>Cart</title>
+      <title>{title}</title>
       <circle
         cx="176"
         cy="416"
