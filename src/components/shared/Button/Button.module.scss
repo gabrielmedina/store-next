@@ -54,19 +54,31 @@
 
 .variantPrimary {
   color: var(--color-white);
-  background: var(--color-primary);
+  background: var(--color-primary-500);
+  transition: background 0.3s ease;
 
   svg {
     stroke: var(--color-white);
   }
+
+  &:focus,
+  &:hover {
+    background: var(--color-primary-300);
+  }
 }
 
 .variantSecondary {
-  color: var(--color-primary);
+  color: var(--color-primary-500);
   background: var(--color-white);
+  transition: background 0.3s ease;
 
   svg {
-    stroke: var(--color-primary);
+    stroke: var(--color-primary-500);
+  }
+
+  &:focus,
+  &:hover {
+    background: var(--color-gray-050);
   }
 }
 
