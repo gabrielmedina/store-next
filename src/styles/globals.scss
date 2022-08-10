@@ -18,3 +18,8 @@ input,
 button {
   font-family: 'Roboto', sans-serif;
 }
+
+:focus {
+  outline-color: var(--color-gray-400);
+  outline-offset: 3px;
+}
