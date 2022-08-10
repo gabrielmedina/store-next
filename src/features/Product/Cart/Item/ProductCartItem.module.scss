@@ -1,15 +1,23 @@
 .container {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
   gap: $unit-0400;
+
+  @media screen and (min-width: 480px) {
+    flex-direction: row;
+  }
 }
 
 .figure {
-  width: 104px;
+  width: 100%;
   flex-shrink: 0;
   margin: 0;
-  border-radius: $unit-0100;
+  border-radius: $unit-0200;
   overflow: hidden;
+
+  @media screen and (min-width: 480px) {
+    width: 104px;
+  }
 }
 
 .content {
@@ -33,7 +41,7 @@
 .actions {
   display: flex;
   align-items: center;
-  gap: $unit-0400;
+  gap: $unit-0100;
 }
 
 .count {
