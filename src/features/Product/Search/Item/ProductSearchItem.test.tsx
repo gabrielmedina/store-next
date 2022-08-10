@@ -35,7 +35,7 @@ describe('ProductSearchItem', () => {
     // @ts-ignore
     makeSut({ product })
 
-    fireEvent.click(screen.getByTitle('Cart'))
+    fireEvent.click(screen.getByTitle(`Add ${product.name} to cart`))
 
     await waitFor(() => {
       expect(onRecoilChange).toBeCalled()

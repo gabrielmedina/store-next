@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { useState } from 'react'
-import { Button, IconAdd, IconRemove } from 'src/components'
+import { Button, IconMinus, IconPlus } from 'src/components'
 import { formatyMoney } from 'src/utils'
 import styles from './ProductCartItem.module.scss'
 import { Product } from 'src/graphql'
@@ -43,24 +43,18 @@ export const ProductCartItem: React.FC<TProductCartItemProps> = ({
         <p className={styles.price}>{formatyMoney(product.price)}</p>
 
         <div className={styles.actions}>
-          <Button
-            variant="secondary"
-            rounded
-            className={styles.buttonClose}
-            onClick={decrease}
-          >
-            <IconRemove />
+          <Button variant="secondary" rounded onClick={decrease}>
+            <IconMinus title="Decrease" />
           </Button>
-          <span data-testid="count" className={styles.count}>
+          <span
+            data-testid="count"
+            className={styles.count}
+            title={`Buying ${count} ${product.name}`}
+          >
             {count}
           </span>
-          <Button
-            variant="secondary"
-            rounded
-            className={styles.buttonClose}
-            onClick={increase}
-          >
-            <IconAdd />
+          <Button variant="secondary" rounded onClick={increase}>
+            <IconPlus title="Increase" />
           </Button>
         </div>
       </div>

@@ -21,7 +21,7 @@ export const Header: React.FC = () => {
 
       <nav className={styles.nav}>
         <Button variant="secondary" rounded onClick={() => setCartOpen(true)}>
-          <IconCart />
+          <IconCart title="Open cart" />
         </Button>
       </nav>
     </header>

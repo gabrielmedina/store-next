@@ -42,7 +42,7 @@ export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
                 addProductToCart()
               }}
             >
-              <IconCart />
+              <IconCart title={`Add ${product.name} to cart`} />
             </Button>
           }
         />

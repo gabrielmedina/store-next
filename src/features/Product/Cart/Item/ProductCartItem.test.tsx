@@ -33,7 +33,7 @@ describe('ProductCartItem', () => {
 
     const count = screen.getByTestId('count')
 
-    fireEvent.click(screen.getByTitle('Add'))
+    fireEvent.click(screen.getByTitle('Increase'))
     await waitFor(() => count)
     expect(count.textContent).toEqual('2')
   })
@@ -45,11 +45,11 @@ describe('ProductCartItem', () => {
 
     const count = screen.getByTestId('count')
 
-    fireEvent.click(screen.getByTitle('Add'))
+    fireEvent.click(screen.getByTitle('Increase'))
     await waitFor(() => count)
     expect(count.textContent).toEqual('2')
 
-    fireEvent.click(screen.getByTitle('Remove'))
+    fireEvent.click(screen.getByTitle('Decrease'))
     await waitFor(() => count)
     expect(count.textContent).toEqual('1')
   })
@@ -61,7 +61,7 @@ describe('ProductCartItem', () => {
 
     const count = screen.getByTestId('count')
 
-    fireEvent.click(screen.getByTitle('Remove'))
+    fireEvent.click(screen.getByTitle('Decrease'))
     await waitFor(() => count)
     expect(count.textContent).toEqual('1')
   })

@@ -42,7 +42,7 @@ export const Dialog: React.FC<TDialogProps> = ({
             className={styles.buttonClose}
             onClick={onClose}
           >
-            <IconClose />
+            <IconClose title="Close" />
           </Button>
         </div>
       </div>
