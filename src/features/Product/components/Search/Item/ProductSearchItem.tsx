@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import { useRecoilState, useSetRecoilState } from 'recoil'
-import { StateCartItems, StateCartOpen } from 'src/features/Product'
+import { useCart } from 'src/features/Product'
 import { Button, Card, IconCart } from 'src/components'
 import { formatyMoney } from 'src/utils'
 import { Product } from 'src/graphql'
@@ -12,18 +11,7 @@ export type TProductSearchItemProps = {
 export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
   product,
 }) => {
-  const [cartItems, setCartItems] = useRecoilState(StateCartItems)
-  const setCartOpen = useSetRecoilState(StateCartOpen)
-
-  const addProductToCart = () => {
-    const hasProduct = cartItems.find(({ id }) => id === product.id)
-
-    if (!hasProduct) {
-      setCartItems([...cartItems, product])
-    }
-
-    setCartOpen(true)
-  }
+  const { addProduct } = useCart()
 
   /* istanbul ignore next */
   return (
@@ -44,7 +32,7 @@ export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
               rounded
               onClick={(event) => {
                 event.preventDefault()
-                addProductToCart()
+                addProduct(product)
               }}
             >
               <IconCart title={`Add ${product.name} to cart`} />

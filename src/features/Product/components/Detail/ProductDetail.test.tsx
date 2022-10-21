@@ -1,25 +1,18 @@
 import { fireEvent, render, screen } from '@testing-library/react'
+import { useCartMock, useCartMockReturn } from 'test/_mocks/useCartMock'
 import { ProductDetail, TProductDetailProps } from './ProductDetail'
-import { StateCartOpen, StateCartItems } from 'src/features/Product'
-import { RecoilMock, TRecoilMockProps } from 'test/_mocks/RecoilMock'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
 import { formatyMoney } from 'src/utils'
 
-const onRecoilChange = jest.fn()
-
-const makeSut = ({
-  product,
-  node,
-  values,
-}: TRecoilMockProps & TProductDetailProps) => {
-  return render(
-    <RecoilMock node={node} values={values} onChange={onRecoilChange}>
-      <ProductDetail product={product} />
-    </RecoilMock>
-  )
+const makeSut = ({ product }: TProductDetailProps) => {
+  return render(<ProductDetail product={product} />)
 }
 
 describe('ProductDetail', () => {
+  beforeEach(() => {
+    useCartMock.mockReturnValue(useCartMockReturn)
+  })
+
   afterEach(() => {
     jest.clearAllMocks()
   })
@@ -27,7 +20,7 @@ describe('ProductDetail', () => {
   it('should render correctly', () => {
     const product = ProductsStub[0]
     // @ts-ignore
-    makeSut({ product, values: false, node: StateCartOpen })
+    makeSut({ product })
 
     expect(screen.queryByTestId('product-detail')).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
@@ -41,7 +34,7 @@ describe('ProductDetail', () => {
 
   it('should no render when product is not provided', () => {
     // @ts-ignore
-    makeSut({ product: null, values: false, node: StateCartOpen })
+    makeSut({ product: null })
 
     expect(screen.queryByTestId('product-detail')).not.toBeInTheDocument()
   })
@@ -49,20 +42,20 @@ describe('ProductDetail', () => {
   it('should add product to cart when user click in Add to cart', () => {
     const product = ProductsStub[0]
     // @ts-ignore
-    makeSut({ product, values: null, node: StateCartItems })
+    makeSut({ product })
 
     fireEvent.click(screen.getByText('Add to cart'))
 
-    expect(onRecoilChange).toHaveBeenNthCalledWith(2, [product])
+    expect(useCartMockReturn.addProduct).toHaveBeenCalledWith(product)
   })
 
   it('should open the cart when user click in Add to cart', () => {
     const product = ProductsStub[0]
     // @ts-ignore
-    makeSut({ product, values: false, node: StateCartOpen })
+    makeSut({ product })
 
     fireEvent.click(screen.getByText('Add to cart'))
 
-    expect(onRecoilChange).toHaveBeenNthCalledWith(2, true)
+    expect(useCartMockReturn.addProduct).toHaveBeenCalledWith(product)
   })
 })

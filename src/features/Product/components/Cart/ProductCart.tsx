@@ -1,30 +1,26 @@
-import { useRecoilState, useRecoilValue } from 'recoil'
-import {
-  ProductCartList,
-  StateCartOpen,
-  StateCartItems,
-} from 'src/features/Product'
+import { ProductCartList, useCart } from 'src/features/Product'
 import { Button, Dialog } from 'src/components'
 
 export const ProductCart: React.FC = () => {
-  const cartItems = useRecoilValue(StateCartItems)
-  const [cartOpen, setCartOpen] = useRecoilState(StateCartOpen)
+  const { cartProducts, cartIsOpen, setCartIsOpen } = useCart()
 
   const subtitle = () => {
-    if (cartItems.length === 0) return 'Your cart is empty'
-    if (cartItems.length === 1) return 'With 1 product'
-    return `With ${cartItems.length} products`
+    if (cartProducts.length === 0) return 'Your cart is empty'
+    if (cartProducts.length === 1) return 'With 1 product'
+    return `With ${cartProducts.length} products`
   }
 
   return (
     <Dialog
-      open={cartOpen}
+      open={cartIsOpen}
       title="My cart"
       subtitle={subtitle()}
-      onClose={() => setCartOpen(false)}
-      footer={cartItems.length > 0 && <Button fullWidth>Go to checkout</Button>}
+      onClose={() => setCartIsOpen(false)}
+      footer={
+        cartProducts.length > 0 && <Button fullWidth>Go to checkout</Button>
+      }
     >
-      {<ProductCartList products={cartItems} />}
+      {<ProductCartList products={cartProducts} />}
     </Dialog>
   )
 }

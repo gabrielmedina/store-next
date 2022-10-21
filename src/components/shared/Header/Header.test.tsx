@@ -1,19 +1,16 @@
-import { fireEvent, render, screen } from '@testing-library/react'
-import { StateCartOpen } from 'src/features/Product'
-import { RecoilMock } from 'test/_mocks/RecoilMock'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { useCartMock, useCartMockReturn } from 'test/_mocks/useCartMock'
 import { Header } from './Header'
 
-const onRecoilChange = jest.fn()
-
 const makeSut = () => {
-  return render(
-    <RecoilMock node={StateCartOpen} onChange={onRecoilChange}>
-      <Header />
-    </RecoilMock>
-  )
+  return render(<Header />)
 }
 
 describe('Header', () => {
+  beforeEach(() => {
+    useCartMock.mockReturnValue(useCartMockReturn)
+  })
+
   afterEach(() => {
     jest.clearAllMocks()
   })
@@ -26,12 +23,13 @@ describe('Header', () => {
     expect(screen.getByRole('navigation')).toBeInTheDocument()
   })
 
-  it('should open product cart when button cart has clicked', () => {
+  it('should open product cart when button cart has clicked', async () => {
     makeSut()
 
-    fireEvent.click(screen.getByRole('button'))
+    await waitFor(() => {
+      fireEvent.click(screen.getByRole('button'))
+    })
 
-    expect(onRecoilChange).toBeCalled()
-    expect(onRecoilChange).toHaveBeenNthCalledWith(2, true)
+    expect(useCartMockReturn.setCartIsOpen).toBeCalledWith(true)
   })
 })

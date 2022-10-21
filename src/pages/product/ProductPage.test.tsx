@@ -1,13 +1,12 @@
 import { render, screen } from '@testing-library/react'
+import { useCartMock, useCartMockReturn } from 'test/_mocks/useCartMock'
 import ProductPage, {
   getServerSideProps,
   TProductPageProps,
 } from './[slug].page'
 import { GetServerSidePropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { StateCartItems } from 'src/features/Product'
 import { GET_PRODUCT_BY_SLUG_QUERY } from 'src/graphql'
-import { RecoilMock } from 'test/_mocks/RecoilMock'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
 
 const product = ProductsStub[0]
@@ -35,17 +34,15 @@ jest.mock('next/router', () => ({
   },
 }))
 
-const onRecoilChange = jest.fn()
-
 const makeSut = (props: TProductPageProps) => {
-  return render(
-    <RecoilMock node={StateCartItems} onChange={onRecoilChange}>
-      <ProductPage {...props} />
-    </RecoilMock>
-  )
+  return render(<ProductPage {...props} />)
 }
 
 describe('ProductPage', () => {
+  beforeEach(() => {
+    useCartMock.mockReturnValue(useCartMockReturn)
+  })
+
   it('should render correctly', () => {
     // @ts-ignore
     makeSut({ loading: false, product })

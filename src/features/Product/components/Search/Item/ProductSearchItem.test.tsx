@@ -1,21 +1,18 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { useCartMock, useCartMockReturn } from 'test/_mocks/useCartMock'
 import { ProductSearchItem, TProductSearchItemProps } from './ProductSearchItem'
-import { StateCartItems } from 'src/features/Product'
-import { RecoilMock } from 'test/_mocks/RecoilMock'
-import ProductsStub from 'test/_stubs/ProductsStub.json'
 import { formatyMoney } from 'src/utils'
-
-const onRecoilChange = jest.fn()
+import ProductsStub from 'test/_stubs/ProductsStub.json'
 
 const makeSut = ({ product }: TProductSearchItemProps) => {
-  return render(
-    <RecoilMock node={StateCartItems} onChange={onRecoilChange}>
-      <ProductSearchItem product={product} />
-    </RecoilMock>
-  )
+  return render(<ProductSearchItem product={product} />)
 }
 
 describe('ProductSearchItem', () => {
+  beforeEach(() => {
+    useCartMock.mockReturnValue(useCartMockReturn)
+  })
+
   afterEach(() => {
     jest.clearAllMocks()
   })
@@ -38,8 +35,8 @@ describe('ProductSearchItem', () => {
     fireEvent.click(screen.getByTitle(`Add ${product.name} to cart`))
 
     await waitFor(() => {
-      expect(onRecoilChange).toBeCalled()
-      expect(onRecoilChange).toHaveBeenNthCalledWith(2, [product])
+      expect(useCartMockReturn.addProduct).toBeCalled()
+      expect(useCartMockReturn.addProduct).toHaveBeenCalledWith(product)
     })
   })
 })

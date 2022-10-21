@@ -1,6 +1,5 @@
 import Image from 'next/image'
-import { useRecoilState, useSetRecoilState } from 'recoil'
-import { StateCartItems, StateCartOpen } from 'src/features/Product'
+import { useCart } from 'src/features/Product'
 import { Button } from 'src/components'
 import { formatyMoney } from 'src/utils'
 import { Product } from 'src/graphql'
@@ -11,13 +10,7 @@ export type TProductDetailProps = {
 }
 
 export const ProductDetail: React.FC<TProductDetailProps> = ({ product }) => {
-  const [cartItems, setCartItems] = useRecoilState(StateCartItems)
-  const setCartOpen = useSetRecoilState(StateCartOpen)
-
-  const addProductToCart = () => {
-    setCartItems([...cartItems, product])
-    setCartOpen(true)
-  }
+  const { addProduct } = useCart()
 
   if (!product) return null
 
@@ -31,7 +24,7 @@ export const ProductDetail: React.FC<TProductDetailProps> = ({ product }) => {
 
         <p className={styles.price}>{formatyMoney(product.price)}</p>
 
-        <Button fullWidth onClick={addProductToCart}>
+        <Button fullWidth onClick={() => addProduct(product)}>
           Add to cart
         </Button>
       </div>

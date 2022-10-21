@@ -1,8 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { GetServerSidePropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { StateCartItems } from 'src/features/Product'
-import { RecoilMock, TRecoilMockProps } from 'test/_mocks/RecoilMock'
+import { useCartMock, useCartMockReturn } from 'test/_mocks/useCartMock'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
 import HomePage, { getServerSideProps, TPageHomeProps } from './index.page'
 
@@ -32,8 +31,6 @@ jest.mock('algoliasearch', () => {
   })
 })
 
-const onRecoilChange = jest.fn()
-
 const makeSut = ({
   products,
   loading = false,
@@ -41,15 +38,17 @@ const makeSut = ({
     total: 1,
     current: 0,
   },
-}: TRecoilMockProps & TPageHomeProps) => {
+}: TPageHomeProps) => {
   return render(
-    <RecoilMock node={StateCartItems} onChange={onRecoilChange}>
-      <HomePage products={products} pages={pages} loading={loading} />
-    </RecoilMock>
+    <HomePage products={products} pages={pages} loading={loading} />
   )
 }
 
 describe('HomePage', () => {
+  beforeEach(() => {
+    useCartMock.mockReturnValue(useCartMockReturn)
+  })
+
   afterEach(() => {
     jest.clearAllMocks()
   })
