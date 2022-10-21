@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useRecoilState, useSetRecoilState } from 'recoil'
-import { StateCartItems, StateCartOpen } from 'src/features'
+import { StateCartItems, StateCartOpen } from 'src/features/Product'
 import { Button, Card, IconCart } from 'src/components'
 import { formatyMoney } from 'src/utils'
 import { Product } from 'src/graphql'

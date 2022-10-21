@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { GetServerSidePropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { StateCartItems } from 'src/features'
+import { StateCartItems } from 'src/features/Product'
 import { RecoilMock, TRecoilMockProps } from 'test/_mocks/RecoilMock'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
 import HomePage, { getServerSideProps, TPageHomeProps } from './index.page'

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { ProductSearchList, TProductSearchListProps } from './ProductSearchList'
-import { StateCartItems } from 'src/features'
+import { StateCartItems } from 'src/features/Product'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
 import { RecoilMock } from 'test/_mocks/RecoilMock'
 

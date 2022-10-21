@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useSetRecoilState } from 'recoil'
-import { StateCartOpen, ProductSearchForm } from 'src/features'
+import { StateCartOpen, ProductSearchForm } from 'src/features/Product'
 import { Logo, Button, IconCart } from 'src/components'
 import styles from './Header.module.scss'
 

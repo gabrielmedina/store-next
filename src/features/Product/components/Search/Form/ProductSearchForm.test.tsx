@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { ProductSearchForm } from 'src/features'
+import { ProductSearchForm } from 'src/features/Product'
 
 const pushMock = jest.fn()
 

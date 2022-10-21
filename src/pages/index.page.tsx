@@ -1,6 +1,6 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
-import { ProductCart, ProductSearchList } from 'src/features'
+import { ProductCart, ProductSearchList } from 'src/features/Product'
 import { Container, LayoutDefault, Pagination } from 'src/components'
 import { getAlgoliaClient } from 'src/lib'
 import { Product } from 'src/graphql'

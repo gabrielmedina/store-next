@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { useRecoilState, useSetRecoilState } from 'recoil'
-import { StateCartItems, StateCartOpen } from 'src/features'
+import { StateCartItems, StateCartOpen } from 'src/features/Product'
 import { Button } from 'src/components'
 import { formatyMoney } from 'src/utils'
 import { Product } from 'src/graphql'

@@ -5,7 +5,7 @@ import ProductPage, {
 } from './[slug].page'
 import { GetServerSidePropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { StateCartItems } from 'src/features'
+import { StateCartItems } from 'src/features/Product'
 import { GET_PRODUCT_BY_SLUG_QUERY } from 'src/graphql'
 import { RecoilMock } from 'test/_mocks/RecoilMock'
 import ProductsStub from 'test/_stubs/ProductsStub.json'

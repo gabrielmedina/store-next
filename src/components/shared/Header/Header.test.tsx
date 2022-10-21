@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import { StateCartOpen } from 'src/features'
+import { StateCartOpen } from 'src/features/Product'
 import { RecoilMock } from 'test/_mocks/RecoilMock'
 import { Header } from './Header'
 
