@@ -40,7 +40,7 @@
   transition: transform 0.3s ease;
   transform: translateY($unit-0500);
 
-  @media screen and (min-width: $breakpoint-md) {
+  @media screen and (min-width: $breakpoint-ty) {
     gap: $unit-1000;
     transform: translateX(100%);
   }
@@ -51,7 +51,7 @@
   top: $unit-0400;
   right: $unit-0600;
 
-  @media screen and (min-width: $breakpoint-md) {
+  @media screen and (min-width: $breakpoint-ty) {
     top: $unit-0800;
     right: $unit-0800;
   }
@@ -63,7 +63,7 @@
   gap: $unit-0100;
   padding: $unit-0600 $unit-0600 0;
 
-  @media screen and (min-width: $breakpoint-md) {
+  @media screen and (min-width: $breakpoint-ty) {
     padding: $unit-1000 $unit-1000 0;
   }
 }
@@ -86,7 +86,7 @@
   height: 100%;
   overflow-y: auto;
 
-  @media screen and (min-width: $breakpoint-md) {
+  @media screen and (min-width: $breakpoint-ty) {
     padding-left: $unit-1000;
     padding-right: $unit-1000;
   }
@@ -95,7 +95,7 @@
 .footer {
   padding: 0 $unit-0600 $unit-0600;
 
-  @media screen and (min-width: $breakpoint-md) {
+  @media screen and (min-width: $breakpoint-ty) {
     padding: 0 $unit-1000 $unit-1000;
   }
 }

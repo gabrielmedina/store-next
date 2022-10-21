@@ -9,7 +9,7 @@
   background: var(--color-white);
   margin-bottom: $unit-0600;
 
-  @media screen and (min-width: $breakpoint-sm) {
+  @media screen and (min-width: $breakpoint-ty) {
     padding: $unit-0600;
   }
 
@@ -22,7 +22,6 @@
   }
 
   @media screen and (min-width: $breakpoint-lg) {
-    padding: $unit-1200 $unit-1600;
   }
 }
 

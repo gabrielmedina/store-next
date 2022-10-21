@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: $unit-0400;
 
-  @media screen and (min-width: 480px) {
+  @media screen and (min-width: $breakpoint-ty) {
     flex-direction: row;
   }
 }
@@ -15,16 +15,26 @@
   border-radius: $unit-0200;
   overflow: hidden;
 
-  @media screen and (min-width: 480px) {
+  @media screen and (min-width: $breakpoint-ty) {
     width: 104px;
   }
 }
 
 .content {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   gap: $unit-0200;
   width: 100%;
+
+  @media screen and (min-width: $breakpoint-ty) {
+    flex-direction: column;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: $unit-0200;
 }
 
 .title {

@@ -6,13 +6,19 @@
   padding: 0;
   list-style: none;
 
-  @media screen and (min-width: $breakpoint-md) {
+  @media screen and (min-width: $breakpoint-sm) {
     display: grid;
-    gap: $unit-1400;
+    gap: $unit-0800;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (min-width: $breakpoint-md) {
+    gap: $unit-1000;
     grid-template-columns: repeat(3, 1fr);
   }
 
   @media screen and (min-width: $breakpoint-lg) {
+    gap: $unit-1200;
     grid-template-columns: repeat(4, 1fr);
   }
 }
