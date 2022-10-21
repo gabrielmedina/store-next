@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { ProductSearchItem, TProductSearchItemProps } from './ProductSearchItem'
-import { StateCartItems } from 'src/features/Product/Cart/CartState'
+import { StateCartItems } from 'src/features'
 import { RecoilMock } from 'test/_mocks/RecoilMock'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
 import { formatyMoney } from 'src/utils'

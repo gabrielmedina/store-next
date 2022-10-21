@@ -16,7 +16,12 @@ export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
   const setCartOpen = useSetRecoilState(StateCartOpen)
 
   const addProductToCart = () => {
-    setCartItems([...cartItems, product])
+    const hasProduct = cartItems.find(({ id }) => id === product.id)
+
+    if (!hasProduct) {
+      setCartItems([...cartItems, product])
+    }
+
     setCartOpen(true)
   }
 

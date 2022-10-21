@@ -1,9 +1,7 @@
-export * from './Product/Search/List/ProductSearchList'
-export * from './Product/Search/Form/ProductSearchForm'
-
-export * from './Product/Cart/CartState'
-export * from './Product/Cart/ProductCart'
-export * from './Product/Cart/List/ProductCartList'
-export * from './Product/Cart/Item/ProductCartItem'
-
-export * from './Product/Detail/ProductDetail'
+export * from './Product/components/Search/List/ProductSearchList'
+export * from './Product/components/Search/Form/ProductSearchForm'
+export * from './Product/components/Cart/CartState'
+export * from './Product/components/Cart/ProductCart'
+export * from './Product/components/Cart/List/ProductCartList'
+export * from './Product/components/Cart/Item/ProductCartItem'
+export * from './Product/components/Detail/ProductDetail'
