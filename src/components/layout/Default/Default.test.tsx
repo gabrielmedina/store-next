@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { ButtonHTMLAttributes } from 'react'
+import { useCartMock, useCartMockReturn } from 'test/_mocks/useCartMock'
 import { LayoutDefault } from './Default'
 
 const makeSut = (props?: ButtonHTMLAttributes<HTMLButtonElement>) => {
@@ -7,6 +8,10 @@ const makeSut = (props?: ButtonHTMLAttributes<HTMLButtonElement>) => {
 }
 
 describe('LayoutDefault', () => {
+  beforeEach(() => {
+    useCartMock.mockReturnValue(useCartMockReturn)
+  })
+
   it('should render correctly', () => {
     makeSut()
 
