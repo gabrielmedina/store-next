@@ -40,8 +40,15 @@ export const ProductCartItem: React.FC<TProductCartItemProps> = ({
       </figure>
       <div className={styles.content}>
         <header className={styles.header}>
-          <h2 className={styles.title}>{product.name}</h2>
-          <p className={styles.price}>{formatyMoney(product.price)}</p>
+          <h2 className={styles.title} title={product.name}>
+            {product.name}
+          </h2>
+          <p
+            className={styles.price}
+            aria-label={`Unit price: ${formatyMoney(product.price)}`}
+          >
+            {formatyMoney(product.price)}
+          </p>
         </header>
 
         <div className={styles.actions}>
