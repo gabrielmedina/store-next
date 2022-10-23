@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { getAlgoliaClient } from 'src/lib'
+import { getAlgoliaClient } from 'src/libs'
 
 export default async function handler(
   req: NextApiRequest,

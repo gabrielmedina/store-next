@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { getAlgoliaClient } from 'src/lib'
+import { getAlgoliaClient } from 'src/libs'
 import { request } from 'graphql-request'
 import { GET_PRODUCT_BY_ID } from 'src/graphql'
 

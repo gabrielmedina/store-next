@@ -1,4 +1,4 @@
-import { getAlgoliaClient } from 'src/lib'
+import { getAlgoliaClient } from 'src/libs'
 
 const searchMethodMock = jest.fn().mockImplementation(() => {
   return Promise.resolve({

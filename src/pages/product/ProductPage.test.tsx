@@ -18,7 +18,7 @@ const onApolloClientQuery = jest.fn().mockImplementation(() => ({
   },
 }))
 
-jest.mock('src/lib', () => ({
+jest.mock('src/libs', () => ({
   getApolloClient: jest.fn().mockImplementation(() => {
     return {
       query: onApolloClientQuery,
