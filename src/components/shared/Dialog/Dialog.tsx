@@ -1,7 +1,8 @@
-import { ReactChild } from 'react'
+import { ReactChild, useRef } from 'react'
 import classNames from 'classnames'
 import styles from './Dialog.module.scss'
 import { Button, IconClose } from 'src/components'
+import { useOnClickOutside } from 'src/hooks'
 
 export type TDialogProps = {
   open: boolean
@@ -19,6 +20,13 @@ export const Dialog: React.FC<TDialogProps> = ({
   onClose,
   children,
 }) => {
+  const containerRef = useRef(null)
+
+  useOnClickOutside({
+    ref: containerRef,
+    handler: onClose,
+  })
+
   return (
     <section
       className={classNames(styles.dialog, {
@@ -26,7 +34,7 @@ export const Dialog: React.FC<TDialogProps> = ({
       })}
     >
       <div role="dialog" className={styles.backdrop}>
-        <div className={styles.container}>
+        <div className={styles.container} ref={containerRef}>
           <header className={styles.header}>
             <h2 className={styles.title}>{title}</h2>
             {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
