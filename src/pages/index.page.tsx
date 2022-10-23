@@ -71,7 +71,12 @@ const HomePage: NextPage<TPageHomeProps> = ({ loading, products, pages }) => {
     )
   }
 
-  if (loading) return null
+  if (loading)
+    return (
+      <Container>
+        <p>Loading...</p>
+      </Container>
+    )
 
   return (
     <>
