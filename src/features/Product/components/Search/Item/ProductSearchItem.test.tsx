@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { act, fireEvent, render, screen } from '@testing-library/react'
 import { useCartMock, useCartMockReturn } from 'test/_mocks/useCartMock'
 import { ProductSearchItem, TProductSearchItemProps } from './ProductSearchItem'
 import { formatyMoney } from 'src/utils'
@@ -27,16 +27,16 @@ describe('ProductSearchItem', () => {
     expect(screen.getByRole('img')).toHaveAttribute('src')
   })
 
-  it('should add product to cart when button has clicked', async () => {
+  it('should add product to cart when button has clicked', () => {
     const product = ProductsStub[0]
     // @ts-ignore
     makeSut({ product })
 
-    fireEvent.click(screen.getByTitle(`Add ${product.name} to cart`))
-
-    await waitFor(() => {
-      expect(useCartMockReturn.addProduct).toBeCalled()
-      expect(useCartMockReturn.addProduct).toHaveBeenCalledWith(product)
+    act(() => {
+      fireEvent.click(screen.getByTitle(`Add ${product.name} to cart`))
     })
+
+    expect(useCartMockReturn.addProduct).toBeCalled()
+    expect(useCartMockReturn.addProduct).toHaveBeenCalledWith(product)
   })
 })

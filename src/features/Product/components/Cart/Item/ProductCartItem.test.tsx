@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { act, fireEvent, render, screen } from '@testing-library/react'
 import { ProductCartItem, TProductCartItemProps } from './ProductCartItem'
 import { formatyMoney } from 'src/utils'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
@@ -26,43 +26,51 @@ describe('ProductCartItem', () => {
     expect(screen.queryByTestId('item')).toBeFalsy()
   })
 
-  it('should increase count when add button has clicked', async () => {
+  it('should increase count when add button has clicked', () => {
     const product = ProductsStub[0]
     // @ts-ignore
     makeSut({ product })
 
     const count = screen.getByTestId('count')
 
-    fireEvent.click(screen.getByTitle('Increase'))
-    await waitFor(() => count)
+    act(() => {
+      fireEvent.click(screen.getByTitle('Increase'))
+    })
+
     expect(count.textContent).toEqual('2')
   })
 
-  it('should decrease count when remove button has clicked', async () => {
+  it('should decrease count when remove button has clicked', () => {
     const product = ProductsStub[0]
     // @ts-ignore
     makeSut({ product })
 
     const count = screen.getByTestId('count')
 
-    fireEvent.click(screen.getByTitle('Increase'))
-    await waitFor(() => count)
+    act(() => {
+      fireEvent.click(screen.getByTitle('Increase'))
+    })
+
     expect(count.textContent).toEqual('2')
 
-    fireEvent.click(screen.getByTitle('Decrease'))
-    await waitFor(() => count)
+    act(() => {
+      fireEvent.click(screen.getByTitle('Decrease'))
+    })
+
     expect(count.textContent).toEqual('1')
   })
 
-  it('should not decrease count when value is 1', async () => {
+  it('should not decrease count when value is 1', () => {
     const product = ProductsStub[0]
     // @ts-ignore
     makeSut({ product })
 
     const count = screen.getByTestId('count')
 
-    fireEvent.click(screen.getByTitle('Decrease'))
-    await waitFor(() => count)
+    act(() => {
+      fireEvent.click(screen.getByTitle('Decrease'))
+    })
+
     expect(count.textContent).toEqual('1')
   })
 })

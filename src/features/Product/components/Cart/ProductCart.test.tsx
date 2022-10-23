@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { fireEvent, render, screen, act } from '@testing-library/react'
 import { useCartMock, useCartMockReturn } from 'test/_mocks/useCartMock'
 import { ProductCart } from './ProductCart'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
@@ -58,14 +58,13 @@ describe('ProductCart', () => {
     expect(screen.queryByText('Go to checkout')).toBeTruthy()
   })
 
-  it('should hide Dialog when close button has clicked', async () => {
+  it('should hide Dialog when close button has clicked', () => {
     useCartMock.mockReturnValue(useCartMockReturn)
 
     makeSut()
 
-    const close = screen.getByTitle('Close')
-
-    await waitFor(() => {
+    act(() => {
+      const close = screen.getByTitle('Close')
       fireEvent.click(close)
     })
 

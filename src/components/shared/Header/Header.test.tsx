@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { fireEvent, render, screen, act } from '@testing-library/react'
 import { useCartMock, useCartMockReturn } from 'test/_mocks/useCartMock'
 import { Header } from './Header'
 
@@ -23,10 +23,10 @@ describe('Header', () => {
     expect(screen.getByRole('navigation')).toBeInTheDocument()
   })
 
-  it('should open product cart when button cart has clicked', async () => {
+  it('should open product cart when button cart has clicked', () => {
     makeSut()
 
-    await waitFor(() => {
+    act(() => {
       fireEvent.click(screen.getByRole('button'))
     })
 
