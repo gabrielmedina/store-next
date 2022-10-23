@@ -68,6 +68,13 @@ describe('HomePage', () => {
     )
   })
 
+  it('should display loading message when page is loading', () => {
+    // @ts-ignore
+    makeSut({ loading: true })
+
+    expect(screen.getByText('Loading...'))
+  })
+
   it('should display empty message when product list is empty', () => {
     // @ts-ignore
     makeSut({
