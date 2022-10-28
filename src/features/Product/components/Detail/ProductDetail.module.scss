@@ -54,6 +54,8 @@
 }
 
 .figure {
+  position: relative;
+  padding-bottom: 100%;
   margin: 0;
   overflow: hidden;
   border-radius: $unit-0200;

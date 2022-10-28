@@ -28,13 +28,7 @@ export const ProductCartItem: React.FC<TProductCartItemProps> = ({
         {
           /* istanbul ignore next */
           product.cover && (
-            <Image
-              layout="responsive"
-              src={product.cover.url}
-              alt={product.name}
-              width={product.cover.width || undefined}
-              height={product.cover.height || undefined}
-            />
+            <Image fill src={product.cover.url} alt={product.name} />
           )
         }
       </figure>

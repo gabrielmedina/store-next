@@ -34,13 +34,7 @@ export const ProductDetail: React.FC<TProductDetailProps> = ({ product }) => {
           /* istanbul ignore next */
           return (
             <figure className={styles.figure} key={image.id}>
-              <Image
-                layout="responsive"
-                src={image.url}
-                alt={product.name}
-                width={image.width || undefined}
-                height={image.height || undefined}
-              />
+              <Image fill src={image.url} alt={product.name} />
             </figure>
           )
         })}

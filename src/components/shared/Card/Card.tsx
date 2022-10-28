@@ -30,13 +30,7 @@ export const Card: React.FC<TCardProps> = ({
 
       {image && (
         <figure className={styles.figure}>
-          <Image
-            layout="responsive"
-            src={image.src}
-            alt={image.alt}
-            width={image.width}
-            height={image.height}
-          />
+          <Image fill src={image.src} alt={image.alt} />
         </figure>
       )}
     </section>
