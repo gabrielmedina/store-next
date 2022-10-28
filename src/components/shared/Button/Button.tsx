@@ -39,14 +39,13 @@ export const Button: React.FC<TButtonProps> = ({
       rest as TButtonHTMLAnchorAttributes
 
     return (
-      <Link href={href!}>
-        <a
-          className={buttonClasses}
-          {...restAnchorAttrs}
-          onClick={!disabled ? onClick : undefined}
-        >
-          {children}
-        </a>
+      <Link
+        href={href!}
+        onClick={!disabled ? onClick : undefined}
+        {...restAnchorAttrs}
+        className={buttonClasses}
+      >
+        {children}
       </Link>
     )
   }

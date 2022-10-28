@@ -16,30 +16,28 @@ export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
   /* istanbul ignore next */
   return (
     <Link href={`/product/${product.slug}`}>
-      <a>
-        <Card
-          title={product.name}
-          description={formatyMoney(product.price)}
-          image={{
-            alt: product.name,
-            src: product.cover?.url,
-            width: product.cover?.width || undefined,
-            height: product.cover?.height || undefined,
-          }}
-          cta={
-            <Button
-              element="button"
-              rounded
-              onClick={(event) => {
-                event.preventDefault()
-                addProduct(product)
-              }}
-            >
-              <IconCart title={`Add ${product.name} to cart`} />
-            </Button>
-          }
-        />
-      </a>
+      <Card
+        title={product.name}
+        description={formatyMoney(product.price)}
+        image={{
+          alt: product.name,
+          src: product.cover?.url,
+          width: product.cover?.width || undefined,
+          height: product.cover?.height || undefined,
+        }}
+        cta={
+          <Button
+            element="button"
+            rounded
+            onClick={(event) => {
+              event.preventDefault()
+              addProduct(product)
+            }}
+          >
+            <IconCart title={`Add ${product.name} to cart`} />
+          </Button>
+        }
+      />
     </Link>
   )
 }

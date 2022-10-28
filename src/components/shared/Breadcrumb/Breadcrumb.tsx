@@ -19,14 +19,13 @@ export const Breadcrumb: React.FC<TBreadcrumbProps> = ({ items }) => {
     <ol data-testid="breadcrumb" className={styles.list}>
       {items.map((item, index) => (
         <li key={index} className={styles.item}>
-          <Link href={item.path}>
-            <a
-              className={classNames(styles.link, {
-                [styles.current]: item.isCurrent,
-              })}
-            >
-              {item.title}
-            </a>
+          <Link
+            href={item.path}
+            className={classNames(styles.link, {
+              [styles.current]: item.isCurrent,
+            })}
+          >
+            {item.title}
           </Link>
         </li>
       ))}

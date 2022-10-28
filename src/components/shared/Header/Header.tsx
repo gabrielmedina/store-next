@@ -10,9 +10,7 @@ export const Header: React.FC = () => {
     <header data-testid="header" className={styles.header}>
       <h1 className={styles.logo}>
         <Link href="/">
-          <a>
-            <Logo />
-          </a>
+          <Logo />
         </Link>
       </h1>
 
