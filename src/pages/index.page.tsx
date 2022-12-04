@@ -2,18 +2,18 @@ import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import { Container, LayoutDefault, Pagination } from 'src/components'
 import { ProductCart, ProductSearchList } from 'src/features/Product/components'
-import { productSearchUseCase } from 'src/features/Product/usecases'
+import { productsSearchUseCase } from 'src/features/Product/usecases'
 import { Product } from 'src/graphql'
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const response = await productSearchUseCase({ query })
+  const response = await productsSearchUseCase({ query })
 
   return {
     props: response,
   }
 }
 
-export type TPageHomeProps = {
+export type TPageSearchProps = {
   loading?: boolean
   products: {
     total: number
@@ -25,7 +25,7 @@ export type TPageHomeProps = {
   }
 }
 
-const HomePage: NextPage<TPageHomeProps> = ({ loading, products, pages }) => {
+const SearchPage: NextPage<TPageSearchProps> = ({ loading, products, pages }) => {
   const renderProductList = () => {
     if (products.total === 0)
       return (
@@ -68,4 +68,4 @@ const HomePage: NextPage<TPageHomeProps> = ({ loading, products, pages }) => {
   )
 }
 
-export default HomePage
+export default SearchPage

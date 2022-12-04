@@ -2,9 +2,9 @@ import { render, screen } from '@testing-library/react'
 import { GetServerSidePropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import { useCartMock, useCartMockReturn } from 'test/_mocks/useCartMock'
-import { productSearchUseCase } from 'src/features/Product/usecases'
+import { productsSearchUseCase } from 'src/features/Product/usecases'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
-import HomePage, { getServerSideProps, TPageHomeProps } from './index.page'
+import SearchPage, { getServerSideProps, TPageSearchProps } from './index.page'
 
 jest.mock('next/router', () => ({
   useRouter() {
@@ -23,13 +23,13 @@ const makeSut = ({
     total: 1,
     current: 0,
   },
-}: TPageHomeProps) => {
+}: TPageSearchProps) => {
   return render(
-    <HomePage products={products} pages={pages} loading={loading} />
+    <SearchPage products={products} pages={pages} loading={loading} />
   )
 }
 
-describe('HomePage', () => {
+describe('SearchPage', () => {
   beforeEach(() => {
     useCartMock.mockReturnValue(useCartMockReturn)
   })
@@ -80,6 +80,6 @@ describe('HomePage', () => {
 
     getServerSideProps(context as GetServerSidePropsContext)
 
-    expect(productSearchUseCase).toBeCalledWith(context)
+    expect(productsSearchUseCase).toBeCalledWith(context)
   })
 })
