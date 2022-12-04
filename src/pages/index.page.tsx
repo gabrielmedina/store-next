@@ -25,7 +25,11 @@ export type TPageSearchProps = {
   }
 }
 
-const SearchPage: NextPage<TPageSearchProps> = ({ loading, products, pages }) => {
+const SearchPage: NextPage<TPageSearchProps> = ({
+  loading,
+  products,
+  pages,
+}) => {
   const renderProductList = () => {
     if (products.total === 0)
       return (
