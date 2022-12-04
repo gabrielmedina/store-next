@@ -11,8 +11,8 @@ const searchMock = jest.fn().mockImplementation(() => {
 
 jest.mock('src/libs', () => ({
   getAlgoliaClient: jest.fn().mockImplementation(() => ({
-    search: searchMock
-  }))
+    search: searchMock,
+  })),
 }))
 
 describe('ProductSearchUseCase', () => {
@@ -31,15 +31,17 @@ describe('ProductSearchUseCase', () => {
   })
 
   it('should return correctly props', async () => {
-    const response = await productSearchUseCase({ query: { search: 'term', page: '2' } })
+    const response = await productSearchUseCase({
+      query: { search: 'term', page: '2' },
+    })
 
     expect(response).toEqual({
       loading: false,
-      pages:  {
+      pages: {
         current: 0,
         total: 1,
       },
-      products:  {
+      products: {
         data: [],
         total: 10,
       },

@@ -5,7 +5,9 @@ type TProductSearchUseCase = {
   query: ParsedUrlQuery
 }
 
-export const productSearchUseCase = async ({ query }: TProductSearchUseCase) => {
+export const productSearchUseCase = async ({
+  query,
+}: TProductSearchUseCase) => {
   const algoliaClient = getAlgoliaClient({
     index: 'dev_store',
   })
