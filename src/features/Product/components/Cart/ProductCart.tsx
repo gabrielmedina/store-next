@@ -1,5 +1,6 @@
-import { ProductCartList, useCart } from 'src/features/Product'
 import { Button, Dialog } from 'src/components'
+import { useCart } from 'src/features/Product/hooks'
+import { ProductCartList } from './List/ProductCartList'
 
 export const ProductCart: React.FC = () => {
   const { cartProducts, cartIsOpen, setCartIsOpen } = useCart()

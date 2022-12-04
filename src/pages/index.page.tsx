@@ -1,8 +1,8 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
-import { ProductCart, ProductSearchList } from 'src/features/Product'
-import { productSearchUseCase } from 'src/features/Product/usecases'
 import { Container, LayoutDefault, Pagination } from 'src/components'
+import { ProductCart, ProductSearchList } from 'src/features/Product/components'
+import { productSearchUseCase } from 'src/features/Product/usecases'
 import { Product } from 'src/graphql'
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {

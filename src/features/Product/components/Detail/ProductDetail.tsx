@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import { useCart } from 'src/features/Product'
 import { Button } from 'src/components'
 import { formatyMoney } from 'src/utils'
+import { useCart } from 'src/features/Product/hooks'
 import { Product } from 'src/graphql'
 import styles from './ProductDetail.module.scss'
 

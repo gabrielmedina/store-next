@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import { useCart } from 'src/features/Product'
-import { Button, Card, IconCart } from 'src/components'
 import { formatyMoney } from 'src/utils'
+import { Button, Card, IconCart } from 'src/components'
+import { useCart } from 'src/features/Product/hooks'
 import { Product } from 'src/graphql'
 
 export type TProductSearchItemProps = {
