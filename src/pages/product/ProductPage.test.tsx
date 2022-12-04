@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react'
 import { useCartMock, useCartMockReturn } from 'test/_mocks/useCartMock'
+import { GetServerSidePropsContext } from 'next'
+import { ParsedUrlQuery } from 'querystring'
+import ProductsStub from 'test/_stubs/ProductsStub.json'
+import { productDetailUseCase } from 'src/features/Product/usecases'
 import ProductPage, {
   getServerSideProps,
   TProductPageProps,
 } from './[slug].page'
-import { GetServerSidePropsContext } from 'next'
-import { ParsedUrlQuery } from 'querystring'
-import { GET_PRODUCT_BY_SLUG_QUERY } from 'src/graphql'
-import ProductsStub from 'test/_stubs/ProductsStub.json'
 
 const product = ProductsStub[0]
 
@@ -33,6 +33,8 @@ jest.mock('next/router', () => ({
     }
   },
 }))
+
+jest.mock('src/features/Product/usecases')
 
 const makeSut = (props: TProductPageProps) => {
   return render(<ProductPage {...props} />)
@@ -66,29 +68,13 @@ describe('ProductPage', () => {
     expect(screen.queryByTestId('product-detail')).not.toBeInTheDocument()
   })
 
-  it('should call apollo client query on server side correctly', async () => {
+  it('should call productDetailUseCase in getServerSideProps', () => {
     const context = {
       query: { slug: product.slug } as ParsedUrlQuery,
     }
 
-    const response = await getServerSideProps(
-      context as GetServerSidePropsContext
-    )
+    getServerSideProps(context as GetServerSidePropsContext)
 
-    expect(onApolloClientQuery).toBeCalledWith({
-      query: GET_PRODUCT_BY_SLUG_QUERY,
-      variables: {
-        slug: product.slug,
-      },
-    })
-
-    expect(response).toEqual(
-      expect.objectContaining({
-        props: {
-          loading: false,
-          product,
-        },
-      })
-    )
+    expect(productDetailUseCase).toBeCalledWith(context)
   })
 })
