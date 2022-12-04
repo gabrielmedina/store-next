@@ -72,7 +72,7 @@ describe('SearchPage', () => {
     expect(screen.getByText('Ops! No results found.'))
   })
 
-  it('should call searchProductUseCase in getServerSideProps', () => {
+  it('should call productsSearchUseCase in getServerSideProps', () => {
     const page = '2'
     const context = {
       query: { page } as ParsedUrlQuery,
