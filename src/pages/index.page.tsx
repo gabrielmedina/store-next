@@ -1,39 +1,15 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import { ProductCart, ProductSearchList } from 'src/features/Product'
+import { productSearchUseCase } from 'src/features/Product/usecases'
 import { Container, LayoutDefault, Pagination } from 'src/components'
-import { getAlgoliaClient } from 'src/libs'
 import { Product } from 'src/graphql'
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const algoliaClient = getAlgoliaClient({
-    index: 'dev_store',
-  })
-
-  const querySearch = (query?.search as string) || ''
-  const queryPagination = query?.page ? parseInt(query.page as string) - 1 : 0
-
-  const {
-    hits,
-    nbHits,
-    nbPages,
-    page: currentPage,
-  } = await algoliaClient.search(querySearch, {
-    page: queryPagination,
-  })
+  const response = await productSearchUseCase({ query })
 
   return {
-    props: {
-      loading: false,
-      products: {
-        total: nbHits,
-        data: hits,
-      },
-      pages: {
-        total: nbPages,
-        current: currentPage,
-      },
-    },
+    props: response,
   }
 }
 
