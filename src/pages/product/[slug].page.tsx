@@ -1,29 +1,16 @@
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { getApolloClient } from 'src/libs'
 import { Breadcrumb, Container, LayoutDefault } from 'src/components'
 import { ProductCart, ProductDetail } from 'src/features/Product/components'
-import { GET_PRODUCT_BY_SLUG_QUERY, Product } from 'src/graphql'
+import { productDetailUseCase } from 'src/features/Product/usecases'
+import { Product } from 'src/graphql'
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const apolloClient = getApolloClient()
-
-  const {
-    loading,
-    data: { product },
-  } = await apolloClient.query({
-    query: GET_PRODUCT_BY_SLUG_QUERY,
-    variables: {
-      slug: query.slug,
-    },
-  })
+  const response = await productDetailUseCase({ query })
 
   return {
-    props: {
-      loading,
-      product,
-    },
+    props: response,
   }
 }
 
