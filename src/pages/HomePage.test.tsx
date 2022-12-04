@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { GetServerSidePropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import { useCartMock, useCartMockReturn } from 'test/_mocks/useCartMock'
+import { productSearchUseCase } from 'src/features/Product/usecases'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
 import HomePage, { getServerSideProps, TPageHomeProps } from './index.page'
 
@@ -13,23 +14,7 @@ jest.mock('next/router', () => ({
   },
 }))
 
-const searchMethodMock = jest.fn().mockImplementation(() => {
-  return Promise.resolve({
-    hits: [],
-  })
-})
-
-const indexMock = jest.fn(() => ({
-  search: searchMethodMock,
-}))
-
-jest.mock('algoliasearch', () => {
-  return jest.fn().mockImplementation(() => {
-    return {
-      initIndex: indexMock,
-    }
-  })
-})
+jest.mock('src/features/Product/usecases')
 
 const makeSut = ({
   products,
@@ -87,31 +72,14 @@ describe('HomePage', () => {
     expect(screen.getByText('Ops! No results found.'))
   })
 
-  it('should call algoliasearch search with ""', () => {
-    getServerSideProps({} as GetServerSidePropsContext)
-
-    expect(searchMethodMock).toBeCalledWith('', { page: 0 })
-  })
-
-  it('should call algoliasearch search with term when has search query', () => {
-    const term = 'rolex'
+  it('should call searchProductUseCase in getServerSideProps', () => {
+    const page = '2'
     const context = {
-      query: { search: term } as ParsedUrlQuery,
+      query: { page } as ParsedUrlQuery,
     }
 
     getServerSideProps(context as GetServerSidePropsContext)
 
-    expect(searchMethodMock).toBeCalledWith(term, { page: 0 })
+    expect(productSearchUseCase).toBeCalledWith(context)
   })
-})
-
-it('should call algoliasearch search with page when has page query', () => {
-  const page = '2'
-  const context = {
-    query: { page } as ParsedUrlQuery,
-  }
-
-  getServerSideProps(context as GetServerSidePropsContext)
-
-  expect(searchMethodMock).toBeCalledWith('', { page: 1 })
 })
