@@ -36,7 +36,6 @@ describe('ProductSearchItem', () => {
       fireEvent.click(screen.getByTitle(`Add ${product.name} to cart`))
     })
 
-    expect(useCartMockReturn.addProduct).toBeCalled()
-    expect(useCartMockReturn.addProduct).toHaveBeenCalledWith(product)
+    expect(useCartMockReturn.cartAddProduct).toHaveBeenCalledWith(product)
   })
 })

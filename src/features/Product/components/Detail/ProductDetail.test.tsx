@@ -46,7 +46,7 @@ describe('ProductDetail', () => {
 
     fireEvent.click(screen.getByText('Add to cart'))
 
-    expect(useCartMockReturn.addProduct).toHaveBeenCalledWith(product)
+    expect(useCartMockReturn.cartAddProduct).toHaveBeenCalledWith(product)
   })
 
   it('should open the cart when user click in Add to cart', () => {
@@ -56,6 +56,6 @@ describe('ProductDetail', () => {
 
     fireEvent.click(screen.getByText('Add to cart'))
 
-    expect(useCartMockReturn.addProduct).toHaveBeenCalledWith(product)
+    expect(useCartMockReturn.cartAddProduct).toHaveBeenCalledWith(product)
   })
 })

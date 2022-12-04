@@ -59,7 +59,10 @@ describe('ProductCart', () => {
   })
 
   it('should hide Dialog when close button has clicked', () => {
-    useCartMock.mockReturnValue(useCartMockReturn)
+    useCartMock.mockReturnValue({
+      ...useCartMockReturn,
+      cartIsOpen: true,
+    })
 
     makeSut()
 
@@ -68,6 +71,6 @@ describe('ProductCart', () => {
       fireEvent.click(close)
     })
 
-    expect(useCartMockReturn.setCartIsOpen).toBeCalledWith(false)
+    expect(useCartMockReturn.cartSetIsOpen).toBeCalledWith(false)
   })
 })

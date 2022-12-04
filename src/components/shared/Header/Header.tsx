@@ -5,7 +5,7 @@ import { useCart } from 'src/features/Product/hooks'
 import styles from './Header.module.scss'
 
 export const Header: React.FC = () => {
-  const { setCartIsOpen } = useCart()
+  const { cartSetIsOpen } = useCart()
 
   return (
     <header data-testid="header" className={styles.header}>
@@ -18,7 +18,7 @@ export const Header: React.FC = () => {
       <ProductSearchForm className={styles.search} />
 
       <nav className={styles.nav}>
-        <Button variant="secondary" rounded onClick={() => setCartIsOpen(true)}>
+        <Button variant="secondary" rounded onClick={() => cartSetIsOpen(true)}>
           <IconCart title="Open cart" />
         </Button>
       </nav>

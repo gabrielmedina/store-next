@@ -11,7 +11,7 @@ export type TProductSearchItemProps = {
 export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
   product,
 }) => {
-  const { addProduct } = useCart()
+  const { cartAddProduct } = useCart()
 
   /* istanbul ignore next */
   return (
@@ -31,7 +31,7 @@ export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
             rounded
             onClick={(event) => {
               event.preventDefault()
-              addProduct(product)
+              cartAddProduct(product)
             }}
           >
             <IconCart title={`Add ${product.name} to cart`} />

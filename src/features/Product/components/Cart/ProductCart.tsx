@@ -3,7 +3,7 @@ import { useCart } from 'src/features/Product/hooks'
 import { ProductCartList } from './List/ProductCartList'
 
 export const ProductCart: React.FC = () => {
-  const { cartProducts, cartIsOpen, setCartIsOpen } = useCart()
+  const { cartProducts, cartIsOpen, cartSetIsOpen } = useCart()
 
   const subtitle = () => {
     if (cartProducts.length === 0) return 'Your cart is empty'
@@ -16,7 +16,7 @@ export const ProductCart: React.FC = () => {
       open={cartIsOpen}
       title="My cart"
       subtitle={subtitle()}
-      onClose={() => setCartIsOpen(false)}
+      onClose={() => cartSetIsOpen(false)}
       footer={
         cartProducts.length > 0 && <Button fullWidth>Go to checkout</Button>
       }

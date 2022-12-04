@@ -30,6 +30,6 @@ describe('Header', () => {
       fireEvent.click(screen.getByRole('button'))
     })
 
-    expect(useCartMockReturn.setCartIsOpen).toBeCalledWith(true)
+    expect(useCartMockReturn.cartSetIsOpen).toBeCalledWith(true)
   })
 })

@@ -10,7 +10,7 @@ export type TProductDetailProps = {
 }
 
 export const ProductDetail: React.FC<TProductDetailProps> = ({ product }) => {
-  const { addProduct } = useCart()
+  const { cartAddProduct } = useCart()
 
   if (!product) return null
 
@@ -24,7 +24,7 @@ export const ProductDetail: React.FC<TProductDetailProps> = ({ product }) => {
 
         <p className={styles.price}>{formatyMoney(product.price)}</p>
 
-        <Button fullWidth onClick={() => addProduct(product)}>
+        <Button fullWidth onClick={() => cartAddProduct(product)}>
           Add to cart
         </Button>
       </div>

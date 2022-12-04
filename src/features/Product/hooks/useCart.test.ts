@@ -21,7 +21,7 @@ describe('useCart', () => {
     const { result } = makeSut()
 
     act(() => {
-      result.current.setCartIsOpen(true)
+      result.current.cartSetIsOpen(true)
     })
 
     expect(result.current.cartIsOpen).toEqual(true)
@@ -34,7 +34,7 @@ describe('useCart', () => {
 
     act(() => {
       // @ts-ignore
-      result.current.addProduct(product)
+      result.current.cartAddProduct(product)
     })
 
     expect(result.current.cartProducts).toEqual([product])
@@ -48,12 +48,12 @@ describe('useCart', () => {
 
     act(() => {
       // @ts-ignore
-      result.current.addProduct(product)
+      result.current.cartAddProduct(product)
     })
 
     act(() => {
       // @ts-ignore
-      result.current.addProduct(product)
+      result.current.cartAddProduct(product)
     })
 
     expect(result.current.cartProducts).toEqual([product])

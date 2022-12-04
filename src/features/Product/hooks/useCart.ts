@@ -7,7 +7,7 @@ export const useCart = () => {
     useRecoilState<Product[]>(StateCartProducts)
   const [cartIsOpen, setCartIsOpen] = useRecoilState<boolean>(StateCartOpen)
 
-  const addProduct = (product: Product) => {
+  const cartAddProduct = (product: Product) => {
     const hasProduct = cartProducts.find(({ id }) => id === product.id)
 
     if (!hasProduct) {
@@ -18,9 +18,9 @@ export const useCart = () => {
   }
 
   return {
-    addProduct,
     cartProducts,
     cartIsOpen,
-    setCartIsOpen,
+    cartSetIsOpen: setCartIsOpen,
+    cartAddProduct,
   }
 }
