@@ -19,6 +19,7 @@ export const useCart = () => {
 
   return {
     cartProducts,
+    cartProductsQuantity: cartProducts.length,
     cartIsOpen,
     cartSetIsOpen: setCartIsOpen,
     cartAddProduct,

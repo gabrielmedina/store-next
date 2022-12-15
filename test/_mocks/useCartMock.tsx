@@ -6,6 +6,7 @@ const useCartMock = useCart as jest.Mock
 
 const useCartMockReturn = {
   cartProducts: [],
+  cartProductsQuantity: 0,
   cartIsOpen: false,
   cartSetIsOpen: jest.fn(),
   cartAddProduct: jest.fn(),
