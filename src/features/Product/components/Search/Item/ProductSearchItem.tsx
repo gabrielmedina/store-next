@@ -3,6 +3,7 @@ import { formatyMoney } from 'src/utils'
 import { Button, Card, IconCart } from 'src/components'
 import { useCart } from 'src/features/Product/hooks'
 import { Product } from 'src/graphql'
+import styles from './ProductSearchItem.module.scss'
 
 export type TProductSearchItemProps = {
   product: Product
@@ -15,7 +16,7 @@ export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
 
   /* istanbul ignore next */
   return (
-    <Link href={`/product/${product.slug}`}>
+    <Link href={`/product/${product.slug}`} className={styles.link}>
       <Card
         title={product.name}
         description={formatyMoney(product.price)}
@@ -33,6 +34,7 @@ export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
               event.preventDefault()
               cartAddProduct(product)
             }}
+            className={styles.button}
           >
             <IconCart title={`Add ${product.name} to cart`} />
           </Button>
