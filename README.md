@@ -6,7 +6,7 @@
 
 To run this project you'll need:
 
-- nodejs 16.14.0
+- nodejs 18.12.1
 
 ### 📦 Dependencies
 
