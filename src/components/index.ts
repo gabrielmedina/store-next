@@ -9,6 +9,7 @@ export * from './shared/Card/Card'
 export * from './shared/Dialog/Dialog'
 export * from './shared/Breadcrumb/Breadcrumb'
 export * from './shared/Pagination/Pagination'
+export * from './shared/Badge/Badge'
 
 export * from './icons/Plus/Plus'
 export * from './icons/Cart/Cart'
