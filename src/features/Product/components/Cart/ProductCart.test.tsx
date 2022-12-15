@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, act } from '@testing-library/react'
+import { fireEvent, render, screen, act, waitFor } from '@testing-library/react'
 import { useCartMock, useCartMockReturn } from 'test/_mocks/useCartMock'
 import { ProductCart } from './ProductCart'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
@@ -22,9 +22,12 @@ describe('ProductCart', () => {
   })
 
   it('should display products quantity when has one product on cart', () => {
+    const products = [ProductsStub[0]]
+
     useCartMock.mockReturnValue({
       ...useCartMockReturn,
-      cartProducts: [ProductsStub[0]],
+      cartProducts: products,
+      cartProductsQuantity: products.length,
     })
 
     makeSut()
@@ -32,25 +35,31 @@ describe('ProductCart', () => {
     expect(screen.getByText('With 1 product')).toBeInTheDocument()
   })
 
-  it('should display products quantity when has products on cart', () => {
+  it('should display products quantity when has products on cart', async () => {
     const products = ProductsStub
 
     useCartMock.mockReturnValue({
       ...useCartMockReturn,
       cartProducts: products,
+      cartProductsQuantity: products.length,
     })
 
     makeSut()
 
-    expect(
-      screen.getByText(`With ${products.length} products`)
-    ).toBeInTheDocument()
+    await waitFor(() =>
+      expect(
+        screen.getByText(`With ${products.length} products`)
+      ).toBeInTheDocument()
+    )
   })
 
   it('should display Go to checkout when has products on cart', () => {
+    const products = ProductsStub
+
     useCartMock.mockReturnValue({
       ...useCartMockReturn,
-      cartProducts: ProductsStub,
+      cartProducts: products,
+      cartProductsQuantity: products.length,
     })
 
     makeSut()

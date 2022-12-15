@@ -3,12 +3,13 @@ import { useCart } from 'src/features/Product/hooks'
 import { ProductCartList } from './List/ProductCartList'
 
 export const ProductCart: React.FC = () => {
-  const { cartProducts, cartIsOpen, cartSetIsOpen } = useCart()
+  const { cartProducts, cartProductsQuantity, cartIsOpen, cartSetIsOpen } =
+    useCart()
 
   const subtitle = () => {
-    if (cartProducts.length === 0) return 'Your cart is empty'
-    if (cartProducts.length === 1) return 'With 1 product'
-    return `With ${cartProducts.length} products`
+    if (cartProductsQuantity === 0) return 'Your cart is empty'
+    if (cartProductsQuantity === 1) return 'With 1 product'
+    return `With ${cartProductsQuantity} products`
   }
 
   return (
@@ -18,7 +19,7 @@ export const ProductCart: React.FC = () => {
       subtitle={subtitle()}
       onClose={() => cartSetIsOpen(false)}
       footer={
-        cartProducts.length > 0 && <Button fullWidth>Go to checkout</Button>
+        cartProductsQuantity > 0 && <Button fullWidth>Go to checkout</Button>
       }
     >
       {<ProductCartList products={cartProducts} />}
