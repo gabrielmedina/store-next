@@ -41,3 +41,13 @@
   align-items: center;
   justify-content: flex-end;
 }
+
+.cartButton {
+  position: relative;
+}
+
+.cartButtonCount {
+  position: absolute;
+  top: -$unit-0050;
+  right: -$unit-0050;
+}
