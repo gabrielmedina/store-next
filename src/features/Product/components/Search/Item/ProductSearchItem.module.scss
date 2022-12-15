@@ -1,17 +1,17 @@
 .link {
   display: block;
-  transition: 0.3s ease;
+  transition: transform 0.3s ease;
 
-  &:focus,
-  &:focus-within,
-  &:hover {
-    @media (hover: hover) and (pointer: fine) {
+  @media (hover: hover) and (pointer: fine) {
+    &:focus,
+    &:focus-within,
+    &:hover {
       transform: translateY(-$unit-0200);
-    }
 
-    .button {
-      opacity: 1;
-      transform: translateY(0);
+      .button {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   }
 }
@@ -19,12 +19,12 @@
 .button {
   @media (hover: hover) and (pointer: fine) {
     opacity: 0;
-    transform: translateY($unit-0200);
     transition: opacity 0.3s ease, transform 0.3s ease;
-  }
+    transform: translateY($unit-0200);
 
-  &:focus {
-    opacity: 1;
-    transform: translateY(0);
+    &:focus {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }

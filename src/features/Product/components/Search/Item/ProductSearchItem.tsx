@@ -27,17 +27,18 @@ export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
           height: product.cover?.height || undefined,
         }}
         cta={
-          <Button
-            element="button"
-            rounded
-            onClick={(event) => {
-              event.preventDefault()
-              cartAddProduct(product)
-            }}
-            className={styles.button}
-          >
-            <IconCart title={`Add ${product.name} to cart`} />
-          </Button>
+          <div className={styles.button}>
+            <Button
+              element="button"
+              rounded
+              onClick={(event) => {
+                event.preventDefault()
+                cartAddProduct(product)
+              }}
+            >
+              <IconCart title={`Add ${product.name} to cart`} />
+            </Button>
+          </div>
         }
       />
     </Link>
