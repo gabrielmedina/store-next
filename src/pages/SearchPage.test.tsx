@@ -17,6 +17,7 @@ jest.mock('next/router', () => ({
 jest.mock('src/features/Product/usecases')
 
 const makeSut = ({
+  term,
   products,
   loading = false,
   pages = {
@@ -25,7 +26,12 @@ const makeSut = ({
   },
 }: TPageSearchProps) => {
   return render(
-    <SearchPage products={products} pages={pages} loading={loading} />
+    <SearchPage
+      term={term}
+      products={products}
+      pages={pages}
+      loading={loading}
+    />
   )
 }
 
@@ -63,13 +69,14 @@ describe('SearchPage', () => {
   it('should display empty message when product list is empty', () => {
     // @ts-ignore
     makeSut({
+      term: 'animals',
       products: {
         total: 0,
         data: [],
       },
     })
 
-    expect(screen.getByText('Ops! No results found.'))
+    expect(screen.getByText('No results found for "animals"'))
   })
 
   it('should call productsSearchUseCase in getServerSideProps', () => {
