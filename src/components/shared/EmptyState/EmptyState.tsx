@@ -22,7 +22,7 @@ export const EmptyState: React.FC<TEmptyStateProps> = ({
       {image && (
         <figure className={styles.figure}>
           <div className={styles.image}>
-            <Image {...image} />
+            <Image {...image} alt={image.alt} />
           </div>
         </figure>
       )}
