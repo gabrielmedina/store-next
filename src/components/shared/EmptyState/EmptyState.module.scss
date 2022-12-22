@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: $unit-0500;
+
+  @media screen and (min-width: 768px) {
+    padding: $unit-1000 0;
+    align-items: center;
+  }
+}
+
+.figure {
+  width: 100%;
+  max-width: 400px;
+  margin: 0;
+}
+
+.image {
+  position: relative;
+  display: block;
+  padding: 0 0 100%;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.6rem;
+  color: var(--color-primary-500);
+
+  @media screen and (min-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+.text {
+  margin: 0;
+  color: var(--color-primary-300);
+  font-size: 1rem;
+  line-height: 1.4;
+
+  @media screen and (min-width: 768px) {
+    font-size: 1.1rem;
+  }
+}
