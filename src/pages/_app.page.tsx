@@ -1,4 +1,5 @@
 import App, { AppContext, AppProps } from 'next/app'
+import NextNProgress from 'nextjs-progressbar'
 import { RecoilRoot } from 'recoil'
 import { ApolloProvider } from '@apollo/client'
 import { getApolloClient } from 'src/libs'
@@ -10,11 +11,14 @@ function StoreApp({ Component, pageProps }: AppProps) {
   const apolloClient = getApolloClient()
 
   return (
-    <ApolloProvider client={apolloClient}>
-      <RecoilRoot>
-        <Component {...pageProps} />
-      </RecoilRoot>
-    </ApolloProvider>
+    <>
+      <NextNProgress color="#13171a" />
+      <ApolloProvider client={apolloClient}>
+        <RecoilRoot>
+          <Component {...pageProps} />
+        </RecoilRoot>
+      </ApolloProvider>
+    </>
   )
 }
 
