@@ -1,13 +1,18 @@
 .header {
+  background: var(--color-white);
+  margin-bottom: $unit-0600;
+}
+
+.container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas: 'logo nav' 'search search';
   align-items: center;
+  max-width: 1400px;
   gap: $unit-0400;
   padding: $unit-0400 $unit-0600;
-  background: var(--color-white);
-  margin-bottom: $unit-0600;
+  margin: 0 auto;
 
   @media screen and (min-width: $breakpoint-ty) {
     padding: $unit-0600;
@@ -17,11 +22,12 @@
     grid-template-columns: auto 1fr 1fr;
     grid-template-areas: 'logo search nav';
     gap: $unit-0800;
-    padding: $unit-1200 $unit-1600;
+    padding: $unit-1200 $unit-0600;
     margin-bottom: $unit-1400;
   }
 
   @media screen and (min-width: $breakpoint-lg) {
+    padding: $unit-1200 $unit-0600;
   }
 }
 

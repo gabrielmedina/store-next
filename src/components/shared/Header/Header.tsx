@@ -9,29 +9,31 @@ export const Header: React.FC = () => {
 
   return (
     <header data-testid="header" className={styles.header}>
-      <h1 className={styles.logo}>
-        <Link href="/">
-          <Logo />
-        </Link>
-      </h1>
+      <div className={styles.container}>
+        <h1 className={styles.logo}>
+          <Link href="/">
+            <Logo />
+          </Link>
+        </h1>
 
-      <ProductSearchForm className={styles.search} />
+        <ProductSearchForm className={styles.search} />
 
-      <nav className={styles.nav}>
-        <Button
-          variant="secondary"
-          rounded
-          onClick={() => cartSetIsOpen(true)}
-          className={styles.cartButton}
-        >
-          <IconCart title="Open cart" />
-          {cartProductsQuantity > 0 && (
-            <Badge className={styles.cartButtonCount}>
-              {cartProductsQuantity}
-            </Badge>
-          )}
-        </Button>
-      </nav>
+        <nav className={styles.nav}>
+          <Button
+            variant="secondary"
+            rounded
+            onClick={() => cartSetIsOpen(true)}
+            className={styles.cartButton}
+          >
+            <IconCart title="Open cart" />
+            {cartProductsQuantity > 0 && (
+              <Badge className={styles.cartButtonCount}>
+                {cartProductsQuantity}
+              </Badge>
+            )}
+          </Button>
+        </nav>
+      </div>
     </header>
   )
 }
