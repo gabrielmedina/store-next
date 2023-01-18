@@ -1,4 +1,4 @@
-import { productDetailUseCase } from './productDetailUseCase'
+import { fetchProductUseCase } from './fetchProductUseCase'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
 import { ParsedUrlQuery } from 'querystring'
 import { GET_PRODUCT_BY_SLUG_QUERY } from 'src/graphql'
@@ -20,13 +20,13 @@ jest.mock('src/libs', () => ({
   }),
 }))
 
-describe('ProductDetailUseCase', () => {
+describe('FetchProductUseCase', () => {
   it('should search product with correctly queries', async () => {
     const context = {
       query: { slug: product.slug } as ParsedUrlQuery,
     }
 
-    await productDetailUseCase({ query: context.query })
+    await fetchProductUseCase({ query: context.query })
 
     expect(onApolloClientQuery).toBeCalledWith({
       query: GET_PRODUCT_BY_SLUG_QUERY,
@@ -41,7 +41,7 @@ describe('ProductDetailUseCase', () => {
       query: { slug: product.slug } as ParsedUrlQuery,
     }
 
-    const response = await productDetailUseCase({ query: context.query })
+    const response = await fetchProductUseCase({ query: context.query })
 
     expect(response).toEqual(
       expect.objectContaining({

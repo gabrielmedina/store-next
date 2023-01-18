@@ -1,2 +1,2 @@
-export * from './productsSearchUseCase'
-export * from './productDetailUseCase'
+export * from './fetchProductsUseCase'
+export * from './fetchProductUseCase'

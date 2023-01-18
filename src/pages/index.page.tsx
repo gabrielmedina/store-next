@@ -7,11 +7,11 @@ import {
   Pagination,
 } from 'src/components'
 import { ProductCart, ProductSearchList } from 'src/features/Product/components'
-import { productsSearchUseCase } from 'src/features/Product/usecases'
+import { fetchProductsUseCase } from 'src/features/Product/usecases'
 import { Product } from 'src/graphql'
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const response = await productsSearchUseCase({ query })
+  const response = await fetchProductsUseCase({ query })
 
   return {
     props: response,

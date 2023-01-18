@@ -6,7 +6,7 @@ import {
 import { GetServerSidePropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
-import { productDetailUseCase } from 'src/features/Product/usecases'
+import { fetchProductUseCase } from 'src/features/Product/usecases'
 import ProductPage, {
   getServerSideProps,
   TProductPageProps,
@@ -71,13 +71,13 @@ describe('ProductPage', () => {
     expect(screen.queryByTestId('product-detail')).not.toBeInTheDocument()
   })
 
-  it('should call productDetailUseCase in getServerSideProps', () => {
+  it('should call fetchProductUseCase in getServerSideProps', () => {
     const context = {
       query: { slug: product.slug } as ParsedUrlQuery,
     }
 
     getServerSideProps(context as GetServerSidePropsContext)
 
-    expect(productDetailUseCase).toBeCalledWith(context)
+    expect(fetchProductUseCase).toBeCalledWith(context)
   })
 })
