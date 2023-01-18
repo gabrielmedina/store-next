@@ -1,5 +1,8 @@
 import { render, screen } from '@testing-library/react'
-import { useCartMock, useCartMockReturn } from 'test/_mocks/useCartMock'
+import {
+  useCartStateMock,
+  useCartStateMockReturn,
+} from 'test/_mocks/useCartStateMock'
 import { ProductSearchList, TProductSearchListProps } from './ProductSearchList'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
 
@@ -9,7 +12,7 @@ const makeSut = ({ products }: TProductSearchListProps) => {
 
 describe('ProductSearchList', () => {
   beforeEach(() => {
-    useCartMock.mockReturnValue(useCartMockReturn)
+    useCartStateMock.mockReturnValue(useCartStateMockReturn)
   })
 
   afterEach(() => {

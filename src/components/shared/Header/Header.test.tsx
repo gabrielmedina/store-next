@@ -1,5 +1,8 @@
 import { fireEvent, render, screen, act } from '@testing-library/react'
-import { useCartMock, useCartMockReturn } from 'test/_mocks/useCartMock'
+import {
+  useCartStateMock,
+  useCartStateMockReturn,
+} from 'test/_mocks/useCartStateMock'
 import { Header } from './Header'
 
 const makeSut = () => {
@@ -8,7 +11,7 @@ const makeSut = () => {
 
 describe('Header', () => {
   beforeEach(() => {
-    useCartMock.mockReturnValue(useCartMockReturn)
+    useCartStateMock.mockReturnValue(useCartStateMockReturn)
   })
 
   afterEach(() => {
@@ -30,6 +33,6 @@ describe('Header', () => {
       fireEvent.click(screen.getByRole('button'))
     })
 
-    expect(useCartMockReturn.cartSetIsOpen).toBeCalledWith(true)
+    expect(useCartStateMockReturn.setIsVisible).toBeCalledWith(true)
   })
 })

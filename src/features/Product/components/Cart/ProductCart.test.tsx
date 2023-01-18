@@ -1,7 +1,10 @@
 import { fireEvent, render, screen, act, waitFor } from '@testing-library/react'
-import { useCartMock, useCartMockReturn } from 'test/_mocks/useCartMock'
-import { ProductCart } from './ProductCart'
+import {
+  useCartStateMock,
+  useCartStateMockReturn,
+} from 'test/_mocks/useCartStateMock'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
+import { ProductCart } from './ProductCart'
 
 const makeSut = () => {
   return render(<ProductCart />)
@@ -13,7 +16,7 @@ describe('ProductCart', () => {
   })
 
   it('should render correctly', () => {
-    useCartMock.mockReturnValue(useCartMockReturn)
+    useCartStateMock.mockReturnValue(useCartStateMockReturn)
 
     makeSut()
 
@@ -24,10 +27,9 @@ describe('ProductCart', () => {
   it('should display products quantity when has one product on cart', () => {
     const products = [ProductsStub[0]]
 
-    useCartMock.mockReturnValue({
-      ...useCartMockReturn,
-      cartProducts: products,
-      cartProductsQuantity: products.length,
+    useCartStateMock.mockReturnValue({
+      ...useCartStateMockReturn,
+      products: products,
     })
 
     makeSut()
@@ -38,10 +40,9 @@ describe('ProductCart', () => {
   it('should display products quantity when has products on cart', async () => {
     const products = ProductsStub
 
-    useCartMock.mockReturnValue({
-      ...useCartMockReturn,
-      cartProducts: products,
-      cartProductsQuantity: products.length,
+    useCartStateMock.mockReturnValue({
+      ...useCartStateMockReturn,
+      products: products,
     })
 
     makeSut()
@@ -56,10 +57,9 @@ describe('ProductCart', () => {
   it('should display Go to checkout when has products on cart', () => {
     const products = ProductsStub
 
-    useCartMock.mockReturnValue({
-      ...useCartMockReturn,
-      cartProducts: products,
-      cartProductsQuantity: products.length,
+    useCartStateMock.mockReturnValue({
+      ...useCartStateMockReturn,
+      products: products,
     })
 
     makeSut()
@@ -68,8 +68,8 @@ describe('ProductCart', () => {
   })
 
   it('should hide Dialog when close button has clicked', () => {
-    useCartMock.mockReturnValue({
-      ...useCartMockReturn,
+    useCartStateMock.mockReturnValue({
+      ...useCartStateMockReturn,
       cartIsOpen: true,
     })
 
@@ -80,6 +80,6 @@ describe('ProductCart', () => {
       fireEvent.click(close)
     })
 
-    expect(useCartMockReturn.cartSetIsOpen).toBeCalledWith(false)
+    expect(useCartStateMockReturn.setIsVisible).toBeCalledWith(false)
   })
 })

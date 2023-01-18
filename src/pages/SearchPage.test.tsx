@@ -1,7 +1,10 @@
 import { render, screen } from '@testing-library/react'
 import { GetServerSidePropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { useCartMock, useCartMockReturn } from 'test/_mocks/useCartMock'
+import {
+  useCartStateMock,
+  useCartStateMockReturn,
+} from 'test/_mocks/useCartStateMock'
 import { productsSearchUseCase } from 'src/features/Product/usecases'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
 import SearchPage, { getServerSideProps, TPageSearchProps } from './index.page'
@@ -37,7 +40,7 @@ const makeSut = ({
 
 describe('SearchPage', () => {
   beforeEach(() => {
-    useCartMock.mockReturnValue(useCartMockReturn)
+    useCartStateMock.mockReturnValue(useCartStateMockReturn)
   })
 
   afterEach(() => {

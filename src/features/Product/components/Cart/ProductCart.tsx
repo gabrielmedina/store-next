@@ -1,28 +1,27 @@
 import { Button, Dialog } from 'src/components'
-import { useCart } from 'src/features/Product/hooks'
+import { useCartState } from 'src/features/Product/states'
 import { ProductCartList } from './List/ProductCartList'
 
 export const ProductCart: React.FC = () => {
-  const { cartProducts, cartProductsQuantity, cartIsOpen, cartSetIsOpen } =
-    useCart()
+  const { products, isVisible, setIsVisible } = useCartState()
+
+  const productsQuantity = products.length
 
   const subtitle = () => {
-    if (cartProductsQuantity === 0) return 'Your cart is empty'
-    if (cartProductsQuantity === 1) return 'With 1 product'
-    return `With ${cartProductsQuantity} products`
+    if (productsQuantity === 0) return 'Your cart is empty'
+    if (productsQuantity === 1) return 'With 1 product'
+    return `With ${productsQuantity} products`
   }
 
   return (
     <Dialog
-      open={cartIsOpen}
+      open={isVisible}
       title="My cart"
       subtitle={subtitle()}
-      onClose={() => cartSetIsOpen(false)}
-      footer={
-        cartProductsQuantity > 0 && <Button fullWidth>Go to checkout</Button>
-      }
+      onClose={() => setIsVisible(false)}
+      footer={productsQuantity > 0 && <Button fullWidth>Go to checkout</Button>}
     >
-      {<ProductCartList products={cartProducts} />}
+      {<ProductCartList products={products} />}
     </Dialog>
   )
 }
