@@ -70,7 +70,7 @@ describe('ProductCart', () => {
   it('should hide Dialog when close button has clicked', () => {
     useCartStateMock.mockReturnValue({
       ...useCartStateMockReturn,
-      cartIsOpen: true,
+      isVisible: true,
     })
 
     makeSut()
