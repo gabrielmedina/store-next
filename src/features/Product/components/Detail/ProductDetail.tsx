@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import { Button } from 'src/components'
 import { formatyMoney } from 'src/utils'
-import { useCart } from 'src/features/Product/hooks'
 import { Product } from 'src/graphql'
+import { useCartState } from 'src/features/Product/states'
 import styles from './ProductDetail.module.scss'
 
 export type TProductDetailProps = {
@@ -10,7 +10,7 @@ export type TProductDetailProps = {
 }
 
 export const ProductDetail: React.FC<TProductDetailProps> = ({ product }) => {
-  const { cartAddProduct } = useCart()
+  const { addProduct } = useCartState()
 
   if (!product) return null
 
@@ -24,7 +24,7 @@ export const ProductDetail: React.FC<TProductDetailProps> = ({ product }) => {
 
         <p className={styles.price}>{formatyMoney(product.price)}</p>
 
-        <Button fullWidth onClick={() => cartAddProduct(product)}>
+        <Button fullWidth onClick={() => addProduct(product)}>
           Add to cart
         </Button>
       </div>

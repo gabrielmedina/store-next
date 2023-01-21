@@ -1,8 +1,11 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import { useCartMock, useCartMockReturn } from 'test/_mocks/useCartMock'
-import { ProductDetail, TProductDetailProps } from './ProductDetail'
+import {
+  useCartStateMock,
+  useCartStateMockReturn,
+} from 'test/_mocks/useCartStateMock'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
 import { formatyMoney } from 'src/utils'
+import { ProductDetail, TProductDetailProps } from './ProductDetail'
 
 const makeSut = ({ product }: TProductDetailProps) => {
   return render(<ProductDetail product={product} />)
@@ -10,7 +13,7 @@ const makeSut = ({ product }: TProductDetailProps) => {
 
 describe('ProductDetail', () => {
   beforeEach(() => {
-    useCartMock.mockReturnValue(useCartMockReturn)
+    useCartStateMock.mockReturnValue(useCartStateMockReturn)
   })
 
   afterEach(() => {
@@ -46,7 +49,7 @@ describe('ProductDetail', () => {
 
     fireEvent.click(screen.getByText('Add to cart'))
 
-    expect(useCartMockReturn.cartAddProduct).toHaveBeenCalledWith(product)
+    expect(useCartStateMockReturn.addProduct).toHaveBeenCalledWith(product)
   })
 
   it('should open the cart when user click in Add to cart', () => {
@@ -56,6 +59,6 @@ describe('ProductDetail', () => {
 
     fireEvent.click(screen.getByText('Add to cart'))
 
-    expect(useCartMockReturn.cartAddProduct).toHaveBeenCalledWith(product)
+    expect(useCartStateMockReturn.addProduct).toHaveBeenCalledWith(product)
   })
 })

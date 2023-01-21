@@ -1,13 +1,13 @@
 import { getAlgoliaClient } from 'src/libs'
 import { ParsedUrlQuery } from 'querystring'
 
-type TProductsSearchUseCase = {
+type TFetchProductsFromAlgolia = {
   query: ParsedUrlQuery
 }
 
-export const productsSearchUseCase = async ({
+export const fetchProductsFromAlgolia = async ({
   query,
-}: TProductsSearchUseCase) => {
+}: TFetchProductsFromAlgolia) => {
   const algoliaClient = getAlgoliaClient({
     index: 'dev_store',
   })

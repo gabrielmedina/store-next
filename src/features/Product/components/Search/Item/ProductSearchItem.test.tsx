@@ -1,8 +1,11 @@
 import { act, fireEvent, render, screen } from '@testing-library/react'
-import { useCartMock, useCartMockReturn } from 'test/_mocks/useCartMock'
-import { ProductSearchItem, TProductSearchItemProps } from './ProductSearchItem'
-import { formatyMoney } from 'src/utils'
+import {
+  useCartStateMock,
+  useCartStateMockReturn,
+} from 'test/_mocks/useCartStateMock'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
+import { formatyMoney } from 'src/utils'
+import { ProductSearchItem, TProductSearchItemProps } from './ProductSearchItem'
 
 const makeSut = ({ product }: TProductSearchItemProps) => {
   return render(<ProductSearchItem product={product} />)
@@ -10,7 +13,7 @@ const makeSut = ({ product }: TProductSearchItemProps) => {
 
 describe('ProductSearchItem', () => {
   beforeEach(() => {
-    useCartMock.mockReturnValue(useCartMockReturn)
+    useCartStateMock.mockReturnValue(useCartStateMockReturn)
   })
 
   afterEach(() => {
@@ -36,6 +39,6 @@ describe('ProductSearchItem', () => {
       fireEvent.click(screen.getByTitle(`Add ${product.name} to cart`))
     })
 
-    expect(useCartMockReturn.cartAddProduct).toHaveBeenCalledWith(product)
+    expect(useCartStateMockReturn.addProduct).toHaveBeenCalledWith(product)
   })
 })

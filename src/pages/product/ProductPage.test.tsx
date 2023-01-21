@@ -1,9 +1,12 @@
 import { render, screen } from '@testing-library/react'
-import { useCartMock, useCartMockReturn } from 'test/_mocks/useCartMock'
+import {
+  useCartStateMock,
+  useCartStateMockReturn,
+} from 'test/_mocks/useCartStateMock'
 import { GetServerSidePropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
-import { productDetailUseCase } from 'src/features/Product/usecases'
+import { fetchProductFromApollo } from 'src/features/Product/usecases'
 import ProductPage, {
   getServerSideProps,
   TProductPageProps,
@@ -42,7 +45,7 @@ const makeSut = (props: TProductPageProps) => {
 
 describe('ProductPage', () => {
   beforeEach(() => {
-    useCartMock.mockReturnValue(useCartMockReturn)
+    useCartStateMock.mockReturnValue(useCartStateMockReturn)
   })
 
   it('should render correctly', () => {
@@ -68,13 +71,13 @@ describe('ProductPage', () => {
     expect(screen.queryByTestId('product-detail')).not.toBeInTheDocument()
   })
 
-  it('should call productDetailUseCase in getServerSideProps', () => {
+  it('should call fetchProductFromApollo in getServerSideProps', () => {
     const context = {
       query: { slug: product.slug } as ParsedUrlQuery,
     }
 
     getServerSideProps(context as GetServerSidePropsContext)
 
-    expect(productDetailUseCase).toBeCalledWith(context)
+    expect(fetchProductFromApollo).toBeCalledWith(context)
   })
 })

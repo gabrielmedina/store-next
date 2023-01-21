@@ -1,11 +1,13 @@
 import Link from 'next/link'
 import { Logo, Button, IconCart, Badge } from 'src/components'
 import { ProductSearchForm } from 'src/features/Product/components'
-import { useCart } from 'src/features/Product/hooks'
+import { useCartState } from 'src/features/Product/states'
 import styles from './Header.module.scss'
 
 export const Header: React.FC = () => {
-  const { cartSetIsOpen, cartProductsQuantity } = useCart()
+  const { setIsVisible, products } = useCartState()
+
+  const productsQuantity = products.length
 
   return (
     <header data-testid="header" className={styles.header}>
@@ -22,13 +24,13 @@ export const Header: React.FC = () => {
           <Button
             variant="secondary"
             rounded
-            onClick={() => cartSetIsOpen(true)}
+            onClick={() => setIsVisible(true)}
             className={styles.cartButton}
           >
             <IconCart title="Open cart" />
-            {cartProductsQuantity > 0 && (
+            {productsQuantity > 0 && (
               <Badge className={styles.cartButtonCount}>
-                {cartProductsQuantity}
+                {productsQuantity}
               </Badge>
             )}
           </Button>

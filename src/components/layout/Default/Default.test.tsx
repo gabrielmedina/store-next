@@ -1,15 +1,22 @@
 import { render, screen } from '@testing-library/react'
-import { ButtonHTMLAttributes } from 'react'
-import { useCartMock, useCartMockReturn } from 'test/_mocks/useCartMock'
+import { ReactChild } from 'react'
+import {
+  useCartStateMock,
+  useCartStateMockReturn,
+} from 'test/_mocks/useCartStateMock'
 import { LayoutDefault } from './Default'
 
-const makeSut = (props?: ButtonHTMLAttributes<HTMLButtonElement>) => {
-  return render(<LayoutDefault>{props?.children}</LayoutDefault>)
+const makeSut = (children?: ReactChild) => {
+  return render(<LayoutDefault>{children}</LayoutDefault>)
 }
 
 describe('LayoutDefault', () => {
   beforeEach(() => {
-    useCartMock.mockReturnValue(useCartMockReturn)
+    useCartStateMock.mockReturnValue(useCartStateMockReturn)
+  })
+
+  afterEach(() => {
+    jest.clearAllMocks()
   })
 
   it('should render correctly', () => {
@@ -20,7 +27,7 @@ describe('LayoutDefault', () => {
   })
 
   it('should accept children prop', () => {
-    makeSut({ children: <>Children</> })
+    makeSut(<>Children</>)
 
     expect(screen.getByText('Children')).toBeInTheDocument()
   })

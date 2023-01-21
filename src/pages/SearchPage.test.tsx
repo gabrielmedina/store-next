@@ -1,8 +1,11 @@
 import { render, screen } from '@testing-library/react'
 import { GetServerSidePropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { useCartMock, useCartMockReturn } from 'test/_mocks/useCartMock'
-import { productsSearchUseCase } from 'src/features/Product/usecases'
+import {
+  useCartStateMock,
+  useCartStateMockReturn,
+} from 'test/_mocks/useCartStateMock'
+import { fetchProductsFromAlgolia } from 'src/features/Product/usecases'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
 import SearchPage, { getServerSideProps, TPageSearchProps } from './index.page'
 
@@ -37,7 +40,7 @@ const makeSut = ({
 
 describe('SearchPage', () => {
   beforeEach(() => {
-    useCartMock.mockReturnValue(useCartMockReturn)
+    useCartStateMock.mockReturnValue(useCartStateMockReturn)
   })
 
   afterEach(() => {
@@ -79,7 +82,7 @@ describe('SearchPage', () => {
     expect(screen.getByText('No results found for "animals"'))
   })
 
-  it('should call productsSearchUseCase in getServerSideProps', () => {
+  it('should call fetchProductsFromAlgolia in getServerSideProps', () => {
     const page = '2'
     const context = {
       query: { page } as ParsedUrlQuery,
@@ -87,6 +90,6 @@ describe('SearchPage', () => {
 
     getServerSideProps(context as GetServerSidePropsContext)
 
-    expect(productsSearchUseCase).toBeCalledWith(context)
+    expect(fetchProductsFromAlgolia).toBeCalledWith(context)
   })
 })

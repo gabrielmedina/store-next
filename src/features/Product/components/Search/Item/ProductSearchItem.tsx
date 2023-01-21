@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { formatyMoney } from 'src/utils'
 import { Button, Card, IconCart } from 'src/components'
-import { useCart } from 'src/features/Product/hooks'
+import { useCartState } from 'src/features/Product/states'
 import { Product } from 'src/graphql'
 import styles from './ProductSearchItem.module.scss'
 
@@ -12,7 +12,7 @@ export type TProductSearchItemProps = {
 export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
   product,
 }) => {
-  const { cartAddProduct } = useCart()
+  const { addProduct } = useCartState()
 
   /* istanbul ignore next */
   return (
@@ -33,7 +33,7 @@ export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
               rounded
               onClick={(event) => {
                 event.preventDefault()
-                cartAddProduct(product)
+                addProduct(product)
               }}
             >
               <IconCart title={`Add ${product.name} to cart`} />
