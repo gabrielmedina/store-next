@@ -7,7 +7,7 @@ import {
   Pagination,
 } from 'src/components'
 import { ProductCart, ProductSearchList } from 'src/features/Product/components'
-import { fetchProductsFromAlgolia } from 'src/features/Product/usecases'
+import { fetchProductsFromAlgolia } from 'src/features/Product/api'
 import { Product } from 'src/graphql'
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {

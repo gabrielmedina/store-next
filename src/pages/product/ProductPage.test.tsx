@@ -6,7 +6,7 @@ import {
 import { GetServerSidePropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
-import { fetchProductFromApollo } from 'src/features/Product/usecases'
+import { fetchProductFromApollo } from 'src/features/Product/api'
 import ProductPage, {
   getServerSideProps,
   TProductPageProps,

@@ -5,7 +5,7 @@ import {
   useCartStateMock,
   useCartStateMockReturn,
 } from 'test/_mocks/useCartStateMock'
-import { fetchProductsFromAlgolia } from 'src/features/Product/usecases'
+import { fetchProductsFromAlgolia } from 'src/features/Product/api'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
 import SearchPage, { getServerSideProps, TPageSearchProps } from './index.page'
 
