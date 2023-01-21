@@ -37,7 +37,7 @@ jest.mock('next/router', () => ({
   },
 }))
 
-jest.mock('src/features/Product/usecases')
+jest.mock('src/features/Product/api')
 
 const makeSut = (props: TProductPageProps) => {
   return render(<ProductPage {...props} />)
