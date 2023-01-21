@@ -5,7 +5,7 @@ import {
   useCartStateMock,
   useCartStateMockReturn,
 } from 'test/_mocks/useCartStateMock'
-import { fetchProductsUseCase } from 'src/features/Product/usecases'
+import { fetchProductsFromAlgolia } from 'src/features/Product/usecases'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
 import SearchPage, { getServerSideProps, TPageSearchProps } from './index.page'
 
@@ -82,7 +82,7 @@ describe('SearchPage', () => {
     expect(screen.getByText('No results found for "animals"'))
   })
 
-  it('should call fetchProductsUseCase in getServerSideProps', () => {
+  it('should call fetchProductsFromAlgolia in getServerSideProps', () => {
     const page = '2'
     const context = {
       query: { page } as ParsedUrlQuery,
@@ -90,6 +90,6 @@ describe('SearchPage', () => {
 
     getServerSideProps(context as GetServerSidePropsContext)
 
-    expect(fetchProductsUseCase).toBeCalledWith(context)
+    expect(fetchProductsFromAlgolia).toBeCalledWith(context)
   })
 })

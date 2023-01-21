@@ -2,13 +2,13 @@ import { getApolloClient } from 'src/libs'
 import { GET_PRODUCT_BY_SLUG_QUERY } from 'src/graphql'
 import { ParsedUrlQuery } from 'querystring'
 
-type TFetchProductUseCaseProps = {
+type TFetchProductFromApolloProps = {
   query: ParsedUrlQuery
 }
 
-export const fetchProductUseCase = async ({
+export const fetchProductFromApollo = async ({
   query,
-}: TFetchProductUseCaseProps) => {
+}: TFetchProductFromApolloProps) => {
   const apolloClient = getApolloClient()
 
   const {

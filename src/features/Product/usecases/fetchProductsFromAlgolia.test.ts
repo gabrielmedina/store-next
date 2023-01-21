@@ -1,4 +1,4 @@
-import { fetchProductsUseCase } from './fetchProductsUseCase'
+import { fetchProductsFromAlgolia } from './fetchProductsFromAlgolia'
 
 const searchMock = jest.fn().mockImplementation(() => {
   return Promise.resolve({
@@ -15,23 +15,23 @@ jest.mock('src/libs', () => ({
   })),
 }))
 
-describe('FetchProductsUseCase', () => {
+describe('FetchProductsFromAlgolia', () => {
   afterEach(() => jest.clearAllMocks())
 
   it('should search products with correctly queries', async () => {
-    await fetchProductsUseCase({ query: { search: 'term' } })
+    await fetchProductsFromAlgolia({ query: { search: 'term' } })
 
     expect(searchMock).toBeCalledWith('term', { page: 0 })
   })
 
   it('should search products with correctly page', async () => {
-    await fetchProductsUseCase({ query: { search: 'term', page: '2' } })
+    await fetchProductsFromAlgolia({ query: { search: 'term', page: '2' } })
 
     expect(searchMock).toBeCalledWith('term', { page: 1 })
   })
 
   it('should return correctly props', async () => {
-    const response = await fetchProductsUseCase({
+    const response = await fetchProductsFromAlgolia({
       query: { search: 'term', page: '2' },
     })
 

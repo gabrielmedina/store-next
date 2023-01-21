@@ -1,2 +1,2 @@
-export * from './fetchProductsUseCase'
-export * from './fetchProductUseCase'
+export * from './fetchProductsFromAlgolia'
+export * from './fetchProductFromApollo'
