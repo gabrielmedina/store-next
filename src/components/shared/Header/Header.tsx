@@ -1,14 +1,13 @@
 import Link from 'next/link'
-import { Logo, Button, IconCart, Badge } from 'src/components'
-import { ProductSearchForm } from 'src/features/Product/components'
-import { useCartState } from 'src/features/Product/states'
+import { ReactChild } from 'react'
+import { Logo } from 'src/components'
 import styles from './Header.module.scss'
 
-export const Header: React.FC = () => {
-  const { setIsVisible, products } = useCartState()
+export type THeaderProps = {
+  nav?: ReactChild
+}
 
-  const productsQuantity = products.length
-
+export const Header: React.FC<THeaderProps> = ({ children, nav }) => {
   return (
     <header data-testid="header" className={styles.header}>
       <div className={styles.container}>
@@ -18,23 +17,9 @@ export const Header: React.FC = () => {
           </Link>
         </h1>
 
-        <ProductSearchForm className={styles.search} />
+        {children && <div className={styles.children}>{children}</div>}
 
-        <nav className={styles.nav}>
-          <Button
-            variant="secondary"
-            rounded
-            onClick={() => setIsVisible(true)}
-            className={styles.cartButton}
-          >
-            <IconCart title="Open cart" />
-            {productsQuantity > 0 && (
-              <Badge className={styles.cartButtonCount}>
-                {productsQuantity}
-              </Badge>
-            )}
-          </Button>
-        </nav>
+        {nav && <nav className={styles.nav}>{nav}</nav>}
       </div>
     </header>
   )

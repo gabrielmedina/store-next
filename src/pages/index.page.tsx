@@ -1,11 +1,6 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
-import {
-  Container,
-  EmptyState,
-  LayoutDefault,
-  Pagination,
-} from 'src/components'
+import { Container, EmptyState, LayoutSearch, Pagination } from 'src/components'
 import { ProductCart, ProductSearchList } from 'src/features/Product/components'
 import { fetchProductsFromAlgolia } from 'src/features/Product/api'
 import { Product } from 'src/graphql'
@@ -87,7 +82,7 @@ const SearchPage: NextPage<TPageSearchProps> = ({
         />
       </Head>
 
-      <LayoutDefault>{renderProductList()}</LayoutDefault>
+      <LayoutSearch>{renderProductList()}</LayoutSearch>
 
       <ProductCart />
     </>

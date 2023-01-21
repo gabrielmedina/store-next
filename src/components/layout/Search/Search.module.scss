@@ -1,0 +1,14 @@
+.container {
+  background: var(--color-gray-000);
+  min-height: 100vh;
+}
+
+.cartButton {
+  position: relative;
+}
+
+.cartButtonCount {
+  position: absolute;
+  top: -$unit-0050;
+  right: -$unit-0050;
+}

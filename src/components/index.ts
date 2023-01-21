@@ -1,4 +1,5 @@
 export * from './layout/Default/Default'
+export * from './layout/Search/Search'
 export * from './layout/shared/Container/Container'
 
 export * from './shared/Header/Header'
