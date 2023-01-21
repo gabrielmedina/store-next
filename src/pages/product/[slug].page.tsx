@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { Breadcrumb, Container, LayoutDefault } from 'src/components'
 import { ProductCart, ProductDetail } from 'src/features/Product/components'
-import { fetchProductFromApollo } from 'src/features/Product/usecases'
+import { fetchProductFromApollo } from 'src/features/Product/api'
 import { Product } from 'src/graphql'
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
