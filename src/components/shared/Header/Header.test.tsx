@@ -1,19 +1,11 @@
-import { fireEvent, render, screen, act } from '@testing-library/react'
-import {
-  useCartStateMock,
-  useCartStateMockReturn,
-} from 'test/_mocks/useCartStateMock'
-import { Header } from './Header'
+import { render, screen, act } from '@testing-library/react'
+import { Header, THeaderProps } from './Header'
 
-const makeSut = () => {
-  return render(<Header />)
+const makeSut = (props?: THeaderProps) => {
+  return render(<Header {...props} />)
 }
 
 describe('Header', () => {
-  beforeEach(() => {
-    useCartStateMock.mockReturnValue(useCartStateMockReturn)
-  })
-
   afterEach(() => {
     jest.clearAllMocks()
   })
@@ -22,17 +14,19 @@ describe('Header', () => {
     makeSut()
 
     expect(screen.getByTitle('Store')).toBeInTheDocument()
-    expect(screen.getByRole('form')).toBeInTheDocument()
-    expect(screen.getByRole('navigation')).toBeInTheDocument()
   })
 
-  it('should open product cart when button cart has clicked', () => {
-    makeSut()
-
-    act(() => {
-      fireEvent.click(screen.getByRole('button'))
+  it('should render with navigation', () => {
+    makeSut({
+      nav: (
+        <ul>
+          <li>
+            <a href="#">Link</a>
+          </li>
+        </ul>
+      ),
     })
 
-    expect(useCartStateMockReturn.setIsVisible).toBeCalledWith(true)
+    expect(screen.getByRole('navigation')).toBeInTheDocument()
   })
 })

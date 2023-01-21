@@ -7,7 +7,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
-  grid-template-areas: 'logo nav' 'search search';
+  grid-template-areas: 'logo nav' 'children children';
   align-items: center;
   max-width: 1630px;
   gap: $unit-0400;
@@ -20,7 +20,7 @@
 
   @media screen and (min-width: $breakpoint-md) {
     grid-template-columns: auto 1fr 1fr;
-    grid-template-areas: 'logo search nav';
+    grid-template-areas: 'logo children nav';
     gap: $unit-0800;
     padding: $unit-1200 $unit-0600;
     margin-bottom: $unit-1400;
@@ -36,8 +36,8 @@
   grid-area: logo;
 }
 
-.search {
-  grid-area: search;
+.children {
+  grid-area: children;
   max-width: 448px;
 }
 
@@ -46,14 +46,4 @@
   display: inline-flex;
   align-items: center;
   justify-content: flex-end;
-}
-
-.cartButton {
-  position: relative;
-}
-
-.cartButtonCount {
-  position: absolute;
-  top: -$unit-0050;
-  right: -$unit-0050;
 }

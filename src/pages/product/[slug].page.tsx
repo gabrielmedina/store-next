@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { Breadcrumb, Container, LayoutDefault } from 'src/components'
+import { Breadcrumb, Container, LayoutSearch } from 'src/components'
 import { ProductCart, ProductDetail } from 'src/features/Product/components'
 import { fetchProductFromApollo } from 'src/features/Product/api'
 import { Product } from 'src/graphql'
@@ -43,7 +43,7 @@ const ProductPage: React.FC<TProductPageProps> = ({ loading, product }) => {
         <meta name="description" content={product.description!} />
       </Head>
 
-      <LayoutDefault>
+      <LayoutSearch>
         <Container size="small">
           <Breadcrumb items={breadcrumb} />
         </Container>
@@ -53,7 +53,7 @@ const ProductPage: React.FC<TProductPageProps> = ({ loading, product }) => {
             <ProductDetail product={product} />
           </Container>
         </main>
-      </LayoutDefault>
+      </LayoutSearch>
 
       <ProductCart />
     </>

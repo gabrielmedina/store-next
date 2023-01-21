@@ -1,9 +1,5 @@
 import { render, screen } from '@testing-library/react'
 import { ReactChild } from 'react'
-import {
-  useCartStateMock,
-  useCartStateMockReturn,
-} from 'test/_mocks/useCartStateMock'
 import { LayoutDefault } from './Default'
 
 const makeSut = (children?: ReactChild) => {
@@ -11,10 +7,6 @@ const makeSut = (children?: ReactChild) => {
 }
 
 describe('LayoutDefault', () => {
-  beforeEach(() => {
-    useCartStateMock.mockReturnValue(useCartStateMockReturn)
-  })
-
   afterEach(() => {
     jest.clearAllMocks()
   })
