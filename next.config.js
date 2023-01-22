@@ -15,6 +15,15 @@ const nextConfig = {
     ALGOLIA_API_KEY: process.env.ALGOLIA_API_KEY,
   },
   pageExtensions: ['page.tsx', 'page.ts'],
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/products',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig
