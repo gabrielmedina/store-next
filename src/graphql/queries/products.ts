@@ -1,4 +1,4 @@
-import gql from 'graphql-tag'
+import { gql } from '@apollo/client'
 
 export const GET_PRODUCT_BY_SLUG_QUERY = gql`
   query GetProductBySlug($slug: String) {
@@ -8,6 +8,11 @@ export const GET_PRODUCT_BY_SLUG_QUERY = gql`
       description
       price
       slug
+      category {
+        id
+        name
+        slug
+      }
       images {
         id
         url
@@ -32,6 +37,11 @@ export const GET_PRODUCT_BY_ID = gql`
       description
       price
       slug
+      category {
+        id
+        name
+        slug
+      }
       cover {
         id
         url
@@ -50,6 +60,11 @@ export const GET_PRODUCTS_QUERY = gql`
       description
       price
       slug
+      category {
+        id
+        name
+        slug
+      }
       cover {
         id
         url

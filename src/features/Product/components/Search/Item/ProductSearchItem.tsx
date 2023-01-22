@@ -16,7 +16,10 @@ export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
 
   /* istanbul ignore next */
   return (
-    <Link href={`/products/${product.slug}`} className={styles.link}>
+    <Link
+      href={`/products/${product.category?.slug}/${product.slug}`}
+      className={styles.link}
+    >
       <Card
         title={product.name}
         description={formatyMoney(product.price)}
