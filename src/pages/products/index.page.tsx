@@ -13,7 +13,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   }
 }
 
-export type TPageSearchProps = {
+export type TProductsPageProps = {
   loading?: boolean
   term?: string
   products: {
@@ -26,7 +26,7 @@ export type TPageSearchProps = {
   }
 }
 
-const SearchPage: NextPage<TPageSearchProps> = ({
+const ProductsPage: NextPage<TProductsPageProps> = ({
   loading,
   term,
   products,
@@ -89,4 +89,4 @@ const SearchPage: NextPage<TPageSearchProps> = ({
   )
 }
 
-export default SearchPage
+export default ProductsPage

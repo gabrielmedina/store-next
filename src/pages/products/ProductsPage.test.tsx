@@ -7,7 +7,10 @@ import {
 } from 'test/_mocks/useCartStateMock'
 import { fetchProductsFromAlgolia } from 'src/features/Product/api'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
-import SearchPage, { getServerSideProps, TPageSearchProps } from './index.page'
+import SearchPage, {
+  getServerSideProps,
+  TProductsPageProps,
+} from './index.page'
 
 jest.mock('next/router', () => ({
   useRouter() {
@@ -27,7 +30,7 @@ const makeSut = ({
     total: 1,
     current: 0,
   },
-}: TPageSearchProps) => {
+}: TProductsPageProps) => {
   return render(
     <SearchPage
       term={term}
