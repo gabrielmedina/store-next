@@ -12,10 +12,6 @@ export const fetchProductsByCategoryFromAlgolia = async ({
     index: 'dev_store',
   })
 
-  algoliaClient.setSettings({
-    attributesForFaceting: ['searchable(category.slug)'],
-  })
-
   const querySearch = (query?.search as string) || ''
   const queryPagination = query?.page ? parseInt(query.page as string) - 1 : 0
 
