@@ -1,22 +1,22 @@
-import React from 'react'
+import React, { FormEvent, HTMLAttributes, useRef } from 'react'
 import { useRouter } from 'next/router'
-import { useForm } from 'react-hook-form'
 import { debounce } from 'lodash'
 import styles from './ProductSearchForm.module.scss'
 
-type TProductSearchFormData = {
-  search: string
-}
+type TProductSearchFormProps = HTMLAttributes<HTMLFormElement>
 
-export const ProductSearchForm: React.FC<
-  React.HTMLAttributes<HTMLFormElement>
-> = ({ ...props }) => {
+export const ProductSearchForm: React.FC<TProductSearchFormProps> = ({
+  ...props
+}) => {
   const router = useRouter()
-  const { register, handleSubmit } = useForm<TProductSearchFormData>()
+  const searchRef = useRef<HTMLInputElement>(null)
 
-  const onSubmit = async ({ search }: TProductSearchFormData) => {
+  const onSubmit = async (event: FormEvent<EventTarget>) => {
+    event.preventDefault()
+    const search = searchRef.current?.value
+
     router.push({
-      pathname: '/',
+      pathname: '/products',
       query: { search },
     })
   }
@@ -27,19 +27,20 @@ export const ProductSearchForm: React.FC<
     <form
       name="product-search-form"
       className={styles.form}
+      onSubmit={onSubmit}
       {...props}
-      onSubmit={handleSubmit(onSubmit)}
     >
       <label className={styles.label} htmlFor="search">
         Search
       </label>
       <input
-        className={styles.input}
-        type="search"
         id="search"
+        type="search"
+        ref={searchRef}
+        className={styles.input}
+        defaultValue={router.query?.search}
         placeholder="What are you searching for?"
-        {...register('search')}
-        onChange={(e) => onChange({ search: e.target.value })}
+        onChange={onChange}
       />
     </form>
   )
