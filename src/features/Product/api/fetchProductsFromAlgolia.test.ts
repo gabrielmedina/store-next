@@ -37,6 +37,7 @@ describe('FetchProductsFromAlgolia', () => {
 
     expect(response).toEqual({
       loading: false,
+      headline: 'term',
       pages: {
         current: 0,
         total: 1,

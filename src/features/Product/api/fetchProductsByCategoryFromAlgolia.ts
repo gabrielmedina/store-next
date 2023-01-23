@@ -5,28 +5,34 @@ type TFetchProductsFromAlgolia = {
   query: ParsedUrlQuery
 }
 
-export const fetchProductsFromAlgolia = async ({
+export const fetchProductsByCategoryFromAlgolia = async ({
   query,
 }: TFetchProductsFromAlgolia) => {
   const algoliaClient = getAlgoliaClient({
     index: 'dev_store',
   })
 
-  const querySearch = (query?.search as string) || ''
-  const queryPagination = query?.page ? parseInt(query.page as string) - 1 : 0
+  const querySearch = query.search
+  const queryPagination = query.page ? parseInt(query.page as string) - 1 : 0
+  const queryCategory = query.category
 
   const {
     hits,
     nbHits,
     nbPages,
     page: currentPage,
-  } = await algoliaClient.search(querySearch, {
+  } = await algoliaClient.search(querySearch as string, {
     page: queryPagination,
+    filters: `category.slug: ${queryCategory}`,
   })
+
+  const headline = []
+  if (querySearch) headline.push(querySearch)
+  if (queryCategory) headline.push(queryCategory)
 
   return {
     loading: false,
-    headline: querySearch,
+    headline: headline.join(', '),
     products: {
       total: nbHits,
       data: hits,

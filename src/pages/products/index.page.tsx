@@ -15,7 +15,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
 export type TProductsPageProps = {
   loading?: boolean
-  term?: string
+  headline?: string
   products: {
     total: number
     data: Array<Product>
@@ -28,7 +28,7 @@ export type TProductsPageProps = {
 
 const ProductsPage: NextPage<TProductsPageProps> = ({
   loading,
-  term,
+  headline,
   products,
   pages,
 }) => {
@@ -49,7 +49,7 @@ const ProductsPage: NextPage<TProductsPageProps> = ({
               src: '/empty-search.svg',
               alt: 'Empty search illustration',
             }}
-            title={`No results found for "${term}"`}
+            title={`No results found for "${headline}"`}
             text="We couldn't find what you searched for. Please, try searching again."
           />
         </Container>
@@ -59,7 +59,7 @@ const ProductsPage: NextPage<TProductsPageProps> = ({
       <>
         <Container>
           <ProductSearchList
-            term={term}
+            headline={headline}
             total={products.total}
             products={products.data}
           />

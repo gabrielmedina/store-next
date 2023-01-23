@@ -23,7 +23,7 @@ jest.mock('next/router', () => ({
 jest.mock('src/features/Product/api')
 
 const makeSut = ({
-  term,
+  headline,
   products,
   loading = false,
   pages = {
@@ -33,7 +33,7 @@ const makeSut = ({
 }: TProductsPageProps) => {
   return render(
     <SearchPage
-      term={term}
+      headline={headline}
       products={products}
       pages={pages}
       loading={loading}
@@ -75,7 +75,7 @@ describe('SearchPage', () => {
   it('should display empty message when product list is empty', () => {
     // @ts-ignore
     makeSut({
-      term: 'animals',
+      headline: 'animals',
       products: {
         total: 0,
         data: [],
