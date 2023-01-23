@@ -1,9 +1,13 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import { Container, EmptyState, LayoutSearch, Pagination } from 'src/components'
-import { ProductCart, ProductSearchList } from 'src/features/Product/components'
+import {
+  ProductCart,
+  ProductSearchHeadline,
+  ProductSearchList,
+} from 'src/features/Product/components'
 import { fetchProductsFromAlgolia } from 'src/features/Product/api'
-import { Product } from 'src/graphql'
+import { Category, Product } from 'src/graphql'
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const response = await fetchProductsFromAlgolia({ query })
@@ -20,6 +24,7 @@ export type TProductsPageProps = {
     total: number
     data: Array<Product>
   }
+  category?: Category
   pages: {
     total: number
     current: number
@@ -30,6 +35,7 @@ const ProductsPage: NextPage<TProductsPageProps> = ({
   loading,
   headline,
   products,
+  category,
   pages,
 }) => {
   const renderProductList = () => {
@@ -57,6 +63,12 @@ const ProductsPage: NextPage<TProductsPageProps> = ({
 
     return (
       <>
+        {category && (
+          <Container>
+            <ProductSearchHeadline category={category} />
+          </Container>
+        )}
+
         <Container>
           <ProductSearchList
             headline={headline}
