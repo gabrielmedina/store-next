@@ -736,6 +736,7 @@ export type Category = Node & {
   createdAt: Scalars['DateTime']
   /** User that created this document */
   createdBy?: Maybe<User>
+  description?: Maybe<Scalars['String']>
   /** Get the document in other stages */
   documentInStages: Array<Category>
   /** List of Category versions */
@@ -827,6 +828,7 @@ export type CategoryConnection = {
 
 export type CategoryCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>
+  description?: InputMaybe<Scalars['String']>
   name: Scalars['String']
   products?: InputMaybe<ProductCreateManyInlineInput>
   slug: Scalars['String']
@@ -882,6 +884,25 @@ export type CategoryManyWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
   createdBy?: InputMaybe<UserWhereInput>
+  description?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  description_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  description_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  description_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  description_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  description_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  description_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  description_starts_with?: InputMaybe<Scalars['String']>
   documentInStages_every?: InputMaybe<CategoryWhereStageInput>
   documentInStages_none?: InputMaybe<CategoryWhereStageInput>
   documentInStages_some?: InputMaybe<CategoryWhereStageInput>
@@ -985,6 +1006,8 @@ export type CategoryManyWhereInput = {
 export enum CategoryOrderByInput {
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
+  DescriptionAsc = 'description_ASC',
+  DescriptionDesc = 'description_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
   NameAsc = 'name_ASC',
@@ -998,6 +1021,7 @@ export enum CategoryOrderByInput {
 }
 
 export type CategoryUpdateInput = {
+  description?: InputMaybe<Scalars['String']>
   name?: InputMaybe<Scalars['String']>
   products?: InputMaybe<ProductUpdateManyInlineInput>
   slug?: InputMaybe<Scalars['String']>
@@ -1021,6 +1045,7 @@ export type CategoryUpdateManyInlineInput = {
 }
 
 export type CategoryUpdateManyInput = {
+  description?: InputMaybe<Scalars['String']>
   name?: InputMaybe<Scalars['String']>
 }
 
@@ -1099,6 +1124,25 @@ export type CategoryWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
   createdBy?: InputMaybe<UserWhereInput>
+  description?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  description_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  description_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  description_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  description_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  description_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  description_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  description_starts_with?: InputMaybe<Scalars['String']>
   documentInStages_every?: InputMaybe<CategoryWhereStageInput>
   documentInStages_none?: InputMaybe<CategoryWhereStageInput>
   documentInStages_some?: InputMaybe<CategoryWhereStageInput>
@@ -4234,6 +4278,20 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization',
 }
 
+export type GetCategoryBySlugQueryVariables = Exact<{
+  slug?: InputMaybe<Scalars['String']>
+}>
+
+export type GetCategoryBySlugQuery = {
+  __typename?: 'Query'
+  category?: {
+    __typename?: 'Category'
+    id: string
+    name: string
+    description?: string | null
+  } | null
+}
+
 export type GetProductBySlugQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']>
 }>
@@ -4326,6 +4384,66 @@ export type GetProductsQuery = {
   }>
 }
 
+export const GetCategoryBySlugDocument = gql`
+  query GetCategoryBySlug($slug: String) {
+    category(where: { slug: $slug }) {
+      id
+      name
+      description
+    }
+  }
+`
+
+/**
+ * __useGetCategoryBySlugQuery__
+ *
+ * To run a query within a React component, call `useGetCategoryBySlugQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCategoryBySlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCategoryBySlugQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useGetCategoryBySlugQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetCategoryBySlugQuery,
+    GetCategoryBySlugQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<
+    GetCategoryBySlugQuery,
+    GetCategoryBySlugQueryVariables
+  >(GetCategoryBySlugDocument, options)
+}
+export function useGetCategoryBySlugLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetCategoryBySlugQuery,
+    GetCategoryBySlugQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<
+    GetCategoryBySlugQuery,
+    GetCategoryBySlugQueryVariables
+  >(GetCategoryBySlugDocument, options)
+}
+export type GetCategoryBySlugQueryHookResult = ReturnType<
+  typeof useGetCategoryBySlugQuery
+>
+export type GetCategoryBySlugLazyQueryHookResult = ReturnType<
+  typeof useGetCategoryBySlugLazyQuery
+>
+export type GetCategoryBySlugQueryResult = Apollo.QueryResult<
+  GetCategoryBySlugQuery,
+  GetCategoryBySlugQueryVariables
+>
 export const GetProductBySlugDocument = gql`
   query GetProductBySlug($slug: String) {
     product(where: { slug: $slug }) {
