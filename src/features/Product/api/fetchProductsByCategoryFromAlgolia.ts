@@ -13,9 +13,7 @@ export const fetchProductsByCategoryFromAlgolia = async ({
   })
 
   algoliaClient.setSettings({
-    attributesForFaceting: [
-      'searchable(category.slug)',
-    ]
+    attributesForFaceting: ['searchable(category.slug)'],
   })
 
   const querySearch = (query?.search as string) || ''
@@ -29,7 +27,7 @@ export const fetchProductsByCategoryFromAlgolia = async ({
     query: term,
   } = await algoliaClient.search(querySearch, {
     page: queryPagination,
-    filters: `category.slug: ${query.category}`
+    filters: `category.slug: ${query.category}`,
   })
 
   return {
