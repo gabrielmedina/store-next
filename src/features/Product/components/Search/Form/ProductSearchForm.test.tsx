@@ -39,11 +39,12 @@ describe('ProductSearchForm', () => {
     const term = 'rolex'
     const input = screen.getByRole('searchbox')
     const user = userEvent.setup()
+
     await user.type(input, term)
 
     await waitFor(() => {
       expect(pushMock).toBeCalledWith({
-        pathname: '/',
+        pathname: '/products',
         query: {
           search: term,
         },

@@ -36,6 +36,7 @@ export const ProductSearchForm: React.FC<TProductSearchFormProps> = ({
       <input
         id="search"
         type="search"
+        name="search"
         ref={searchRef}
         className={styles.input}
         defaultValue={router.query?.search}
