@@ -20,14 +20,13 @@ export const fetchProductsFromAlgolia = async ({
     nbHits,
     nbPages,
     page: currentPage,
-    query: term,
   } = await algoliaClient.search(querySearch, {
     page: queryPagination,
   })
 
   return {
     loading: false,
-    term,
+    headline: querySearch,
     products: {
       total: nbHits,
       data: hits,

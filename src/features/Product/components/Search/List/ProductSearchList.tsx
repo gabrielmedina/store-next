@@ -3,18 +3,18 @@ import styles from './ProductSearchList.module.scss'
 import { Product } from 'src/graphql'
 
 export type TProductSearchListProps = {
-  term?: string
+  headline?: string
   total?: number
   products: Array<Product>
 }
 
 export const ProductSearchList: React.FC<TProductSearchListProps> = ({
-  term,
+  headline,
   total,
   products,
 }) => {
   const subtitle = () => {
-    if (term) return `Search results for: ${term} (${total})`
+    if (headline) return `Search results for: ${headline} (${total})`
 
     return `All products (${total})`
   }

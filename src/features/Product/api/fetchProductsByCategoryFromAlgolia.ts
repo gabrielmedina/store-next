@@ -12,23 +12,27 @@ export const fetchProductsByCategoryFromAlgolia = async ({
     index: 'dev_store',
   })
 
-  const querySearch = (query?.search as string) || ''
-  const queryPagination = query?.page ? parseInt(query.page as string) - 1 : 0
+  const querySearch = query.search
+  const queryPagination = query.page ? parseInt(query.page as string) - 1 : 0
+  const queryCategory = query.category
 
   const {
     hits,
     nbHits,
     nbPages,
     page: currentPage,
-    query: term,
-  } = await algoliaClient.search(querySearch, {
+  } = await algoliaClient.search(querySearch as string, {
     page: queryPagination,
-    filters: `category.slug: ${query.category}`,
+    filters: `category.slug: ${queryCategory}`,
   })
+
+  const headline = []
+  if (querySearch) headline.push(querySearch)
+  if (queryCategory) headline.push(queryCategory)
 
   return {
     loading: false,
-    term,
+    headline: headline.join(', '),
     products: {
       total: nbHits,
       data: hits,
