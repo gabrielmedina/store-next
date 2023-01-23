@@ -6,6 +6,15 @@ import {
 } from 'test/_mocks/useCartStateMock'
 import { LayoutSearch } from './Search'
 
+const pushMock = jest.fn()
+
+jest.mock('next/router', () => ({
+  __esModule: true,
+  useRouter: jest.fn().mockImplementation(() => ({
+    push: pushMock,
+  })),
+}))
+
 const makeSut = (children?: ReactChild) => {
   return render(<LayoutSearch>{children}</LayoutSearch>)
 }
