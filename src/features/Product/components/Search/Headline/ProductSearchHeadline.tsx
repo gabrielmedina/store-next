@@ -10,7 +10,7 @@ export const ProductSearchHeadline: React.FC<TProductSearchHeadline> = ({
 }) => {
   return (
     <header>
-      <h1 className={styles.title}>The best {category.name}</h1>
+      <h1 className={styles.title}>{category.name}</h1>
       <p className={styles.description}>{category.description}</p>
     </header>
   )
