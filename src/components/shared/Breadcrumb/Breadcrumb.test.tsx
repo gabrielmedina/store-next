@@ -33,4 +33,23 @@ describe('Breadcrumb', () => {
 
     expect(screen.queryByRole('list')).not.toBeInTheDocument()
   })
+
+  it('should no display undefined items', () => {
+    const items = [
+      {
+        title: 'Home',
+        path: '/',
+      },
+      undefined,
+      {
+        title: 'Product',
+        path: '/product',
+        isCurrent: true,
+      },
+    ]
+
+    makeSut({ items })
+
+    expect(screen.getAllByRole('listitem')).toHaveLength(2)
+  })
 })

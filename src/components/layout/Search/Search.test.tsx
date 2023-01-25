@@ -1,9 +1,9 @@
 import { act, fireEvent, render, screen } from '@testing-library/react'
 import { ReactChild } from 'react'
 import {
-  useCartStateMock,
-  useCartStateMockReturn,
-} from 'test/_mocks/useCartStateMock'
+  useProductCartStateMock,
+  useProductCartStateMockReturn,
+} from 'test/_mocks/useProductCartStateMock'
 import { LayoutSearch } from './Search'
 
 const pushMock = jest.fn()
@@ -21,7 +21,7 @@ const makeSut = (children?: ReactChild) => {
 
 describe('LayoutSearch', () => {
   beforeEach(() => {
-    useCartStateMock.mockReturnValue(useCartStateMockReturn)
+    useProductCartStateMock.mockReturnValue(useProductCartStateMockReturn)
   })
 
   afterEach(() => {
@@ -48,6 +48,6 @@ describe('LayoutSearch', () => {
       fireEvent.click(screen.getByRole('button'))
     })
 
-    expect(useCartStateMockReturn.setIsVisible).toBeCalledWith(true)
+    expect(useProductCartStateMockReturn.setIsVisible).toBeCalledWith(true)
   })
 })

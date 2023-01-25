@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import {
-  useCartStateMock,
-  useCartStateMockReturn,
-} from 'test/_mocks/useCartStateMock'
+  useProductCartStateMock,
+  useProductCartStateMockReturn,
+} from 'test/_mocks/useProductCartStateMock'
 import { GetServerSidePropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
@@ -45,7 +45,7 @@ const makeSut = (props: TProductPageProps) => {
 
 describe('ProductPage', () => {
   beforeEach(() => {
-    useCartStateMock.mockReturnValue(useCartStateMockReturn)
+    useProductCartStateMock.mockReturnValue(useProductCartStateMockReturn)
   })
 
   it('should render correctly', () => {

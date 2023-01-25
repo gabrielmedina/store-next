@@ -13,7 +13,7 @@ const StateCartOpen = atom({
   default: false,
 })
 
-export const useCartState = () => {
+export const useProductCartState = () => {
   const [products, setProducts] = useRecoilState<Product[]>(StateCartProducts)
   const [isVisible, setIsVisible] = useRecoilState<boolean>(StateCartOpen)
 

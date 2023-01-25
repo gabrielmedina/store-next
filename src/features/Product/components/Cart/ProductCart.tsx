@@ -1,9 +1,9 @@
 import { Button, Dialog } from 'src/components'
-import { useCartState } from 'src/features/Product/states'
+import { useProductCartState } from 'src/features/Product/states'
 import { ProductCartList } from './List/ProductCartList'
 
 export const ProductCart: React.FC = () => {
-  const { products, isVisible, setIsVisible } = useCartState()
+  const { products, isVisible, setIsVisible } = useProductCartState()
 
   const productsQuantity = products.length
 
