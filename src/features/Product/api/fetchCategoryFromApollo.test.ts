@@ -20,7 +20,7 @@ jest.mock('src/libs', () => ({
   }),
 }))
 
-describe('fetchCategoryFromApollo', () => {
+describe('FetchCategoryFromApollo', () => {
   it('should search category with correctly queries', async () => {
     const context = {
       query: { category: category.slug } as ParsedUrlQuery,
