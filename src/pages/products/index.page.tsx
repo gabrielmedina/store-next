@@ -84,14 +84,16 @@ const ProductsPage: NextPage<TProductsPageProps> = ({
     )
   }
 
+  const head = {
+    title: `${category ? category.name : 'Products'} - Store`,
+    description: 'The best since 2021. 10001 - New York',
+  }
+
   return (
     <>
       <Head>
-        <title>{category ? category.name : 'Products'} - Store</title>
-        <meta
-          name="description"
-          content="The best since 2021. 10001 - New York"
-        />
+        <title>{head.title}</title>
+        <meta name="description" content={head.description} />
       </Head>
 
       <LayoutSearch>{renderProductList()}</LayoutSearch>

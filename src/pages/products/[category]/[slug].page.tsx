@@ -42,13 +42,18 @@ const ProductPage: React.FC<TProductPageProps> = ({ loading, product }) => {
     },
   ]
 
+  const head = {
+    title: `${product.name} - Store`,
+    description: product.description,
+  }
+
   if (loading) return null
 
   return (
     <>
       <Head>
-        <title>{product.name} - Store</title>
-        <meta name="description" content={product.description!} />
+        <title>{head.title}</title>
+        <meta name="description" content={head.description!} />
       </Head>
 
       <LayoutSearch>
