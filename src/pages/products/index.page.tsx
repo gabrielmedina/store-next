@@ -87,7 +87,7 @@ const ProductsPage: NextPage<TProductsPageProps> = ({
   return (
     <>
       <Head>
-        <title>Store | The best of New York</title>
+        <title>{category ? category.name : 'Products'} - Store</title>
         <meta
           name="description"
           content="The best since 2021. 10001 - New York"

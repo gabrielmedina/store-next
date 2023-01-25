@@ -39,7 +39,7 @@ const ProductPage: React.FC<TProductPageProps> = ({ loading, product }) => {
   return (
     <>
       <Head>
-        <title>{product.name} | Store</title>
+        <title>{product.name} - Store</title>
         <meta name="description" content={product.description!} />
       </Head>
 
