@@ -24,9 +24,17 @@ const ProductPage: React.FC<TProductPageProps> = ({ loading, product }) => {
 
   const breadcrumb = [
     {
-      title: 'Home',
-      path: '/',
+      title: 'Products',
+      path: '/products',
+      isCurrent: false,
     },
+    product.category
+      ? {
+          title: product.category.name,
+          path: `/products/${product.category.slug}`,
+          isCurrent: false,
+        }
+      : undefined,
     {
       title: product.name,
       path: router.asPath,
