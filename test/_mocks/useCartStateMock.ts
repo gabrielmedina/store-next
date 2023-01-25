@@ -1,8 +1,8 @@
-import { useCartState } from 'src/features/Product/states'
+import { useProductCartState } from 'src/features/Product/states'
 
 jest.mock('src/features/Product/states/useCartState')
 
-const useCartStateMock = useCartState as jest.Mock
+const useCartStateMock = useProductCartState as jest.Mock
 
 const useCartStateMockReturn = {
   products: [],

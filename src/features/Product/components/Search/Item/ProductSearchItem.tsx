@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { formatyMoney } from 'src/utils'
 import { Button, Card, IconCart } from 'src/components'
-import { useCartState } from 'src/features/Product/states'
+import { useProductCartState } from 'src/features/Product/states'
 import { Product } from 'src/graphql'
 import styles from './ProductSearchItem.module.scss'
 
@@ -12,7 +12,7 @@ export type TProductSearchItemProps = {
 export const ProductSearchItem: React.FC<TProductSearchItemProps> = ({
   product,
 }) => {
-  const { addProduct } = useCartState()
+  const { addProduct } = useProductCartState()
 
   /* istanbul ignore next */
   return (

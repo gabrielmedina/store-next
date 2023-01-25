@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { Button } from 'src/components'
 import { formatyMoney } from 'src/utils'
 import { Product } from 'src/graphql'
-import { useCartState } from 'src/features/Product/states'
+import { useProductCartState } from 'src/features/Product/states'
 import styles from './ProductDetail.module.scss'
 
 export type TProductDetailProps = {
@@ -10,7 +10,7 @@ export type TProductDetailProps = {
 }
 
 export const ProductDetail: React.FC<TProductDetailProps> = ({ product }) => {
-  const { addProduct } = useCartState()
+  const { addProduct } = useProductCartState()
 
   if (!product) return null
 
