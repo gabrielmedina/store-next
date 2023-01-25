@@ -12,15 +12,15 @@ export const fetchProductsFromAlgolia = async ({
     index: 'dev_store',
   })
 
-  const querySearch = (query?.search as string) || ''
-  const queryPagination = query?.page ? parseInt(query.page as string) - 1 : 0
+  const querySearch = query.search
+  const queryPagination = query.page ? parseInt(query.page as string) - 1 : 0
 
   const {
     hits,
     nbHits,
     nbPages,
     page: currentPage,
-  } = await algoliaClient.search(querySearch, {
+  } = await algoliaClient.search(querySearch as string, {
     page: queryPagination,
   })
 

@@ -7,7 +7,7 @@ import {
 } from 'test/_mocks/useCartStateMock'
 import { fetchProductsFromAlgolia } from 'src/features/Product/api'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
-import SearchPage, {
+import ProductsPage, {
   getServerSideProps,
   TProductsPageProps,
 } from './index.page'
@@ -32,7 +32,7 @@ const makeSut = ({
   },
 }: TProductsPageProps) => {
   return render(
-    <SearchPage
+    <ProductsPage
       headline={headline}
       products={products}
       pages={pages}
@@ -41,7 +41,7 @@ const makeSut = ({
   )
 }
 
-describe('SearchPage', () => {
+describe('ProductsPage', () => {
   beforeEach(() => {
     useCartStateMock.mockReturnValue(useCartStateMockReturn)
   })
@@ -85,13 +85,12 @@ describe('SearchPage', () => {
     expect(screen.getByText('No results found for "animals"'))
   })
 
-  it('should call fetchProductsFromAlgolia in getServerSideProps', () => {
-    const page = '2'
+  it('should call fetchProductsFromAlgolia in getServerSideProps', async () => {
     const context = {
-      query: { page } as ParsedUrlQuery,
+      query: { page: '2' } as ParsedUrlQuery,
     }
 
-    getServerSideProps(context as GetServerSidePropsContext)
+    await getServerSideProps(context as GetServerSidePropsContext)
 
     expect(fetchProductsFromAlgolia).toBeCalledWith(context)
   })
