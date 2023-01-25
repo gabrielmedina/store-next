@@ -24,9 +24,12 @@ export const fetchProductsFromAlgolia = async ({
     page: queryPagination,
   })
 
+  const headline = []
+  if (querySearch) headline.push(querySearch)
+
   return {
     loading: false,
-    headline: querySearch,
+    headline: headline.join(', '),
     products: {
       total: nbHits,
       data: hits,
