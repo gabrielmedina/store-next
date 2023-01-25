@@ -60,7 +60,10 @@ describe('ProductPage', () => {
     // @ts-ignore
     makeSut({ loading: false, product })
 
-    expect(screen.getByRole('link', { name: 'Home' })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Products' })).toBeInTheDocument()
+    expect(
+      screen.getByRole('link', { name: product.category.name })
+    ).toBeInTheDocument()
     expect(screen.getByRole('link', { name: product.name })).toBeInTheDocument()
   })
 

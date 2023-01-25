@@ -6,6 +6,11 @@
     "summary": "A little description of product",
     "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     "price": 245.0,
+    "category": {
+      "id": "492103021-35ds-2321sw-bknvoi2351283",
+      "name": "Watches",
+      "slug": "watches"
+    },
     "cover": {
       "url": "/brigitte-tohm.jpg",
       "width": 300,
@@ -27,6 +32,11 @@
     "summary": "A little description of product",
     "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     "price": 118.0,
+    "category": {
+      "id": "3213544-dsx23-aaa3213-awe232132689",
+      "name": "Watches",
+      "slug": "watches"
+    },
     "cover": {
       "url": "/jaelynn-castillo.jpg",
       "width": 300,
@@ -48,6 +58,11 @@
     "summary": "A little description of product",
     "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     "price": 1230.0,
+    "category": {
+      "id": "a213159089-3412-ii32934-06jfdjsioqw",
+      "name": "Watches",
+      "slug": "watches"
+    },
     "cover": {
       "url": "/andrea-natali.jpg",
       "width": 300,
@@ -69,6 +84,11 @@
     "summary": "A little description of product",
     "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     "price": 873.0,
+    "category": {
+      "id": "95823132-2dfa3-053ss-9530fds9292",
+      "name": "Watches",
+      "slug": "watches"
+    },
     "cover": {
       "url": "/mitchell-hollander.jpg",
       "width": 300,

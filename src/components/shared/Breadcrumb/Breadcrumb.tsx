@@ -3,7 +3,7 @@ import Link from 'next/link'
 import styles from './Breadcrumb.module.scss'
 
 export type TBreadcrumbProps = {
-  items: Array<TBreadcrumbItem>
+  items: Array<TBreadcrumbItem | undefined>
 }
 
 type TBreadcrumbItem = {
@@ -17,18 +17,22 @@ export const Breadcrumb: React.FC<TBreadcrumbProps> = ({ items }) => {
 
   return (
     <ol data-testid="breadcrumb" className={styles.list}>
-      {items.map((item, index) => (
-        <li key={index} className={styles.item}>
-          <Link
-            href={item.path}
-            className={classNames(styles.link, {
-              [styles.current]: item.isCurrent,
-            })}
-          >
-            {item.title}
-          </Link>
-        </li>
-      ))}
+      {items.map((item, index) => {
+        if (!item) return
+
+        return (
+          <li key={index} className={styles.item}>
+            <Link
+              href={item.path}
+              className={classNames(styles.link, {
+                [styles.current]: item.isCurrent,
+              })}
+            >
+              {item.title}
+            </Link>
+          </li>
+        )
+      })}
     </ol>
   )
 }
