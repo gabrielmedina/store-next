@@ -2,9 +2,9 @@ import { render, screen } from '@testing-library/react'
 import { GetServerSidePropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import {
-  useCartStateMock,
-  useCartStateMockReturn,
-} from 'test/_mocks/useCartStateMock'
+  useProductCartStateMock,
+  useProductCartStateMockReturn,
+} from 'test/_mocks/useProductCartStateMock'
 import { fetchProductsFromAlgolia } from 'src/features/Product/api'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
 import ProductsPage, {
@@ -43,7 +43,7 @@ const makeSut = ({
 
 describe('ProductsPage', () => {
   beforeEach(() => {
-    useCartStateMock.mockReturnValue(useCartStateMockReturn)
+    useProductCartStateMock.mockReturnValue(useProductCartStateMockReturn)
   })
 
   afterEach(() => {
