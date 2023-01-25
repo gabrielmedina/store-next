@@ -1,11 +1,11 @@
 import { Category } from 'src/graphql'
 import styles from './ProductSearchHeadline.module.scss'
 
-export type TProductSearchHeadline = {
+export type TProductSearchHeadlineProps = {
   category: Category
 }
 
-export const ProductSearchHeadline: React.FC<TProductSearchHeadline> = ({
+export const ProductSearchHeadline: React.FC<TProductSearchHeadlineProps> = ({
   category,
 }) => {
   return (
