@@ -5,7 +5,7 @@
 
   @media screen and (min-width: $breakpoint-md) {
     flex-direction: row;
-    gap: $unit-1000;
+    gap: $unit-1400;
   }
 }
 
@@ -15,7 +15,7 @@
   gap: $unit-0600;
 
   @media screen and (min-width: $breakpoint-md) {
-    width: 50%;
+    width: 45%;
   }
 }
 
@@ -48,7 +48,7 @@
 
 .slider {
   @media screen and (min-width: $breakpoint-md) {
-    width: 50%;
+    width: 55%;
     order: -1;
   }
 }
