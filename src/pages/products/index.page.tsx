@@ -1,6 +1,12 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
-import { Container, EmptyState, LayoutSearch, Pagination } from 'src/components'
+import {
+  Breadcrumb,
+  Container,
+  EmptyState,
+  LayoutSearch,
+  Pagination,
+} from 'src/components'
 import {
   ProductCart,
   ProductSearchHeadline,
@@ -38,6 +44,37 @@ const ProductsPage: NextPage<TProductsPageProps> = ({
   category,
   pages,
 }) => {
+  const renderCategoryHeader = () => {
+    if (category) {
+      const breadcrumb = [
+        {
+          title: 'Products',
+          path: '/products',
+          isCurrent: false,
+        },
+        {
+          title: category.name,
+          path: `/products/${category.slug}`,
+          isCurrent: true,
+        },
+      ]
+
+      return (
+        <>
+          <Container>
+            <Breadcrumb items={breadcrumb} />
+          </Container>
+
+          <Container>
+            <ProductSearchHeadline category={category} />
+          </Container>
+        </>
+      )
+    }
+
+    return null
+  }
+
   const renderProductList = () => {
     if (loading)
       return (
@@ -63,11 +100,7 @@ const ProductsPage: NextPage<TProductsPageProps> = ({
 
     return (
       <>
-        {category && (
-          <Container>
-            <ProductSearchHeadline category={category} />
-          </Container>
-        )}
+        {renderCategoryHeader()}
 
         <Container>
           <ProductSearchList
