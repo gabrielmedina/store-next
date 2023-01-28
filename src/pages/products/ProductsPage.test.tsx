@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 import { GetServerSidePropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import {
@@ -7,6 +7,7 @@ import {
 } from 'test/_mocks/useProductCartStateMock'
 import { fetchProductsFromAlgolia } from 'src/features/Product/api'
 import ProductsStub from 'test/_stubs/ProductsStub.json'
+import CategoriesStub from 'test/_stubs/CategoriesStub.json'
 import ProductsPage, {
   getServerSideProps,
   TProductsPageProps,
@@ -23,6 +24,7 @@ jest.mock('next/router', () => ({
 jest.mock('src/features/Product/api')
 
 const makeSut = ({
+  category,
   headline,
   products,
   loading = false,
@@ -33,6 +35,7 @@ const makeSut = ({
 }: TProductsPageProps) => {
   return render(
     <ProductsPage
+      category={category}
       headline={headline}
       products={products}
       pages={pages}
@@ -83,6 +86,52 @@ describe('ProductsPage', () => {
     })
 
     expect(screen.getByText('No results found for "animals"'))
+  })
+
+  it('should render category headline correctly', () => {
+    const category = CategoriesStub[0]
+    const products = ProductsStub
+
+    makeSut({
+      // @ts-ignore
+      category,
+      headline: 'caps',
+      products: {
+        total: products.length,
+        // @ts-ignore
+        data: products,
+      },
+    })
+
+    expect(
+      screen.getByRole('heading', { level: 1, name: category.name })
+    ).toBeInTheDocument()
+    expect(screen.getByText(category.description)).toBeInTheDocument()
+  })
+
+  it('should render breadcrumb correctly', () => {
+    const category = CategoriesStub[0]
+    const products = ProductsStub
+
+    makeSut({
+      // @ts-ignore
+      category,
+      headline: 'caps',
+      products: {
+        total: products.length,
+        // @ts-ignore
+        data: products,
+      },
+    })
+
+    const breadcrumb = screen.getByTestId('breadcrumb')
+
+    expect(
+      within(breadcrumb).getByRole('link', { name: 'Products' })
+    ).toBeInTheDocument()
+    expect(
+      within(breadcrumb).getByRole('link', { name: category.name })
+    ).toBeInTheDocument()
   })
 
   it('should call fetchProductsFromAlgolia in getServerSideProps', async () => {

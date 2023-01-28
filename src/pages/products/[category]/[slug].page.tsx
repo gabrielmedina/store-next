@@ -57,12 +57,12 @@ const ProductPage: React.FC<TProductPageProps> = ({ loading, product }) => {
       </Head>
 
       <LayoutSearch>
-        <Container size="small">
+        <Container>
           <Breadcrumb items={breadcrumb} />
         </Container>
 
         <main>
-          <Container size="small">
+          <Container>
             <ProductDetail product={product} />
           </Container>
         </main>
