@@ -12,7 +12,7 @@ const customJestConfig = {
   testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
   moduleDirectories: ['node_modules', __dirname],
   transform: {
-    '^.+\\.tsx?$': ['@swc/jest'],
+    '^.+\\.tsx?$': '@swc/jest',
   },
   collectCoverageFrom: ['src/**/*.{ts,tsx}'],
   coverageThreshold: {
