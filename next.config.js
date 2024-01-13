@@ -8,7 +8,12 @@ const nextConfig = {
     prependData: `@import "variables.scss";`,
   },
   images: {
-    domains: ['media.graphassets.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'media.graphassets.com',
+      },
+    ],
   },
   env: {
     ALGOLIA_APPLICATION_ID: process.env.ALGOLIA_APPLICATION_ID,
